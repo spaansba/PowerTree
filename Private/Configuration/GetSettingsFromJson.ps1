@@ -1,36 +1,11 @@
 function Get-PowerTreeSettingsFromJson {
     [CmdletBinding()]
     param(
-        [string[]]$ConfigPaths = @(
-            "$PSScriptRoot\PowerTree.config.json",
-            "$PSScriptRoot\..\PowerTree.config.json",
-            "$PSScriptRoot\..\..\PowerTree.config.json",
-            "$env:USERPROFILE\.PowerTree\config.json",
-            "$env:HOME\.PowerTree\config.json"
-        )
+        [string[]]$ConfigPaths = (Get-PowerTreeConfigPaths)
     )
     
-    # Default settings if no config file found
-    $defaultSettings = @{
-        ExcludeDirectories = @()
-        Sorting = @{
-            By = "Name"
-            SortFolders = $false
-        }
-        Files = @{
-            ExcludeExtensions = @()
-            IncludeExtensions = @()
-            FileSizeMinimum = "-1kb"
-            FileSizeMaximum = "10GB"
-            OpenOutputFileOnFinish = $true
-        }
-        ShowConnectorLines = $true
-        ShowExecutionStats = $true
-        MaxDepth = -1 # -1 means no depth limit
-        LineStyle= "Unicode"
-    }
+    $defaultSettings = Get-PowerTreeDefaultConfig
     
-    # Try to load settings file
     try {
         Write-Verbose "Searching for configuration files in the following locations:"
         foreach ($path in $ConfigPaths) {
@@ -42,7 +17,6 @@ function Get-PowerTreeSettingsFromJson {
                 
                 Write-Verbose "Settings loaded from $path"
                 
-                # Convert the JSON object to a PowerShell hashtable
                 $settingsHashtable = @{
                     ExcludeDirectories = if ($settings.ExcludeDirectories -is [array]) { $settings.ExcludeDirectories } else { @() }
                     Sorting = @{
@@ -76,4 +50,41 @@ function Get-PowerTreeSettingsFromJson {
         Write-Verbose "Using default settings instead."
         return $defaultSettings
     }
+}
+
+function Get-PowerTreeDefaultConfig {
+    [CmdletBinding()]
+    param()
+    
+    return @{
+        ExcludeDirectories = @()
+        Sorting = @{
+            By = "Name"
+            SortFolders = $false
+        }
+        Files = @{
+            ExcludeExtensions = @()
+            IncludeExtensions = @()
+            FileSizeMinimum = "-1kb"
+            FileSizeMaximum = "-1kb"
+            OpenOutputFileOnFinish = $true
+        }
+        ShowConnectorLines = $true
+        ShowExecutionStats = $true
+        MaxDepth = -1 # -1 means no depth limit
+        LineStyle = "Unicode"
+    }
+}
+
+function Get-PowerTreeConfigPaths {
+    [CmdletBinding()]
+    param()
+    
+    return @(
+        "$PSScriptRoot\PowerTree.config.json",
+        "$PSScriptRoot\..\PowerTree.config.json",
+        "$PSScriptRoot\..\..\PowerTree.config.json",
+        "$env:USERPROFILE\.PowerTree\config.json",
+        "$env:HOME\.PowerTree\config.json"
+    )
 }

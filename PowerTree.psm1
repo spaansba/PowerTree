@@ -1,6 +1,7 @@
 # Define script-level variables
 $script:ModuleRoot = $PSScriptRoot
 New-Alias -Name "ptree" -Value "PowerTree"
+New-Alias -Name "Edit-PtreeConfig" -Value "Edit-PowerTreeConfig"
 
 # Import all private functions (recursively)
 $Private = @(Get-ChildItem -Path "$PSScriptRoot\Private\*.ps1" -Recurse -ErrorAction SilentlyContinue)
