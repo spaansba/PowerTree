@@ -27,4 +27,4 @@ foreach ($import in $Public) {
 
 # Export public functions
 Export-ModuleMember -Function $Public.BaseName
-Export-ModuleMember -Function $Public.BaseName -Alias "ptree"
+Export-ModuleMember -Function $Public.BaseName -Alias "ptree", "Edit-PtreeConfig"
