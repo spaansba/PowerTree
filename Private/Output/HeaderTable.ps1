@@ -5,7 +5,8 @@ function Get-HeaderTable {
         [bool]$DisplayLastAccessDate,
         [bool]$DisplayModificationDate,
         [bool]$DisplaySize,
-        [bool]$DisplayMode
+        [bool]$DisplayMode,
+        [hashtable]$LineStyle
     )
 
     $headerTable = @{
@@ -53,7 +54,7 @@ function Get-HeaderTable {
             $headerTable.Indentations[$headerString] = $headerTable.HeaderLine.Length
             
             $headerTable.HeaderLine += "$headerString$regularSpacing$extraSpacing"
-            $headerTable.UnderscoreLine += "$("-" * ($headerString.Length + $extraSpacing.Length))$regularSpacing"
+            $headerTable.UnderscoreLine += "$($LineStyle.SingleLine * ($headerString.Length + $extraSpacing.Length))$regularSpacing"
             
             $headerTable.HeaderColumns += $headerString
         }
@@ -63,7 +64,7 @@ function Get-HeaderTable {
     $hierarchyHeader = "Hierarchy"
     $headerTable.Indentations[$hierarchyHeader] = $headerTable.HeaderLine.Length
     $headerTable.HeaderLine += $hierarchyHeader
-    $headerTable.UnderscoreLine += "-" * $hierarchyHeader.Length
+    $headerTable.UnderscoreLine += $LineStyle.SingleLine * $hierarchyHeader.Length
     $headerTable.HeaderColumns += $hierarchyHeader
  
     return $headerTable
@@ -74,7 +75,8 @@ function Write-HeaderToOutput {
     param(
         [hashtable]$HeaderTable,
         [System.Text.StringBuilder]$OutputBuilder,
-        [bool]$Quiet
+        [bool]$Quiet,
+        [hashtable]$LineStyle
     )
     
     if ($Quiet) {

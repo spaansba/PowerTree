@@ -1,0 +1,15 @@
+# PowerTree Output
+# Generated: 04/04/2025 12:57:29
+# Path: .
+# Output File: d.txt
+# ExcludedDirectories: node_modules, .next
+# Sort By: Name Ascending
+
+# Execution Statistics
+Files    Folders    Total Items    Depth    Total Size    Execution Time    
+-----    -------    -----------    -----    ----------    --------------    
+0        0          0              1        0       B      83;86 ms          
+
+
+
+

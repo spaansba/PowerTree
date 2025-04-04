@@ -141,6 +141,7 @@ function Build-TreeLineStyle {
             LastBranch = "\----"   # Last item branch
             Vertical = "|"         # Vertical line
             Space = "    "         # Space for indentation after last branch
+            SingleLine = "-"        # Single line for horizontal connection
         }
         Unicode = @{
             Branch = "├───"        # Branch connector
@@ -148,6 +149,7 @@ function Build-TreeLineStyle {
             LastBranch = "└───"    # Last item branch
             Vertical = "│"         # Vertical line
             Space = "    "         # Space for indentation after last branch
+            SingleLine = "─"        # Single line for horizontal connection
         }
     }
     

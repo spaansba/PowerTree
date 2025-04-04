@@ -134,6 +134,7 @@
 
     $treeConfig = [TreeConfig]::new()
     $treeConfig.Path = $Path
+    $treeConfig.LineStyle = Build-TreeLineStyle -Style $jsonSettings.LineStyle
     $treeConfig.DirectoryOnly = $DirectoryOnly
     $treeConfig.ExcludeDirectories = Build-ExcludedDirectoryParams -CommandLineExcludedDir $ExcludeDirectories `
                                                                    -Settings $jsonSettings
@@ -151,7 +152,9 @@
                                               -DisplayLastAccessDate $DisplayLastAccessDate `
                                               -DisplayModificationDate $DisplayModificationDate `
                                               -DisplaySize $DisplaySize `
-                                              -DisplayMode $DisplayMode
+                                              -DisplayMode $DisplayMode `
+                                              -LineStyle $treeConfig.LineStyle `
+                                              
     $treeConfig.ShowConnectorLines = $jsonSettings.ShowConnectorLines
     $treeConfig.ShowHiddenFiles = $ShowHiddenFiles
     $treeConfig.MaxDepth = if ($Depth -ne -1) { $Depth } else { $jsonSettings.MaxDepth }
@@ -162,7 +165,7 @@
     $treeConfig.Quiet = $Quiet
     $treeConfig.OutFile = Add-DefaultExtension -FilePath $OutFile -Quiet $treeConfig.Quiet
     $treeConfig.PruneEmptyFolders = $PruneEmptyFolders
-    $treeConfig.LineStyle = Build-TreeLineStyle -Style $jsonSettings.LineStyle
+    
     
     $outputBuilder = Initialize-OutputBuilder -TreeConfig $treeConfig -ShowExecutionStats $jsonSettings.ShowExecutionStats
 
@@ -185,7 +188,8 @@
 
             Write-HeaderToOutput -HeaderTable $treeConfig.HeaderTable `
                               -OutputBuilder $outputBuilder `
-                              -Quiet $treeConfig.Quiet
+                              -Quiet $treeConfig.Quiet `
+                              -LineStyle $treeConfig.LineStyle
 
             Get-TreeView -TreeConfig $treeConfig `
                          -TreeStats $treeStats `
