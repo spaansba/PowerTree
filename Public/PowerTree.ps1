@@ -13,10 +13,6 @@
         [switch]$Help,
 
         [Parameter()]
-        [Alias("h", "?")]
-        [switch]$Config,
-
-        [Parameter()]
         [switch]$Examples,
     
         [Parameter()]

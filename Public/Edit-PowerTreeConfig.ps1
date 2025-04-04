@@ -1,42 +1,28 @@
-
 function Edit-PowerTreeConfig {
     [CmdletBinding()]
-    param(
-        [Parameter()]
-        [Alias("p", "path")]
-        [string]$ConfigPath
-    )
+    param()
     
     # Determine the config file path
-    if ([string]::IsNullOrEmpty($ConfigPath)) {
-        $configPaths = Get-PowerTreeConfigPaths
-        $existingConfig = $configPaths | Where-Object { Test-Path $_ } | Select-Object -First 1
-        
-        if ($existingConfig) {
-            $configPath = $existingConfig
-        } else {
-            # No existing config found, create in user profile
-            if ($IsWindows -or $null -eq $IsWindows) {
-                $configDir = Join-Path -Path $env:USERPROFILE -ChildPath ".PowerTree"
-            } else {
-                $configDir = Join-Path -Path $env:HOME -ChildPath ".PowerTree"
-            }
-            
-            # Ensure directory exists
-            if (-not (Test-Path -Path $configDir)) {
-                New-Item -Path $configDir -ItemType Directory -Force | Out-Null
-                Write-Host "Created directory: $configDir" -ForegroundColor Cyan
-            }
-            
-            $configPath = Join-Path -Path $configDir -ChildPath "config.json"
-        }
+    $configPaths = Get-PowerTreeConfigPaths
+    $existingConfig = $configPaths | Where-Object { Test-Path $_ } | Select-Object -First 1
+    
+    if ($existingConfig) {
+        $configPath = $existingConfig
     } else {
-        $configPath = $ConfigPath
-        
-        # If path is a directory, append filename
-        if (Test-Path -Path $configPath -PathType Container) {
-            $configPath = Join-Path -Path $configPath -ChildPath "PowerTree.config.json"
+        # No existing config found, create in user profile
+        if ($IsWindows -or $null -eq $IsWindows) {
+            $configDir = Join-Path -Path $env:USERPROFILE -ChildPath ".PowerTree"
+        } else {
+            $configDir = Join-Path -Path $env:HOME -ChildPath ".PowerTree"
         }
+        
+        # Ensure directory exists
+        if (-not (Test-Path -Path $configDir)) {
+            New-Item -Path $configDir -ItemType Directory -Force | Out-Null
+            Write-Host "Created directory: $configDir" -ForegroundColor Cyan
+        }
+        
+        $configPath = Join-Path -Path $configDir -ChildPath "config.json"
     }
     
     $configExists = Test-Path -Path $configPath
