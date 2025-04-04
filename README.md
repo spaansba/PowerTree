@@ -57,15 +57,20 @@ PowerTree -OutFile tree_output.txt
 
 ## Cmdlets and Parameters
 
-PowerTree provides one primary cmdlet (`PowerTree`) with an alias (`ptree`) and many optional parameters.
+PowerTree provides two main cmdlets:
+
+* `PowerTree` - The main command for directory visualization with an alias (ptree)
+* `Edit-PowerTreeConfig` - A utility to manage your PowerTree configuration
+
+The main PowerTree cmdlet comes with many optional parameters to customize your directory visualization experience.
 
 ### Basic Options
 
 | Parameter | Alias | Description |
 |-----------|-------|-------------|
 | `-Path <string>` | | Specify path to search (default: current directory) |
-| `-Help`, `-?`, `-h` | | Display help information |
-| `-Examples` | | Show usage examples |
+| `-Help` |`-?`, `-h` | Display help information |
+| `-Examples` | `-ex`, `-example` | Show usage examples |
 | `-Verbose` | | Show verbose output |
 | `-ShowHiddenFiles` | `-force` | Show hidden files and directories |
 
@@ -112,15 +117,15 @@ PowerTree provides one primary cmdlet (`PowerTree`) with an alias (`ptree`) and 
 | `-SortByLastAccessDate` | `-sla` | Sort by last access date |
 | `-Descending` | `-des`, `-desc` | Sort in descending order |
 
-## Configuration Options
+## Managing Your Configuration
+PowerTree provides a built-in configuration editor to help you manage your settings:
+powershellCopy# Open or create a PowerTree configuration file in your default editor
+`Edit-PowerTreeConfig`
+The Edit-PowerTreeConfig function will:
 
-PowerTree can be configured using a JSON configuration file. The configuration file is searched in the following locations:
-
-1. `$PSScriptRoot\PowerTree.config.json`
-2. `$PSScriptRoot\..\PowerTree.config.json`
-3. `$PSScriptRoot\..\..\PowerTree.config.json`
-4. `$env:USERPROFILE\.PowerTree\config.json` (Windows)
-5. `$env:HOME\.PowerTree\config.json` (macOS/Linux)
+Find an existing configuration file if present
+Create a new configuration file with default settings if one doesn't exist
+Open the configuration file in your default editor
 
 ### Sample Configuration File
 
@@ -140,7 +145,8 @@ PowerTree can be configured using a JSON configuration file. The configuration f
   },
   "ShowConnectorLines": true,
   "ShowExecutionStats": true,
-  "MaxDepth": -1
+  "MaxDepth": -1,
+  "LineStyle": "Unicode"
 }
 ```
 
@@ -159,6 +165,7 @@ PowerTree can be configured using a JSON configuration file. The configuration f
 | `ShowConnectorLines` | Show connector lines in tree view | `true` |
 | `ShowExecutionStats` | Show execution statistics | `true` |
 | `MaxDepth` | Default maximum depth of directories | `-1` |
+| `LineStyle` | Tree display style ("ASCII" or "Unicode") | `Unicode` |
 
 ## Examples
 
