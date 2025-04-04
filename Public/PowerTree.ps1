@@ -153,8 +153,8 @@
                                               -DisplayModificationDate $DisplayModificationDate `
                                               -DisplaySize $DisplaySize `
                                               -DisplayMode $DisplayMode `
-                                              -LineStyle $treeConfig.LineStyle `
-                                              
+                                              -LineStyle $treeConfig.LineStyle
+
     $treeConfig.ShowConnectorLines = $jsonSettings.ShowConnectorLines
     $treeConfig.ShowHiddenFiles = $ShowHiddenFiles
     $treeConfig.MaxDepth = if ($Depth -ne -1) { $Depth } else { $jsonSettings.MaxDepth }
@@ -205,7 +205,7 @@
     }
 
     if($jsonSettings.ShowExecutionStats) {
-        $treeStats.DisplaySummary($executionResultTime, $outputBuilder, $treeConfig.Quiet)
+        $treeStats.DisplaySummary($executionResultTime, $outputBuilder, $treeConfig.Quiet, $treeConfig.LineStyle)
     }
 
     if($null -ne $outputBuilder) {

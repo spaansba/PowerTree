@@ -1,15 +1,55 @@
 # PowerTree Output
-# Generated: 04/04/2025 12:57:29
+# Generated: 04/04/2025 13:18:13
 # Path: .
 # Output File: d.txt
 # ExcludedDirectories: node_modules, .next
-# Sort By: Name Ascending
+# Sort By: Size Ascending
+# Displayed Columns: Size
 
 # Execution Statistics
 Files    Folders    Total Items    Depth    Total Size    Execution Time    
------    -------    -----------    -----    ----------    --------------    
-0        0          0              1        0       B      83;86 ms          
+─────    ───────    ───────────    ─────    ──────────    ──────────────    
+23       8          31             2        84;42  KB      65;43 ms          
 
-
-
+Size         Hierarchy
+──────────   ─────────
+7       B    │   .gitIgnore
+412     B    │   PowerTree.config.json
+893     B    │   PowerTree.psm1
+1;06   KB    │   LICENSE
+1;52   KB    │   Test.ps1
+1;69   KB    │   d.txt
+4;41   KB    │   PowerTree.psd1
+7;08   KB    │   README.md
+             │
+             ├───.vscode
+1;35   KB    │   │   launch.json
+             │
+             ├───Private
+             │   │
+             │   ├───Configuration
+258     B    │   │   │   Constants.ps1
+3;71   KB    │   │   │   GetSettingsFromJson.ps1
+5;01   KB    │   │   │   WriteConfiguration.ps1
+5;54   KB    │   │   │   ParamHelpers.ps1
+             │   │
+             │   ├───DataModel
+4;59   KB    │   │   │   Classes.ps1
+             │   │
+             │   ├───Filtering
+969     B    │   │   │   FilterHelpers.ps1
+2;4    KB    │   │   │   SizeHelpers.ps1
+             │   │
+             │   ├───Output
+0       B    │   │   │   Get
+6;08   KB    │   │   │   GetTreeView.ps1
+7;21   KB    │   │   │   HeaderTable.ps1
+7;81   KB    │   │   │   WriteToFile.ps1
+10;02  KB    │   │   │   Help.ps1
+             │   │
+             │   └───Sorting
+4;45   KB    │       │   Sorting.ps1
+             │
+             └───Public
+8;03   KB        │   PowerTree.ps1
 

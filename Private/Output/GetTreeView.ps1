@@ -123,7 +123,7 @@ function Get-TreeView {
         # Create the directory prefix with appropriate tree symbols
         $dirPrefix = if ($IsRoot) { "" } else { $TreeIndent }
         $treeBranch = if ($isLast) { $TreeConfig.lineStyle.LastBranch } else { $TreeConfig.lineStyle.Branch }
-        $treePrefix = "$dirPrefix$treeBranch "
+        $treePrefix = "$dirPrefix$treeBranch"
         
         # Build and output the directory line
         $outputInfo = Build-OutputLine -HeaderTable $TreeConfig.HeaderTable -Item $dir -TreePrefix $treePrefix

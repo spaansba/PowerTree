@@ -36,7 +36,7 @@ class TreeStats {
     }
 
   
-    [void] DisplaySummary([System.TimeSpan]$executionResultTime, [System.Text.StringBuilder]$OutputBuilder, [bool]$Quiet) {
+    [void] DisplaySummary([System.TimeSpan]$executionResultTime, [System.Text.StringBuilder]$OutputBuilder, [bool]$Quiet, [hashtable]$LineStyle) {
     
         $formattedTime = if ($executionResultTime.TotalSeconds -lt 1) {
             "$($executionResultTime.TotalMilliseconds.ToString('0.00')) ms"
@@ -80,7 +80,7 @@ class TreeStats {
         # Build the underscore line
         $underscoreLine = ""
         foreach ($header in $headers) {
-            $underscoreLine += "-" * $header.Length + $spacing
+            $underscoreLine += $LineStyle.SingleLine * $header.Length + $spacing
         }
         
         # Build the values line
