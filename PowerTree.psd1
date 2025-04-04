@@ -98,10 +98,10 @@ PrivateData = @{
         Tags = 'FileSystem', 'Directory', 'Tree', 'Visualization'
 
         # A URL to the license for this module.
-        LicenseUri = 'https://github.com/yourusername/PowerTree/blob/main/LICENSE'
+        LicenseUri = 'https://github.com/spaansba/PowerTree/blob/main/LICENSE'
 
         # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/yourusername/PowerTree'
+        ProjectUri = 'https://github.com/spaansba/PowerTree'
 
         # A URL to an icon representing this module.
         # IconUri = ''
