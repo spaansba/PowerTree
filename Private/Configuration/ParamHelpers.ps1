@@ -126,3 +126,30 @@ function Build-ChildItemFileParams {
 
     return $fileParams
 }
+
+function Build-TreeLineStyle {
+    param (
+        [Parameter(Mandatory=$true)]
+        [ValidateSet("ASCII", "Unicode")]
+        [string]$Style
+    )
+    
+    $lineStyles = @{
+        ASCII = @{
+            Branch = "+----"       # Branch connector
+            VerticalLine = "|   "  # Vertical connector
+            LastBranch = "\----"   # Last item branch
+            Vertical = "|"         # Vertical line
+            Space = "    "         # Space for indentation after last branch
+        }
+        Unicode = @{
+            Branch = "├───"        # Branch connector
+            VerticalLine = "│   "  # Vertical connector
+            LastBranch = "└───"    # Last item branch
+            Vertical = "│"         # Vertical line
+            Space = "    "         # Space for indentation after last branch
+        }
+    }
+    
+    return $lineStyles[$Style]
+}

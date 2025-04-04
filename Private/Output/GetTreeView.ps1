@@ -78,7 +78,7 @@ function Get-TreeView {
 
     if (-not $TreeConfig.DirectoryOnly -and $files.Count -gt 0) {
         foreach ($file in $files) {
-            $treePrefix = if ($IsRoot) { "|   " } else { "$TreeIndent|   " }
+            $treePrefix = if ($IsRoot) { $TreeConfig.LineStyle.VerticalLine } else { "$TreeIndent$($TreeConfig.lineStyle.VerticalLine)" }
             $outputInfo = Build-OutputLine -HeaderTable $TreeConfig.HeaderTable -Item $file -TreePrefix $treePrefix
             if ($outputInfo.SizeColor -and $outputInfo.SizePosition -ge 0 -and $outputInfo.SizeLength -gt 0) {
                 $before = $outputInfo.Line.Substring(0, $outputInfo.SizePosition)
@@ -114,7 +114,7 @@ function Get-TreeView {
         # Print connector line to make it look prettier, can be turned on/off in settings
         if($TreeConfig.ShowConnectorLines) {
             $hierarchyPos = $TreeConfig.HeaderTable.Indentations["Hierarchy"]
-            $connector = " " * $hierarchyPos + "$TreeIndent|"
+            $connector = " " * $hierarchyPos + "$TreeIndent$($TreeConfig.lineStyle.Vertical)"
             Write-OutputLine -Line $connector `
                              -Quiet $TreeConfig.Quiet `
                              -OutputBuilder $OutputBuilder 
@@ -122,7 +122,7 @@ function Get-TreeView {
 
         # Create the directory prefix with appropriate tree symbols
         $dirPrefix = if ($IsRoot) { "" } else { $TreeIndent }
-        $treeBranch = if ($Last) { "\----" } else { "+----" }
+        $treeBranch = if ($isLast) { $TreeConfig.lineStyle.LastBranch } else { $TreeConfig.lineStyle.Branch }
         $treePrefix = "$dirPrefix$treeBranch "
         
         # Build and output the directory line
@@ -133,7 +133,7 @@ function Get-TreeView {
                          
         $TreeStats.FoldersPrinted++
 
-        $newTreeIndent = if ($isLast) { "$dirPrefix    " } else { "$dirPrefix|   " }
+        $newTreeIndent = if ($isLast) { "$dirPrefix$($TreeConfig.lineStyle.Space)" } else { "$dirPrefix$($TreeConfig.lineStyle.VerticalLine)" }
         
         Get-TreeView -TreeConfig $TreeConfig `
                      -TreeStats $TreeStats `

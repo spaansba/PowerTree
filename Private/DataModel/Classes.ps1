@@ -15,6 +15,7 @@ class TreeConfig {
     [string]$OutFile
     [bool]$Quiet
     [bool]$PruneEmptyFolders
+    [hashtable]$LineStyle
 }
 
 class TreeStats {

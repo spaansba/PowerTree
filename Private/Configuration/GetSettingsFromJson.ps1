@@ -27,6 +27,7 @@ function Get-PowerTreeSettingsFromJson {
         ShowConnectorLines = $true
         ShowExecutionStats = $true
         MaxDepth = -1 # -1 means no depth limit
+        LineStyle= "Unicode"
     }
     
     # Try to load settings file
@@ -58,6 +59,7 @@ function Get-PowerTreeSettingsFromJson {
                     ShowConnectorLines = if ($null -ne $settings.ShowConnectorLines) { $settings.ShowConnectorLines } else { $true }
                     ShowExecutionStats = if ($null -ne $settings.ShowExecutionStats) { $settings.ShowExecutionStats } else { $true }
                     MaxDepth = if ($null -ne $settings.MaxDepth) { $settings.MaxDepth } else { -1 }
+                    LineStyle = if ($settings.LineStyle) { $settings.LineStyle } else { "Unicode" }
                 }
                 
                 # Debugging: Log the parsed settings

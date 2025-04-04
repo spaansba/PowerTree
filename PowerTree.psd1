@@ -12,7 +12,7 @@
 RootModule = 'PowerTree.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Desktop', 'Core'
@@ -30,7 +30,7 @@ CompanyName = 'None'
 Copyright = '(c) Bart Spaans. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Advanced directory tree visualization tool with powerful filtering and display options'
+Description = 'Advanced directory tree visualization tool with powerful filtering and display options more information can be found in the open source repository https://github.com/spaansba/PowerTree.'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

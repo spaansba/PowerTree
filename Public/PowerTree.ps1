@@ -162,7 +162,8 @@
     $treeConfig.Quiet = $Quiet
     $treeConfig.OutFile = Add-DefaultExtension -FilePath $OutFile -Quiet $treeConfig.Quiet
     $treeConfig.PruneEmptyFolders = $PruneEmptyFolders
-
+    $treeConfig.LineStyle = Build-TreeLineStyle -Style $jsonSettings.LineStyle
+    
     $outputBuilder = Initialize-OutputBuilder -TreeConfig $treeConfig -ShowExecutionStats $jsonSettings.ShowExecutionStats
 
     # Main entry point
