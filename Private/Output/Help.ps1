@@ -3,7 +3,7 @@ function Write-PSTreeHelp {
 
     Write-Host "BASIC OPTIONS:" -ForegroundColor Yellow
     Write-Host "  -Help, -?, -h                       Help"
-    Write-Host "  -Examples                           Show examples"
+    Write-Host "  -Examples, -ex, -example            Show examples"
     Write-Host "  -Verbose                            Show verbose output"
     Write-Host "  -Path, -p <path>                    Specify path to search (default: current directory)"
     Write-Host "  -ShowHiddenFiles, -force            Show hidden files and directories"

@@ -5,6 +5,7 @@ Advanced directory tree visualization tool for PowerShell with powerful filterin
 ![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/PowerTree)
 ![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PowerTree)
 ![License](https://img.shields.io/github/license/spaansba/PowerTree)
+![PowerTree Examples](./images/PowerTreeExample.JPG)
 
 ## What is PowerTree?
 
@@ -59,65 +60,66 @@ PowerTree -OutFile tree_output.txt
 
 PowerTree provides two main cmdlets:
 
-* `PowerTree` - The main command for directory visualization with an alias (ptree)
-* `Edit-PowerTreeConfig` - A utility to manage your PowerTree configuration
+- `PowerTree` - The main command for directory visualization with an alias (ptree)
+- `Edit-PowerTreeConfig` - A utility to manage your PowerTree configuration
 
 The main PowerTree cmdlet comes with many optional parameters to customize your directory visualization experience.
 
 ### Basic Options
 
-| Parameter | Alias | Description |
-|-----------|-------|-------------|
-| `-Path <string>` | | Specify path to search (default: current directory) |
-| `-Help` |`-?`, `-h` | Display help information |
-| `-Examples` | `-ex`, `-example` | Show usage examples |
-| `-Verbose` | | Show verbose output |
-| `-ShowHiddenFiles` | `-force` | Show hidden files and directories |
+| Parameter          | Alias             | Description                                         |
+| ------------------ | ----------------- | --------------------------------------------------- |
+| `-Path <string>`   |                   | Specify path to search (default: current directory) |
+| `-Help`            | `-?`, `-h`        | Display help information                            |
+| `-Examples`        | `-ex`, `-example` | Show usage examples                                 |
+| `-Verbose`         |                   | Show verbose output                                 |
+| `-ShowHiddenFiles` | `-force`          | Show hidden files and directories                   |
 
 ### Folder Filtering Options
 
-| Parameter | Alias | Description |
-|-----------|-------|-------------|
-| `-Depth <int>` | `-l`, `-level` | Limit display to specified number of directory levels |
-| `-ExcludeDirectories <string[]>` | `-e`, `-exclude` | Exclude specified directories |
-| `-PruneEmptyFolders` | `-p`, `-prune` | Exclude empty folders from output |
-| `-DirectoryOnly` | `-d`, `-dir` | Display only directories (no files) |
+| Parameter                        | Alias            | Description                                           |
+| -------------------------------- | ---------------- | ----------------------------------------------------- |
+| `-Depth <int>`                   | `-l`, `-level`   | Limit display to specified number of directory levels |
+| `-ExcludeDirectories <string[]>` | `-e`, `-exclude` | Exclude specified directories                         |
+| `-PruneEmptyFolders`             | `-p`, `-prune`   | Exclude empty folders from output                     |
+| `-DirectoryOnly`                 | `-d`, `-dir`     | Display only directories (no files)                   |
 
 ### File Filtering Options
 
-| Parameter | Alias | Description |
-|-----------|-------|-------------|
-| `-IncludeExtensions <string[]>` | `-if` | Include only files with specified extension(s) |
-| `-ExcludeExtensions <string[]>` | `-ef` | Exclude files with specified extension(s) |
-| `-FileSizeMinimum <string>` | `-fsmi` | Filter out files smaller than specified size |
-| `-FileSizeMaximum <string>` | `-fsma` | Filter out files larger than specified size |
+| Parameter                       | Alias   | Description                                    |
+| ------------------------------- | ------- | ---------------------------------------------- |
+| `-IncludeExtensions <string[]>` | `-if`   | Include only files with specified extension(s) |
+| `-ExcludeExtensions <string[]>` | `-ef`   | Exclude files with specified extension(s)      |
+| `-FileSizeMinimum <string>`     | `-fsmi` | Filter out files smaller than specified size   |
+| `-FileSizeMaximum <string>`     | `-fsma` | Filter out files larger than specified size    |
 
 ### Display Options
 
-| Parameter | Alias | Description |
-|-----------|-------|-------------|
-| `-OutFile <string>` | `-o`, `-of` | Save output to specified file path |
-| `-Quiet` | `-q`, `-silent` | Suppress console output |
-| `-DisplaySize` | `-s`, `-size` | Show file sizes in human-readable format |
-| `-DisplayMode` | `-dm`, `-m` | Show file/folder attributes (d,a,r,h,s,l) |
-| `-DisplayModificationDate` | `-dmd` | Show last modified date |
-| `-DisplayCreationDate` | `-dcd` | Show creation date |
-| `-DisplayLastAccessDate` | `-dla` | Show last access date |
+| Parameter                  | Alias           | Description                               |
+| -------------------------- | --------------- | ----------------------------------------- |
+| `-OutFile <string>`        | `-o`, `-of`     | Save output to specified file path        |
+| `-Quiet`                   | `-q`, `-silent` | Suppress console output                   |
+| `-DisplaySize`             | `-s`, `-size`   | Show file sizes in human-readable format  |
+| `-DisplayMode`             | `-dm`, `-m`     | Show file/folder attributes (d,a,r,h,s,l) |
+| `-DisplayModificationDate` | `-dmd`          | Show last modified date                   |
+| `-DisplayCreationDate`     | `-dcd`          | Show creation date                        |
+| `-DisplayLastAccessDate`   | `-dla`          | Show last access date                     |
 
 ### Sorting Options
 
-| Parameter | Alias | Description |
-|-----------|-------|-------------|
-| `-Sort <string>` | | Specify sort method (size, name, version, md, cd, la) |
-| `-SortBySize` | `-ss` | Sort by file size |
-| `-SortByName` | `-sn` | Sort alphabetically by name (default) |
-| `-SortByVersion` | `-sv` | Sort by version numbers in filenames |
-| `-SortByModificationDate` | `-smd` | Sort by last modified date |
-| `-SortByCreationDate` | `-scd` | Sort by creation date |
-| `-SortByLastAccessDate` | `-sla` | Sort by last access date |
-| `-Descending` | `-des`, `-desc` | Sort in descending order |
+| Parameter                 | Alias           | Description                                           |
+| ------------------------- | --------------- | ----------------------------------------------------- |
+| `-Sort <string>`          |                 | Specify sort method (size, name, version, md, cd, la) |
+| `-SortBySize`             | `-ss`           | Sort by file size                                     |
+| `-SortByName`             | `-sn`           | Sort alphabetically by name (default)                 |
+| `-SortByVersion`          | `-sv`           | Sort by version numbers in filenames                  |
+| `-SortByModificationDate` | `-smd`          | Sort by last modified date                            |
+| `-SortByCreationDate`     | `-scd`          | Sort by creation date                                 |
+| `-SortByLastAccessDate`   | `-sla`          | Sort by last access date                              |
+| `-Descending`             | `-des`, `-desc` | Sort in descending order                              |
 
 ## Managing Your Configuration
+
 PowerTree provides a built-in configuration editor to help you manage your settings:
 powershellCopy# Open or create a PowerTree configuration file in your default editor
 `Edit-PowerTreeConfig`
@@ -152,20 +154,20 @@ Open the configuration file in your default editor
 
 ### Configuration Options
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `ExcludeDirectories` | Standard array of directories to exclude | `[]` |
-| `Sorting.By` | Default sort method | `"Name"` |
-| `Sorting.SortFolders` | Whether to apply sorting to folders | `false` |
-| `Files.ExcludeExtensions` | Standard array of file extensions to exclude | `[]` |
-| `Files.IncludeExtensions` | Standard array of file extensions to include | `[]` |
-| `Files.FileSizeMinimum` | Minimum file size to include | `"-1kb"` |
-| `Files.FileSizeMaximum` | Maximum file size to include | `"-1kb"` |
-| `Files.OpenOutputFileOnFinish` | With -o automatically open output file when finished| `true` |
-| `ShowConnectorLines` | Show connector lines in tree view | `true` |
-| `ShowExecutionStats` | Show execution statistics | `true` |
-| `MaxDepth` | Default maximum depth of directories | `-1` |
-| `LineStyle` | Tree display style ("ASCII" or "Unicode") | `Unicode` |
+| Option                         | Description                                          | Default   |
+| ------------------------------ | ---------------------------------------------------- | --------- |
+| `ExcludeDirectories`           | Standard array of directories to exclude             | `[]`      |
+| `Sorting.By`                   | Default sort method                                  | `"Name"`  |
+| `Sorting.SortFolders`          | Whether to apply sorting to folders                  | `false`   |
+| `Files.ExcludeExtensions`      | Standard array of file extensions to exclude         | `[]`      |
+| `Files.IncludeExtensions`      | Standard array of file extensions to include         | `[]`      |
+| `Files.FileSizeMinimum`        | Minimum file size to include                         | `"-1kb"`  |
+| `Files.FileSizeMaximum`        | Maximum file size to include                         | `"-1kb"`  |
+| `Files.OpenOutputFileOnFinish` | With -o automatically open output file when finished | `true`    |
+| `ShowConnectorLines`           | Show connector lines in tree view                    | `true`    |
+| `ShowExecutionStats`           | Show execution statistics                            | `true`    |
+| `MaxDepth`                     | Default maximum depth of directories                 | `-1`      |
+| `LineStyle`                    | Tree display style ("ASCII" or "Unicode")            | `Unicode` |
 
 ## Examples
 

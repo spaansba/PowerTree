@@ -13,6 +13,7 @@
         [switch]$Help,
 
         [Parameter()]
+        [Alias("ex", "example")]
         [switch]$Examples,
     
         [Parameter()]
