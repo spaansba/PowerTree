@@ -38,12 +38,18 @@ class TreeStats {
   
     [void] DisplaySummary([System.TimeSpan]$executionResultTime, [System.Text.StringBuilder]$OutputBuilder, [bool]$Quiet, [hashtable]$LineStyle) {
     
-        $formattedTime = if ($executionResultTime.TotalSeconds -lt 1) {
-            "$($executionResultTime.TotalMilliseconds.ToString('0.00')) ms"
-        } elseif ($executionResultTime.TotalMinutes -lt 1) {
-            "$($executionResultTime.TotalSeconds.ToString('0.00')) sec"
-        } else {
-            "$($executionResultTime.Minutes) min, $($executionResultTime.Seconds) sec"
+        $formattedTime = switch ($executionResultTime) {
+            { $_.TotalMinutes -gt 1 } {
+                '{0} min, {1} sec' -f [math]::Floor($_.Minutes), $_.Seconds
+                break
+            }
+            { $_.TotalSeconds -gt 1 } {
+                '{0:0.00} sec' -f $_.TotalSeconds
+                break
+            }
+            default {
+                '{0:N0} ms' -f $_.TotalMilliseconds
+            }
         }
         
         # Define headers for statistics
@@ -58,7 +64,6 @@ class TreeStats {
         
         $totalItemsPrinted = $this.FilesPrinted + $this.FoldersPrinted
 
-        # Define values corresponding to each header
         $values = @(
             $this.FilesPrinted,
             $this.FoldersPrinted,
@@ -68,35 +73,23 @@ class TreeStats {
             $formattedTime
         )
         
-        # Define fixed spacing between columns
         $spacing = "    "
         
-        # Build the header line
         $headerLine = ""
         foreach ($header in $headers) {
             $headerLine += $header + $spacing
         }
         
-        # Build the underscore line
         $underscoreLine = ""
         foreach ($header in $headers) {
             $underscoreLine += $LineStyle.SingleLine * $header.Length + $spacing
         }
         
-        # Build the values line
         $valuesLine = ""
         for ($i = 0; $i -lt $headers.Count; $i++) {
             $value = $values[$i].ToString()
-            
-            # Add padding to align with header if value is shorter than header
-            if ($value.Length -lt $headers[$i].Length) {
-                $padding = " " * ($headers[$i].Length - $value.Length)
-                $value = $value + $padding
-            }
-            
-            $valuesLine += $value + $spacing
+            $valuesLine += $value.PadRight($headers[$i].Length) + $spacing
         }
-        
         if($Quiet -eq $false) {
             Write-Host ""
             Write-Host $headerLine -ForegroundColor Cyan
@@ -107,17 +100,14 @@ class TreeStats {
         
         # If OutputBuilder is provided, prepare the stats
         if ($null -ne $OutputBuilder) {
-            # Create stats content
             $statsBuilder = New-Object System.Text.StringBuilder
             [void]$statsBuilder.AppendLine("# Execution Statistics")
             [void]$statsBuilder.AppendLine($headerLine)
             [void]$statsBuilder.AppendLine($underscoreLine)
             [void]$statsBuilder.AppendLine($valuesLine)
             
-            # Get the content as a string
             $content = $OutputBuilder.ToString()
             
-            # Look for the placeholder text
             $placeholderText = "Append the stats here later!!"
             $placeholderIndex = $content.IndexOf($placeholderText)
             
