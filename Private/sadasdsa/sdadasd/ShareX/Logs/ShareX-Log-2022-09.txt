@@ -1,0 +1,249 @@
+﻿2022-09-02 08:23:14.382 - ShareX starting.
+2022-09-02 08:23:14.385 - Version: 14.1
+2022-09-02 08:23:14.385 - Build: Release
+2022-09-02 08:23:14.385 - Command line: "C:\Program Files\ShareX\ShareX.exe" 
+2022-09-02 08:23:14.385 - Personal path: C:\Users\barts\OneDrive\Documenten\ShareX
+2022-09-02 08:23:14.385 - Operating system: Windows 10 Home (64-bit)
+2022-09-02 08:23:14.385 - Running as elevated process: False
+2022-09-02 08:23:14.476 - ApplicationConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-02 08:23:15.192 - ApplicationConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-02 08:23:15.199 - UploadersConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-02 08:23:15.207 - MainForm init started.
+2022-09-02 08:23:15.567 - UploadersConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-02 08:23:15.575 - HotkeysConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-02 08:23:15.847 - HotkeysConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-02 08:23:15.998 - MainForm init finished.
+2022-09-02 08:23:16.436 - Startup time: 2157 ms
+2022-09-02 08:23:16.469 - Hotkey registered: Hotkey: Ctrl + Print Screen, Description: Leg rechthoekige regio vast, Job: RectangleRegion
+2022-09-02 08:23:16.470 - Hotkey registered: Hotkey: Print Screen, Description: Leg het volledig scherm vast, Job: PrintScreen
+2022-09-02 08:23:16.470 - Hotkey registered: Hotkey: Alt + Print Screen, Description: Leg actief venster vast, Job: ActiveWindow
+2022-09-02 08:23:16.470 - Hotkey registered: Hotkey: Shift + Print Screen, Description: Schermopname (FFmpeg), Job: ScreenRecorder
+2022-09-02 08:23:16.470 - Hotkey registered: Hotkey: Ctrl + Shift + Print Screen, Description: Schermopname (GIF), Job: ScreenRecorderGIF
+2022-09-02 08:23:16.471 - HotkeyManager started.
+2022-09-02 08:23:16.472 - WatchFolderManager started.
+2022-09-02 08:23:17.676 - ApplicationConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-02 08:23:17.676 - HotkeysConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-02 08:23:17.676 - UploadersConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-02 08:23:17.739 - UploadersConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-02 08:23:17.770 - HotkeysConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-02 08:23:17.793 - ApplicationConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-02 15:02:57.533 - ShareX starting.
+2022-09-02 15:02:57.535 - Version: 14.1
+2022-09-02 15:02:57.535 - Build: Release
+2022-09-02 15:02:57.535 - Command line: "C:\Program Files\ShareX\ShareX.exe" 
+2022-09-02 15:02:57.535 - Personal path: C:\Users\barts\OneDrive\Documenten\ShareX
+2022-09-02 15:02:57.535 - Operating system: Windows 10 Home (64-bit)
+2022-09-02 15:02:57.536 - Running as elevated process: False
+2022-09-02 15:02:57.633 - ApplicationConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-02 15:02:58.110 - ApplicationConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-02 15:02:58.113 - UploadersConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-02 15:02:58.114 - MainForm init started.
+2022-09-02 15:02:58.259 - UploadersConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-02 15:02:58.261 - HotkeysConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-02 15:02:58.364 - HotkeysConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-02 15:02:58.454 - MainForm init finished.
+2022-09-02 15:02:58.843 - Startup time: 1414 ms
+2022-09-02 15:02:58.876 - Unable to register hotkey: Ctrl + Print Screen
+2022-09-02 15:02:58.876 - Hotkey register failed: Hotkey: Ctrl + Print Screen, Description: Leg rechthoekige regio vast, Job: RectangleRegion
+2022-09-02 15:02:58.876 - Hotkey registered: Hotkey: Print Screen, Description: Leg het volledig scherm vast, Job: PrintScreen
+2022-09-02 15:02:58.876 - Hotkey registered: Hotkey: Alt + Print Screen, Description: Leg actief venster vast, Job: ActiveWindow
+2022-09-02 15:02:58.876 - Hotkey registered: Hotkey: Shift + Print Screen, Description: Schermopname (FFmpeg), Job: ScreenRecorder
+2022-09-02 15:02:58.876 - Hotkey registered: Hotkey: Ctrl + Shift + Print Screen, Description: Schermopname (GIF), Job: ScreenRecorderGIF
+2022-09-02 15:03:00.386 - HotkeyManager started.
+2022-09-02 15:03:00.386 - WatchFolderManager started.
+2022-09-02 15:03:17.200 - Starting screen recording. Video encoder: "GIF", Audio encoder: "AAC", FPS: 15
+2022-09-02 15:03:20.129 - CLI: "C:\Users\barts\OneDrive\Documenten\ShareX\Tools\ffmpeg.exe" -hide_banner -f gdigrab -thread_queue_size 1024 -rtbufsize 256M -framerate 15 -offset_x 1149 -offset_y 162 -video_size 263x273 -draw_mouse 1 -i desktop -c:v libx264 -r 15 -preset ultrafast -tune zerolatency -qp 0 -y "C:\Users\barts\OneDrive\Documenten\ShareX\Screenshots\2022-09\RuneLite_qzOmE3ouAu.mp4"
+2022-09-02 15:03:40.929 - Starting screen recording. Video encoder: "GIF", Audio encoder: "AAC", FPS: 15
+2022-09-02 15:03:46.321 - CLI: "C:\Users\barts\OneDrive\Documenten\ShareX\Tools\ffmpeg.exe" -hide_banner -f gdigrab -thread_queue_size 1024 -rtbufsize 256M -framerate 15 -offset_x 1110 -offset_y 45 -video_size 314x431 -draw_mouse 1 -i desktop -c:v libx264 -r 15 -preset ultrafast -tune zerolatency -qp 0 -y "C:\Users\barts\OneDrive\Documenten\ShareX\Screenshots\2022-09\RuneLite_30B7srBCc0.mp4"
+2022-09-02 15:03:57.202 - CLI: "C:\Users\barts\OneDrive\Documenten\ShareX\Tools\ffmpeg.exe" -hide_banner -i "C:\Users\barts\OneDrive\Documenten\ShareX\Screenshots\2022-09\RuneLite_30B7srBCc0.mp4" -lavfi "palettegen=stats_mode=full[palette],[0:v][palette]paletteuse=dither=sierra2_4a" -y "C:\Users\barts\OneDrive\Documenten\ShareX\Screenshots\2022-09\RuneLite_noJrdGM6r3.gif"
+2022-09-02 15:03:58.139 - Task in queue. Job: Job, Type: Image, Host: 
+2022-09-02 15:03:58.158 - Task status: Preparing
+2022-09-02 15:03:58.176 - Task completed. File name: RuneLite_noJrdGM6r3.gif, Duration: 16 ms
+2022-09-02 15:04:20.149 - File opened: C:\Users\barts\OneDrive\Documenten\ShareX\Screenshots\2022-09\RuneLite_noJrdGM6r3.gif
+2022-09-02 15:04:36.305 - File opened: C:\Users\barts\OneDrive\Documenten\ShareX\Screenshots\2022-09\RuneLite_noJrdGM6r3.gif
+2022-09-02 15:05:04.067 - ApplicationConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-02 15:05:04.069 - UploadersConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-02 15:05:04.069 - HotkeysConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-02 15:05:04.129 - UploadersConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-02 15:05:04.168 - HotkeysConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-02 15:05:04.189 - ApplicationConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-03 00:22:39.494 - ShareX closing.
+2022-09-03 00:22:39.499 - ApplicationConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-03 00:22:39.692 - ApplicationConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-03 00:22:39.692 - UploadersConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-03 00:22:39.750 - UploadersConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-03 00:22:39.750 - HotkeysConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-03 00:22:39.831 - HotkeysConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-03 00:22:39.832 - ShareX closed.
+2022-09-07 08:54:16.512 - ShareX starting.
+2022-09-07 08:54:16.514 - Version: 14.1
+2022-09-07 08:54:16.514 - Build: Release
+2022-09-07 08:54:16.514 - Command line: "C:\Program Files\ShareX\ShareX.exe" 
+2022-09-07 08:54:16.514 - Personal path: C:\Users\barts\OneDrive\Documenten\ShareX
+2022-09-07 08:54:16.515 - Operating system: Windows 10 Home (64-bit)
+2022-09-07 08:54:16.515 - Running as elevated process: False
+2022-09-07 08:54:16.599 - ApplicationConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-07 08:54:17.068 - ApplicationConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-07 08:54:17.071 - UploadersConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-07 08:54:17.071 - MainForm init started.
+2022-09-07 08:54:17.209 - UploadersConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-07 08:54:17.211 - HotkeysConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-07 08:54:17.319 - HotkeysConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-07 08:54:17.374 - MainForm init finished.
+2022-09-07 08:54:17.732 - Startup time: 1308 ms
+2022-09-07 08:54:17.766 - Unable to register hotkey: Ctrl + Print Screen
+2022-09-07 08:54:17.767 - Hotkey register failed: Hotkey: Ctrl + Print Screen, Description: Leg rechthoekige regio vast, Job: RectangleRegion
+2022-09-07 08:54:17.767 - Hotkey registered: Hotkey: Print Screen, Description: Leg het volledig scherm vast, Job: PrintScreen
+2022-09-07 08:54:17.767 - Hotkey registered: Hotkey: Alt + Print Screen, Description: Leg actief venster vast, Job: ActiveWindow
+2022-09-07 08:54:17.767 - Hotkey registered: Hotkey: Shift + Print Screen, Description: Schermopname (FFmpeg), Job: ScreenRecorder
+2022-09-07 08:54:17.767 - Hotkey registered: Hotkey: Ctrl + Shift + Print Screen, Description: Schermopname (GIF), Job: ScreenRecorderGIF
+2022-09-07 08:54:19.146 - HotkeyManager started.
+2022-09-07 08:54:19.147 - WatchFolderManager started.
+2022-09-07 08:54:19.749 - ApplicationConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-07 08:54:19.749 - UploadersConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-07 08:54:19.751 - HotkeysConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-07 08:54:19.821 - UploadersConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-07 08:54:19.847 - HotkeysConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-07 08:54:19.870 - ApplicationConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-07 19:25:07.579 - ShareX closing.
+2022-09-07 19:25:07.592 - ApplicationConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-07 19:25:07.773 - ApplicationConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-07 19:25:07.773 - UploadersConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-07 19:25:07.836 - UploadersConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-07 19:25:07.836 - HotkeysConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-07 19:25:07.912 - HotkeysConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-07 19:25:07.912 - ShareX closed.
+2022-09-12 09:21:03.968 - ShareX starting.
+2022-09-12 09:21:03.970 - Version: 14.1
+2022-09-12 09:21:03.970 - Build: Release
+2022-09-12 09:21:03.970 - Command line: "C:\Program Files\ShareX\ShareX.exe" 
+2022-09-12 09:21:03.970 - Personal path: C:\Users\barts\OneDrive\Documenten\ShareX
+2022-09-12 09:21:03.970 - Operating system: Windows 10 Home (64-bit)
+2022-09-12 09:21:03.970 - Running as elevated process: False
+2022-09-12 09:21:04.056 - ApplicationConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-12 09:21:04.555 - ApplicationConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-12 09:21:04.561 - UploadersConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-12 09:21:04.562 - MainForm init started.
+2022-09-12 09:21:04.723 - UploadersConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-12 09:21:04.725 - HotkeysConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-12 09:21:04.828 - HotkeysConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-12 09:21:04.910 - MainForm init finished.
+2022-09-12 09:21:05.286 - Startup time: 1414 ms
+2022-09-12 09:21:05.334 - Hotkey registered: Hotkey: Ctrl + Print Screen, Description: Leg rechthoekige regio vast, Job: RectangleRegion
+2022-09-12 09:21:05.334 - Hotkey registered: Hotkey: Print Screen, Description: Leg het volledig scherm vast, Job: PrintScreen
+2022-09-12 09:21:05.334 - Hotkey registered: Hotkey: Alt + Print Screen, Description: Leg actief venster vast, Job: ActiveWindow
+2022-09-12 09:21:05.334 - Hotkey registered: Hotkey: Shift + Print Screen, Description: Schermopname (FFmpeg), Job: ScreenRecorder
+2022-09-12 09:21:05.334 - Hotkey registered: Hotkey: Ctrl + Shift + Print Screen, Description: Schermopname (GIF), Job: ScreenRecorderGIF
+2022-09-12 09:21:05.336 - HotkeyManager started.
+2022-09-12 09:21:05.337 - WatchFolderManager started.
+2022-09-12 09:21:08.098 - ApplicationConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-12 09:21:08.100 - UploadersConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-12 09:21:08.100 - HotkeysConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-12 09:21:08.164 - UploadersConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-12 09:21:08.200 - HotkeysConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-12 09:21:08.222 - ApplicationConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-12 23:02:11.058 - ShareX closing.
+2022-09-12 23:02:11.063 - ApplicationConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-12 23:02:11.212 - ApplicationConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-12 23:02:11.212 - UploadersConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-12 23:02:11.267 - UploadersConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-12 23:02:11.267 - HotkeysConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-12 23:02:11.338 - HotkeysConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-12 23:02:11.338 - ShareX closed.
+2022-09-17 10:54:05.088 - ShareX starting.
+2022-09-17 10:54:05.090 - Version: 14.1
+2022-09-17 10:54:05.090 - Build: Release
+2022-09-17 10:54:05.090 - Command line: "C:\Program Files\ShareX\ShareX.exe" 
+2022-09-17 10:54:05.090 - Personal path: C:\Users\barts\OneDrive\Documenten\ShareX
+2022-09-17 10:54:05.090 - Operating system: Windows 10 Home (64-bit)
+2022-09-17 10:54:05.091 - Running as elevated process: False
+2022-09-17 10:54:05.179 - ApplicationConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-17 10:54:06.127 - ApplicationConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-17 10:54:06.138 - UploadersConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-17 10:54:06.150 - MainForm init started.
+2022-09-17 10:54:06.368 - UploadersConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-17 10:54:06.373 - HotkeysConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-17 10:54:06.516 - HotkeysConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-17 10:54:06.592 - MainForm init finished.
+2022-09-17 10:54:06.982 - Startup time: 2000 ms
+2022-09-17 10:54:07.034 - Hotkey registered: Hotkey: Ctrl + Print Screen, Description: Leg rechthoekige regio vast, Job: RectangleRegion
+2022-09-17 10:54:07.034 - Hotkey registered: Hotkey: Print Screen, Description: Leg het volledig scherm vast, Job: PrintScreen
+2022-09-17 10:54:07.035 - Hotkey registered: Hotkey: Alt + Print Screen, Description: Leg actief venster vast, Job: ActiveWindow
+2022-09-17 10:54:07.035 - Hotkey registered: Hotkey: Shift + Print Screen, Description: Schermopname (FFmpeg), Job: ScreenRecorder
+2022-09-17 10:54:07.035 - Hotkey registered: Hotkey: Ctrl + Shift + Print Screen, Description: Schermopname (GIF), Job: ScreenRecorderGIF
+2022-09-17 10:54:07.036 - HotkeyManager started.
+2022-09-17 10:54:07.037 - WatchFolderManager started.
+2022-09-17 11:12:15.857 - ShareX closing.
+2022-09-17 11:12:15.859 - ApplicationConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-17 11:12:16.012 - ApplicationConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-17 11:12:16.013 - UploadersConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-17 11:12:16.066 - UploadersConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-17 11:12:16.066 - HotkeysConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-17 11:12:16.140 - HotkeysConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-17 11:12:16.141 - ShareX closed.
+2022-09-22 20:14:18.278 - ShareX starting.
+2022-09-22 20:14:18.280 - Version: 14.1
+2022-09-22 20:14:18.280 - Build: Release
+2022-09-22 20:14:18.281 - Command line: "C:\Program Files\ShareX\ShareX.exe" 
+2022-09-22 20:14:18.281 - Personal path: C:\Users\barts\OneDrive\Documenten\ShareX
+2022-09-22 20:14:18.281 - Operating system: Windows 10 Home (64-bit)
+2022-09-22 20:14:18.281 - Running as elevated process: False
+2022-09-22 20:14:18.390 - ApplicationConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-22 20:14:18.978 - ApplicationConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-22 20:14:18.982 - UploadersConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-22 20:14:18.984 - MainForm init started.
+2022-09-22 20:14:19.145 - UploadersConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-22 20:14:19.147 - HotkeysConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-22 20:14:19.274 - HotkeysConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-22 20:14:19.384 - MainForm init finished.
+2022-09-22 20:14:19.795 - Startup time: 1625 ms
+2022-09-22 20:14:19.830 - Hotkey registered: Hotkey: Ctrl + Print Screen, Description: Leg rechthoekige regio vast, Job: RectangleRegion
+2022-09-22 20:14:19.830 - Hotkey registered: Hotkey: Print Screen, Description: Leg het volledig scherm vast, Job: PrintScreen
+2022-09-22 20:14:19.830 - Hotkey registered: Hotkey: Alt + Print Screen, Description: Leg actief venster vast, Job: ActiveWindow
+2022-09-22 20:14:19.830 - Hotkey registered: Hotkey: Shift + Print Screen, Description: Schermopname (FFmpeg), Job: ScreenRecorder
+2022-09-22 20:14:19.830 - Hotkey registered: Hotkey: Ctrl + Shift + Print Screen, Description: Schermopname (GIF), Job: ScreenRecorderGIF
+2022-09-22 20:14:19.832 - HotkeyManager started.
+2022-09-22 20:14:19.832 - WatchFolderManager started.
+2022-09-22 20:14:25.503 - HotkeysConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-22 20:14:25.504 - UploadersConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-22 20:14:25.504 - ApplicationConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-22 20:14:25.601 - UploadersConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-22 20:14:25.647 - HotkeysConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-22 20:14:25.677 - ApplicationConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-22 23:30:56.672 - ShareX closing.
+2022-09-22 23:30:56.673 - ApplicationConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-22 23:30:56.800 - ApplicationConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-22 23:30:56.800 - UploadersConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-22 23:30:56.855 - UploadersConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-22 23:30:56.855 - HotkeysConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-22 23:30:56.929 - HotkeysConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-22 23:30:56.929 - ShareX closed.
+2022-09-30 17:35:46.413 - ShareX starting.
+2022-09-30 17:35:46.415 - Version: 14.1
+2022-09-30 17:35:46.415 - Build: Release
+2022-09-30 17:35:46.415 - Command line: "C:\Program Files\ShareX\ShareX.exe" 
+2022-09-30 17:35:46.415 - Personal path: C:\Users\barts\OneDrive\Documenten\ShareX
+2022-09-30 17:35:46.416 - Operating system: Windows 10 Home (64-bit)
+2022-09-30 17:35:46.416 - Running as elevated process: False
+2022-09-30 17:35:46.502 - ApplicationConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-30 17:35:46.963 - ApplicationConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-30 17:35:46.966 - UploadersConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-30 17:35:46.967 - MainForm init started.
+2022-09-30 17:35:47.099 - UploadersConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-30 17:35:47.101 - HotkeysConfig load started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-30 17:35:47.201 - HotkeysConfig load finished: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-30 17:35:47.326 - MainForm init finished.
+2022-09-30 17:35:47.686 - Startup time: 1369 ms
+2022-09-30 17:35:47.717 - Hotkey registered: Hotkey: Ctrl + Print Screen, Description: Leg rechthoekige regio vast, Job: RectangleRegion
+2022-09-30 17:35:47.718 - Hotkey registered: Hotkey: Print Screen, Description: Leg het volledig scherm vast, Job: PrintScreen
+2022-09-30 17:35:47.718 - Hotkey registered: Hotkey: Alt + Print Screen, Description: Leg actief venster vast, Job: ActiveWindow
+2022-09-30 17:35:47.718 - Hotkey registered: Hotkey: Shift + Print Screen, Description: Schermopname (FFmpeg), Job: ScreenRecorder
+2022-09-30 17:35:47.718 - Hotkey registered: Hotkey: Ctrl + Shift + Print Screen, Description: Schermopname (GIF), Job: ScreenRecorderGIF
+2022-09-30 17:35:47.719 - HotkeyManager started.
+2022-09-30 17:35:47.720 - WatchFolderManager started.
+2022-09-30 17:35:55.442 - ApplicationConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json
+2022-09-30 17:35:55.443 - UploadersConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-30 17:35:55.443 - HotkeysConfig save started: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-30 17:35:55.508 - UploadersConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\UploadersConfig.json
+2022-09-30 17:35:55.544 - HotkeysConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\HotkeysConfig.json
+2022-09-30 17:35:55.567 - ApplicationConfig save successful: C:\Users\barts\OneDrive\Documenten\ShareX\ApplicationConfig.json

@@ -17,12 +17,16 @@
         [switch]$Examples,
     
         [Parameter()]
-        [Alias("dm", "m")]
-        [switch]$DisplayMode,
-
-        [Parameter()]
         [Alias("prune", "p")]
         [switch]$PruneEmptyFolders,
+
+        [Parameter()]
+        [Alias("dm", "m")]
+        [switch]$DisplayMode,
+                
+        [Parameter()]
+        [Alias("s", "size")]
+        [switch]$DisplaySize,
 
         [Parameter()]
         [Alias("dmd")]
@@ -94,10 +98,6 @@
     
         [Alias('fs', 'filesize')]
         [string]$FileSizeFilter,
-        
-        [Parameter()]
-        [Alias("s", "size")]
-        [switch]$DisplaySize,
     
         [Parameter()]
         [Alias("ef")]
@@ -121,17 +121,17 @@
     )
 
     if ($Help -or $PSBoundParameters.ContainsKey('h') -or $PSBoundParameters.ContainsKey('?') -or $args -contains "--help" -or $args -contains "-help") {
-        Write-PSTreeHelp
+        Write-Help
         return
     }
 
     if ($Examples) {
-        Write-ExamplesHelp
+        Write-Examples
         return
     }
 
     $treeStats = [TreeStats]::new()
-    $jsonSettings = Get-PowerTreeSettingsFromJson
+    $jsonSettings = Get-SettingsFromJson
 
     $treeConfig = [TreeConfig]::new()
     $treeConfig.Path = $Path

@@ -2,7 +2,7 @@ function Edit-PowerTreeConfig {
     [CmdletBinding()]
     param()
     
-    $configPaths = Get-PowerTreeConfigPaths
+    $configPaths = Get-ConfigPaths
     $existingConfig = $configPaths | Where-Object { Test-Path $_ } | Select-Object -First 1
     
     if ($existingConfig) {
@@ -32,7 +32,7 @@ function Edit-PowerTreeConfig {
                 Write-Host "Created directory: $configDir" -ForegroundColor Cyan
             }
             
-            $defaultConfig = Get-PowerTreeDefaultConfig
+            $defaultConfig = Get-DefaultConfig
             $defaultConfig | ConvertTo-Json -Depth 4 | Out-File -FilePath $configPath -Encoding utf8
             
             Write-Host "Created new config file at: $configPath" -ForegroundColor Green

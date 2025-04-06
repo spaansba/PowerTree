@@ -59,22 +59,6 @@ function Get-TreeView {
     } else { 
         @() 
     }
-    
-    # Helper function to write output to both console and file
-    function Write-OutputLine {
-        param (
-            [string]$Line,
-            [System.ConsoleColor]$ForegroundColor = [System.ConsoleColor]::White,
-            [bool]$Quiet,
-            [System.Text.StringBuilder]$OutputBuilder
-        )
-        if ($Quiet -eq $false) {
-            Write-Host $Line -ForegroundColor $ForegroundColor
-        }
-        if ($null -ne $OutputBuilder) {
-            [void]$OutputBuilder.AppendLine($Line)
-        }
-    }
 
     if (-not $TreeConfig.DirectoryOnly -and $files.Count -gt 0) {
         foreach ($file in $files) {
@@ -110,7 +94,7 @@ function Get-TreeView {
     foreach ($dir in $directories) {
         $currentDir++
         $isLast = ($currentDir -eq $dirCount)
-        
+      
         # Print connector line to make it look prettier, can be turned on/off in settings
         if($TreeConfig.ShowConnectorLines) {
             $hierarchyPos = $TreeConfig.HeaderTable.Indentations["Hierarchy"]
