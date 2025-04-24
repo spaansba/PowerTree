@@ -11,15 +11,25 @@ Advanced directory tree visualization tool for PowerShell with powerful filterin
 <details>
   <summary>Regular ptree and show the sizes of files/directories. Sorted on size descending</summary>
   <br>
+
+  Used command
+  <pre><code class="language-powershell">PowerTree -DisplaySize -Descending -SortBySize</code></pre>
+
+  Exactly the same but shorthand
   <pre><code class="language-powershell">ptree -s -desc -ss</code></pre>
- 
+  
   <img src="./images/Size_SortSize_Desc.JPG" alt="Regular ptree and show the sizes of files PowerTree Example">
 </details>
 
 <details>
   <summary>All Display options filtered on name descending</summary>
   <br>
-  <pre><code class="language-powershell">ptree -s -dm -dmd -dcd -dla -desc -SortByName</code></pre>
+
+  Used command
+  <pre><code class="language-powershell">PowerTree -DisplaySize -DisplayMode -DisplayModificationDate -DisplayCreationDate -DisplayLastAccessDate -Descending -SortByName</code></pre>
+
+  Exactly the same but shorthand
+  <pre><code class="language-powershell">ptree -s -dm -dmd -dcd -dla -desc -sn</code></pre>
  
   <img src="./images/All_Display_Options.JPG" alt="All Display options filtered on name descending PowerTree Example">
 </details>
@@ -27,6 +37,11 @@ Advanced directory tree visualization tool for PowerShell with powerful filterin
 <details>
   <summary>Only show files bigger than 1kb</summary>
   <br>
+
+  Used command
+  <pre><code class="language-powershell">PowerTree -FileSizeMinimum "1kb" -DisplaySize</code></pre>
+
+  Exactly the same but shorthand
   <pre><code class="language-powershell">ptree -fsmi "1kb" -s</code></pre>
  
   <img src="./images/File_Size_Minimum.JPG" alt="Only show files bigger than 1kb PowerTree Example">
@@ -35,6 +50,11 @@ Advanced directory tree visualization tool for PowerShell with powerful filterin
 <details>
   <summary>Directory Only</summary>
   <br>
+
+  Used command
+  <pre><code class="language-powershell">PowerTree -DirectoryOnly -DisplaySize</code></pre>
+  
+  Exactly the same but shorthand
   <pre><code class="language-powershell">ptree -d -s</code></pre>
  
   <img src="./images/Directory_Only.JPG" alt="Directory Only PowerTree Example">
