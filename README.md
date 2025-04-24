@@ -249,7 +249,7 @@ Ptree -DisplaySize -DisplayMode -DisplayModificationDate -ExcludeDirectories bin
 # Export filtered tree to a file
 Ptree -IncludeExtensions ps1,md -ExcludeDirectories .git -OutFile project_docs.txt
 
-# Show tree with file sizes sorted on descending size length with a min file size of 100kb and man file size of 1mb
+# Show tree with file sizes sorted on descending size length with a min file size of 100kb and max file size of 1mb
 Ptree -s -desc -sort size -fsmi 100kb -fsma 1mb
 ```
 
