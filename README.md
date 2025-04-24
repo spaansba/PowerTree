@@ -5,7 +5,11 @@ Advanced directory tree visualization tool for PowerShell with powerful filterin
 ![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/PowerTree)
 ![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PowerTree)
 ![License](https://img.shields.io/github/license/spaansba/PowerTree)
-![PowerTree Examples](./images/PowerTreeExample.JPG)
+<details>
+  <summary>View PowerTree Examples</summary>
+  
+  ![PowerTree Examples](./images/PowerTreeExample.JPG)
+</details>
 
 ## What is PowerTree?
 
