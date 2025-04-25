@@ -281,3 +281,7 @@ Created by Bart Spaans
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+### Upcomming Features
+- Allow for files/folders being automatically excluded by reading the -gitignore in the start folder
+- Option to print out exported functions in javascript/typescript files
