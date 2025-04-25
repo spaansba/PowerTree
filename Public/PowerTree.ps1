@@ -21,6 +21,10 @@
         [switch]$ModuleInfo,
 
         [Parameter()]
+        [Alias("check")]
+        [switch]$CheckForUpdates,
+
+        [Parameter()]
         [Alias("ex", "example")]
         [switch]$Examples,
     
@@ -123,6 +127,11 @@
         [Alias("q", "silent")]
         [switch]$Quiet
     )
+
+    if ($CheckForUpdates) {
+        Write-CheckForUpdates
+        return
+    }
 
     if ($Help) {
         Write-Help

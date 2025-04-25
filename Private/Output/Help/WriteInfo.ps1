@@ -57,4 +57,7 @@ function Write-Info {
     else {
         Write-Error "Could not determine PowerTree information." 
     }
+
+    Write-Host ""
+    Write-CheckForUpdates
 }

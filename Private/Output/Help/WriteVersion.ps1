@@ -1,9 +1,12 @@
 function Write-Version {
-    $moduleInfo = Get-Module PowerTree
-    Write-Host $moduleInfo
-    if ($moduleInfo) {
-        Write-Host "PowerTree version $($moduleInfo.Version)" -ForegroundColor Cyan
+    Write-Host "Checking version:" -ForegroundColor Cyan
+    $updateInfo = Get-UpdateAvailable
+    if ($updateInfo.UpdateAvailable) {
+        Write-Host "Installed Version: $($updateInfo.InstalledVersion)" -ForegroundColor Yellow
+        Write-Host "Latest Version: $($updateInfo.LatestVersion)" -ForegroundColor Green
+        Write-Host "To update, run: Update-Module PowerTree" -ForegroundColor Cyan
     } else {
-       Write-Error "Could not determine PowerTree information." 
+        Write-Host "PowerTree Version: $($updateInfo.InstalledVersion)" -ForegroundColor Green
+        Write-Host "PowerTree is up-to-date" -ForegroundColor Green
     }
 }

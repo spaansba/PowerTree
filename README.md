@@ -128,20 +128,21 @@ The main `Start-PowerTree` cmdlet comes with many optional parameters to customi
 
 ### Basic Options
 
-| Parameter          | Alias             | Description                                         |
-| ------------------ | ----------------- | --------------------------------------------------- |
-| `-Path <string>`   |                   | Specify path to search (default: current directory) |
-| `-Verbose`         |                   | Show verbose output                                 |
-| `-ShowHiddenFiles` | `-force`          | Show hidden files and directories                   |
-
+| Parameter          | Alias    | Description                                         |
+| ------------------ | -------- | --------------------------------------------------- |
+| `-Path <string>`   |          | Specify path to search (default: current directory) |
+| `-Verbose`         |          | Show verbose output                                 |
+| `-ShowHiddenFiles` | `-force` | Show hidden files and directories                   |
 
 ## Help Options
-| Parameter          | Alias             | Description                                         |
-| ------------------ | ----------------- | --------------------------------------------------- |
-| `-Help`            | `-?`, `-h`        | Print help information                              |
-| `-Version`         | `-v`              | Print current version                               |
-| `-ModuleInfo`      | `-i`, `-info`     | Print module information                            |
-| `-Examples`        | `-ex`, `-example` | Print usage examples                                |
+
+| Parameter          | Alias             | Description                           |
+| ------------------ | ----------------- | ------------------------------------- |
+| `-Help`            | `-?`, `-h`        | Print help information                |
+| `-CheckForUpdates` | `-Check`          | Check if there is an update available |
+| `-Version`         | `-v`              | Print current version                 |
+| `-ModuleInfo`      | `-i`, `-info`     | Print module information              |
+| `-Examples`        | `-ex`, `-example` | Print usage examples                  |
 
 ### Folder Filtering Options
 

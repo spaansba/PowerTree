@@ -5,6 +5,7 @@ function Write-Help {
     Write-Host "  -Help, -?, -h                       Help"
     Write-Host "  -Version, -v                        Display current PowerTree version"
     Write-Host "  -ModuleInfo, -i, -info              Display detailed module information"
+    Write-Host "  -CheckForUpdates, -check            Check for available updates"
     Write-Host "  -Examples, -ex, -example            Show examples"
     Write-Host "  -Verbose                            Show verbose output"
     Write-Host "  -Path, -p <path>                    Specify path to search (default: current directory)"
@@ -57,4 +58,7 @@ function Write-Help {
     Write-Host "  PowerTree -s -ss                        Show and sort by file sizes"
     Write-Host "  PowerTree -o C:\temp\output.txt         Save output to specified file"
     Write-Host ""
+
+    Write-Host ""
+    Write-CheckForUpdates
 }
