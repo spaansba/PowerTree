@@ -272,7 +272,7 @@ Ptree -s -desc -sort size -fsmi 100kb -fsma 1mb
 
 ## TreeStats
 
-PowerTree provides execution statistics at the end of the output, showing information about the files and directories processed:
+PowerTree provides execution statistics at the end of the output, showing information about the files and directories processed.
 TreeStats can be fully turned off by setting `ShowExecutionStats` in `Edit-PowerTreeConfig`
 
 ### Basic Stats
