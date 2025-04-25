@@ -14,11 +14,13 @@ function Get-TreeView {
         [bool]$IsRoot = $true,
         [int]$CurrentDepth = 0,
         [Parameter(Mandatory=$false)]
-        [System.Text.StringBuilder]$OutputBuilder = $null
+        [System.Text.StringBuilder]$OutputBuilder = $null,
+        [Parameter(Mandatory=$false)]
+        [switch]$IsEmptyCheck = $false
     )
 
     if ($TreeConfig.MaxDepth -ne -1 -and $CurrentDepth -ge $TreeConfig.MaxDepth) {
-        return
+        return $false
     }
 
     if ($IsRoot) {
@@ -60,7 +62,46 @@ function Get-TreeView {
         @() 
     }
 
+    # Return true immediately if this is just an empty check and we have files
+    if ($IsEmptyCheck -and -not $TreeConfig.DirectoryOnly -and $files.Count -gt 0) {
+        return $true
+    }
+
+    # If this is just an empty check and we have no files but we do have directories,
+    # we need to check if any of those directories are non-empty after filtering
+    if ($IsEmptyCheck -and $files.Count -eq 0 -and $directories.Count -gt 0) {
+        foreach ($dir in $directories) {
+            $dirHasContent = Get-TreeView -TreeConfig $TreeConfig `
+                          -TreeStats $TreeStats `
+                          -ChildItemDirectoryParams $ChildItemDirectoryParams `
+                          -ChildItemFileParams $ChildItemFileParams `
+                          -CurrentPath $dir.FullName `
+                          -TreeIndent "" `
+                          -Last $false `
+                          -IsRoot $false `
+                          -CurrentDepth ($CurrentDepth + 1) `
+                          -OutputBuilder $null `
+                          -IsEmptyCheck:$true
+                          
+            if ($dirHasContent) {
+                return $true
+            }
+        }
+        # If we get here, all subdirectories were empty or filtered out
+        return $false
+    }
+    
+    # For empty check with no files and no directories, return false
+    if ($IsEmptyCheck -and $files.Count -eq 0 -and $directories.Count -eq 0) {
+        return $false
+    }
+    
+    # Initialize the hasVisibleContent variable - true if we have visible files
+    $hasVisibleContent = (-not $TreeConfig.DirectoryOnly -and $files.Count -gt 0)
+
+    # Process files in normal (non-empty-check) mode
     if (-not $TreeConfig.DirectoryOnly -and $files.Count -gt 0) {
+        $hasVisibleContent = $true
         foreach ($file in $files) {
             $treePrefix = if ($IsRoot) { $TreeConfig.LineStyle.VerticalLine } else { "$TreeIndent$($TreeConfig.lineStyle.VerticalLine)" }
             $outputInfo = Build-OutputLine -HeaderTable $TreeConfig.HeaderTable `
@@ -91,13 +132,42 @@ function Get-TreeView {
             $TreeStats.AddFile($file)
         }
     }
-    
+
+    # Regular processing for directories (non-empty-check calls)
     $dirCount = $directories.Count
     $currentDir = 0
     
     foreach ($dir in $directories) {
         $currentDir++
         $isLast = ($currentDir -eq $dirCount)
+        
+        # If pruning is enabled, check if this directory would be empty after applying filters
+        $skipDir = $false
+        if ($TreeConfig.PruneEmptyFolders) {
+            $dirHasContent = Get-TreeView -TreeConfig $TreeConfig `
+                          -TreeStats $TreeStats `
+                          -ChildItemDirectoryParams $ChildItemDirectoryParams `
+                          -ChildItemFileParams $ChildItemFileParams `
+                          -CurrentPath $dir.FullName `
+                          -TreeIndent "" `
+                          -Last $false `
+                          -IsRoot $false `
+                          -CurrentDepth ($CurrentDepth + 1) `
+                          -OutputBuilder $null `
+                          -IsEmptyCheck:$true
+            
+            if (-not $dirHasContent) {
+                $skipDir = $true
+            }
+        }
+        
+        # Skip this directory if it would be empty after filtering
+        if ($skipDir) {
+            continue
+        }
+
+        # We have a non-empty directory, so mark content as visible
+        $hasVisibleContent = $true
       
         # Print connector line to make it look prettier, can be turned on/off in settings
         if($TreeConfig.ShowConnectorLines) {
@@ -138,4 +208,7 @@ function Get-TreeView {
                      -CurrentDepth ($CurrentDepth + 1) `
                      -OutputBuilder $OutputBuilder
     }
+    
+    # Return whether this directory has any visible content after filtering
+    return $hasVisibleContent
 }
