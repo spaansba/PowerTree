@@ -1,7 +1,7 @@
  function Write-OutputLine {
     param (
         [string]$Line,
-        [System.ConsoleColor]$ForegroundColor = [System.ConsoleColor]::White,
+        [System.ConsoleColor]$ForegroundColor = [System.ConsoleColor]::Green,
         [bool]$Quiet,
         [System.Text.StringBuilder]$OutputBuilder
     )
