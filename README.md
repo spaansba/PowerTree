@@ -88,16 +88,6 @@ From [PowerShell Gallery](https://www.powershellgallery.com/packages/PowerTree):
 Install-Module PowerTree
 ```
 
-Or clone this repository and import directly:
-
-```powershell
-# Clone the repository
-git clone https://github.com/spaansba/PowerTree.git
-
-# Import the module
-Import-Module ./PowerTree/PowerTree.psm1
-```
-
 ## Quick Start
 
 ```powershell
