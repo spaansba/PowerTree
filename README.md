@@ -113,10 +113,10 @@ PowerTree -OutFile tree_output.txt
 
 PowerTree provides two main cmdlets:
 
-- `Start-PowerTree` - The main command for directory visualization. Alias: (ptree, PowerTree)
-- `Edit-PowerTreeConfig` - A utility to manage your PowerTree configuration. Alias: (Edit-PowerTree, Edit-ptree) 
+- `Start-PowerTree` - The main command for directory visualization. Alias: (`ptree`, `PowerTree`)
+- `Edit-PowerTreeConfig` - A utility to manage your PowerTree configuration. Alias: (`Edit-PowerTree`, `Edit-ptree`) 
 
-The main `PowerTree` cmdlet comes with many optional parameters to customize your directory visualization experience.
+The main `Start-PowerTree` cmdlet comes with many optional parameters to customize your directory visualization experience.
 
 ### Basic Options
 
