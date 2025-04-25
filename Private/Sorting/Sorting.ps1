@@ -5,7 +5,7 @@ function Get-SortingMethod{
         [boolean]$SortByModificationDate,
         [boolean]$SortByCreationDate,
         [boolean]$SortByLastAccessDate,
-        [ValidateSet("size", "name", "version", "md", "cd", "la", "")]
+        [ValidateSet("size", "name", "md", "cd", "la", "")]
         [string]$Sort,
         [ValidateScript({ $script:ValidSortOptions -contains $_ })]
         [string]$DefaultSort
@@ -26,7 +26,6 @@ function Get-SortingMethod{
     elseif($SortByCreationDate) {$sortBy = "Creation Date"}
     elseif($SortByLastAccessDate) {$sortBy = "Last Access Date"}
     elseif ($SortBySize) { $sortBy = "Size" }
-    elseif ($SortByVersion) { $sortBy = "Version" }
     elseif ($SortByName) { $sortBy = "Name" }
     
     return $sortBy
@@ -71,20 +70,7 @@ function Group-Items {
                 $_.Length
             }}
         }
-        "Version" {
-            $Items | Sort-Object -Property {
-                if ($_.Name -match '(\d+(\.\d+)+|\d+)') {
-                    $version = $matches[0]
-                    try {
-                        [version]$version
-                    } catch {
-                        $version
-                    }
-                } else {
-                    $_.Name
-                }
-            }
-        }
+
         Default {
             $Items | Sort-Object -Property Name
         }
@@ -107,20 +93,7 @@ function Group-Items {
                     }
                 } -Descending 
             }
-            "Version" {
-                return $Items | Sort-Object -Property {
-                    if ($_.Name -match '(\d+(\.\d+)+|\d+)') {
-                        $version = $matches[0]
-                        try {
-                            [version]$version
-                        } catch {
-                            $version
-                        }
-                    } else {
-                        $_.Name
-                    }
-                } -Descending
-            }
+
             Default { return $Items | Sort-Object -Property Name -Descending }
         }
     } else {

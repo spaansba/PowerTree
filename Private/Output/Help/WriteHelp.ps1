@@ -38,7 +38,6 @@ function Write-Help {
     Write-Host "   You can use either the consolidated -Sort parameter OR individual sort switches:" -ForegroundColor Cyan
     Write-Host "  -SortBySize, -ss, -Sort size                Sort by size"
     Write-Host "  -SortByName, -sn, -Sort name                Sort alphabetically by name (default)"
-    Write-Host "  -SortByVersion, -sv -Sort version           Sort by version numbers in filenames"
     Write-Host "  -SortByModificationDate, -smd, -Sort md     Sort by last modified date"
     Write-Host "  -SortByCreationDate, -scd, -Sort cd         Sort by creation date"
     Write-Host "  -SortByLastAccessDate, -sla, -Sort la       Sort by last access date"

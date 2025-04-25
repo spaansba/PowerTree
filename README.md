@@ -67,7 +67,7 @@ PowerTree is a powerful alternative to the traditional `tree` command available 
 Unlike the standard `tree` command, PowerTree offers:
 
 - Detailed file information (size, dates, attributes)
-- Multiple sorting options (by name, size, date, version)
+- Multiple sorting options (by name, size, date)
 - Powerful filtering capabilities (by extension, size, directory)
 - Flexible output format and colorization
 - Customizable configuration via JSON
@@ -160,16 +160,15 @@ The main `Start-PowerTree` cmdlet comes with many optional parameters to customi
 
 ### Sorting Options
 
-| Parameter                 | Alias           | Description                                           |
-| ------------------------- | --------------- | ----------------------------------------------------- |
-| `-Sort <string>`          |                 | Specify sort method (size, name, version, md, cd, la) |
-| `-SortBySize`             | `-ss`           | Sort by file size                                     |
-| `-SortByName`             | `-sn`           | Sort alphabetically by name (default)                 |
-| `-SortByVersion`          | `-sv`           | Sort by version numbers in filenames                  |
-| `-SortByModificationDate` | `-smd`          | Sort by last modified date                            |
-| `-SortByCreationDate`     | `-scd`          | Sort by creation date                                 |
-| `-SortByLastAccessDate`   | `-sla`          | Sort by last access date                              |
-| `-Descending`             | `-des`, `-desc` | Sort in descending order                              |
+| Parameter                 | Alias           | Description                                    |
+| ------------------------- | --------------- | ---------------------------------------------- |
+| `-Sort <string>`          |                 | Specify sort method (size, name, md, cd, la)   |
+| `-SortBySize`             | `-ss`           | Sort by file size                              |
+| `-SortByName`             | `-sn`           | Sort alphabetically by name (default)          |
+| `-SortByModificationDate` | `-smd`          | Sort by last modified date                     |
+| `-SortByCreationDate`     | `-scd`          | Sort by creation date                          |
+| `-SortByLastAccessDate`   | `-sla`          | Sort by last access date                       |
+| `-Descending`             | `-des`, `-desc` | Sort in descending order                       |
 
 ## Managing Your Configuration
 

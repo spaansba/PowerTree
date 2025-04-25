@@ -9,7 +9,7 @@ function Write-Examples {
     Write-Host "  PowerTree -p -Depth 3 -s -ss -desc               Prune empty folders, 3 levels deep, show sizes descending"
     Write-Host "  PowerTree -Quiet -e node_modules,bin -if ps1,md  Silent mode, exclude specific dirs, show only PS1 and MD files"
     Write-Host "  PowerTree -force -fsmi 1MB -smd                  Show hidden files, files larger than 1MB, sorted by modification date"
-    Write-Host "  PowerTree -s -dm -dmd -Sort version              Show sizes, modes, mod dates, sorted by version numbers"
+    Write-Host "  PowerTree -s -dm -dmd                      Show sizes, modes, mod dates"
     Write-Host "  PowerTree -o project_summary.txt -p              Save output to file, prune empty folders"
     Write-Host "  PowerTree -ef dll,exe -fsma 10MB                 Exclude DLL and EXE, show files smaller than 10MB"
     Write-Host ""
@@ -55,7 +55,6 @@ function Write-Examples {
     Write-Host "  PowerTree -Sort md                      Alternative syntax for sorting by modification date"
     Write-Host "  PowerTree -scd                          Sort by creation date"
     Write-Host "  PowerTree -sla                          Sort by last access date"
-    Write-Host "  PowerTree -sv                           Sort by version numbers in filenames"
     Write-Host ""
     
     Write-Host "DISPLAY OPTIONS:" -ForegroundColor Cyan

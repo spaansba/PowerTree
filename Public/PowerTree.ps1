@@ -49,7 +49,7 @@
         [string[]]$ExcludeDirectories = @(),
     
         [Parameter()]
-        [ValidateSet("size", "name", "version", "md", "cd", "la")]
+        [ValidateSet("size", "name", "md", "cd", "la")]
         [string]$Sort,
 
         [Parameter()]
@@ -72,9 +72,7 @@
         [Alias("sn")]
         [switch]$SortByName,
     
-        [Parameter()]
-        [Alias("sv")]
-        [switch]$SortByVersion,
+
     
         [Parameter()]
         [Alias("des", "desc")]
@@ -140,7 +138,6 @@
     $treeConfig.ExcludeDirectories = Build-ExcludedDirectoryParams -CommandLineExcludedDir $ExcludeDirectories `
                                                                    -Settings $jsonSettings
     $treeConfig.SortBy = Get-SortingMethod -SortBySize $SortBySize `
-                                           -SortByVersion $SortByVersion `
                                            -SortByName $SortByName `
                                            -SortByCreationDate $SortByCreationDate `
                                            -SortByLastAccessDate $SortByLastAccessDate `
