@@ -270,21 +270,10 @@ Ptree -IncludeExtensions ps1,md -ExcludeDirectories .git -OutFile project_docs.t
 Ptree -s -desc -sort size -fsmi 100kb -fsma 1mb
 ```
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Author
-
-Created by Bart Spaans
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
 ## TreeStats
 
 PowerTree provides execution statistics at the end of the output, showing information about the files and directories processed:
+TreeStats can be fully turned off by setting `ShowExecutionStats` in `Edit-PowerTreeConfig`
 
 ### Basic Stats
 | Stat | Description |
@@ -301,6 +290,18 @@ When the `-DisplaySize` parameter is enabled, the following additional informati
 
 - **Largest File:** Shows the size and full path of the largest file found
 - **Largest Folder:** Shows the size and full path of the largest folder found
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Author
+
+Created by Bart Spaans
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ### Upcomming Features
 - Allow for files/folders being automatically excluded by reading the -gitignore in the start folder
