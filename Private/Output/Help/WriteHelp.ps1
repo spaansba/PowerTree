@@ -3,6 +3,8 @@ function Write-Help {
 
     Write-Host "BASIC OPTIONS:" -ForegroundColor Yellow
     Write-Host "  -Help, -?, -h                       Help"
+    Write-Host "  -Version, -v                        Display current PowerTree version"
+    Write-Host "  -ModuleInfo, -i, -info              Display detailed module information"
     Write-Host "  -Examples, -ex, -example            Show examples"
     Write-Host "  -Verbose                            Show verbose output"
     Write-Host "  -Path, -p <path>                    Specify path to search (default: current directory)"

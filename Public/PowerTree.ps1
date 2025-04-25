@@ -13,6 +13,14 @@
         [switch]$Help,
 
         [Parameter()]
+        [Alias("v")]
+        [switch]$Version,
+
+        [Parameter()]
+        [Alias("i", "info")]
+        [switch]$ModuleInfo,
+
+        [Parameter()]
         [Alias("ex", "example")]
         [switch]$Examples,
     
@@ -71,9 +79,7 @@
         [Parameter()]
         [Alias("sn")]
         [switch]$SortByName,
-    
 
-    
         [Parameter()]
         [Alias("des", "desc")]
         [switch]$Descending,
@@ -118,9 +124,19 @@
         [switch]$Quiet
     )
 
-    if ($Help -or $PSBoundParameters.ContainsKey('h') -or $PSBoundParameters.ContainsKey('?') -or $args -contains "--help" -or $args -contains "-help") {
+    if ($Help) {
         Write-Help
         return
+    }
+
+    if($ModuleInfo){
+        Write-Info
+        return
+    }
+
+    if ($Version) {
+       Write-Version
+       return
     }
 
     if ($Examples) {

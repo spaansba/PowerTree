@@ -12,12 +12,14 @@ Advanced directory tree visualization tool for PowerShell with powerful filterin
   <summary>Regular ptree and show the sizes of files/directories. Sorted on size descending</summary>
   <br>
 
-  Used command
+Used command
+
   <pre><code class="language-powershell">PowerTree -DisplaySize -Descending -SortBySize</code></pre>
 
-  Exactly the same but shorthand
+Exactly the same but shorthand
+
   <pre><code class="language-powershell">ptree -s -desc -ss</code></pre>
-  
+
   <img src="./images/Size_SortSize_Desc.JPG" alt="Regular ptree and show the sizes of files PowerTree Example">
 </details>
 
@@ -25,12 +27,14 @@ Advanced directory tree visualization tool for PowerShell with powerful filterin
   <summary>All Display options filtered on name descending</summary>
   <br>
 
-  Used command
+Used command
+
   <pre><code class="language-powershell">PowerTree -DisplaySize -DisplayMode -DisplayModificationDate -DisplayCreationDate -DisplayLastAccessDate -Descending -SortByName</code></pre>
 
-  Exactly the same but shorthand
+Exactly the same but shorthand
+
   <pre><code class="language-powershell">ptree -s -dm -dmd -dcd -dla -desc -sn</code></pre>
- 
+
   <img src="./images/All_Display_Options.JPG" alt="All Display options filtered on name descending PowerTree Example">
 </details>
 
@@ -38,12 +42,14 @@ Advanced directory tree visualization tool for PowerShell with powerful filterin
   <summary>Only show files bigger than 1kb</summary>
   <br>
 
-  Used command
+Used command
+
   <pre><code class="language-powershell">PowerTree -FileSizeMinimum "1kb" -DisplaySize</code></pre>
 
-  Exactly the same but shorthand
+Exactly the same but shorthand
+
   <pre><code class="language-powershell">ptree -fsmi "1kb" -s</code></pre>
- 
+
   <img src="./images/File_Size_Minimum.JPG" alt="Only show files bigger than 1kb PowerTree Example">
 </details>
 
@@ -51,12 +57,14 @@ Advanced directory tree visualization tool for PowerShell with powerful filterin
   <summary>Directory Only</summary>
   <br>
 
-  Used command
+Used command
+
   <pre><code class="language-powershell">PowerTree -DirectoryOnly -DisplaySize</code></pre>
-  
-  Exactly the same but shorthand
+
+Exactly the same but shorthand
+
   <pre><code class="language-powershell">ptree -d -s</code></pre>
- 
+
   <img src="./images/Directory_Only.JPG" alt="Directory Only PowerTree Example">
 </details>
 
@@ -114,7 +122,7 @@ PowerTree -OutFile tree_output.txt
 PowerTree provides two main cmdlets:
 
 - `Start-PowerTree` - The main command for directory visualization. Alias: (`ptree`, `PowerTree`)
-- `Edit-PowerTreeConfig` - A utility to manage your PowerTree configuration. Alias: (`Edit-PowerTree`, `Edit-ptree`) 
+- `Edit-PowerTreeConfig` - A utility to manage your PowerTree configuration. Alias: (`Edit-PowerTree`, `Edit-ptree`)
 
 The main `Start-PowerTree` cmdlet comes with many optional parameters to customize your directory visualization experience.
 
@@ -124,6 +132,8 @@ The main `Start-PowerTree` cmdlet comes with many optional parameters to customi
 | ------------------ | ----------------- | --------------------------------------------------- |
 | `-Path <string>`   |                   | Specify path to search (default: current directory) |
 | `-Help`            | `-?`, `-h`        | Display help information                            |
+| `-Version`         | `-v`              | Display current PowerTree version                   |
+| `-ModuleInfo`      | `-i`, `-info`     | Display detailed module information                 |
 | `-Examples`        | `-ex`, `-example` | Show usage examples                                 |
 | `-Verbose`         |                   | Show verbose output                                 |
 | `-ShowHiddenFiles` | `-force`          | Show hidden files and directories                   |
@@ -160,15 +170,15 @@ The main `Start-PowerTree` cmdlet comes with many optional parameters to customi
 
 ### Sorting Options
 
-| Parameter                 | Alias           | Description                                    |
-| ------------------------- | --------------- | ---------------------------------------------- |
-| `-Sort <string>`          |                 | Specify sort method (size, name, md, cd, la)   |
-| `-SortBySize`             | `-ss`           | Sort by file size                              |
-| `-SortByName`             | `-sn`           | Sort alphabetically by name (default)          |
-| `-SortByModificationDate` | `-smd`          | Sort by last modified date                     |
-| `-SortByCreationDate`     | `-scd`          | Sort by creation date                          |
-| `-SortByLastAccessDate`   | `-sla`          | Sort by last access date                       |
-| `-Descending`             | `-des`, `-desc` | Sort in descending order                       |
+| Parameter                 | Alias           | Description                                  |
+| ------------------------- | --------------- | -------------------------------------------- |
+| `-Sort <string>`          |                 | Specify sort method (size, name, md, cd, la) |
+| `-SortBySize`             | `-ss`           | Sort by file size                            |
+| `-SortByName`             | `-sn`           | Sort alphabetically by name (default)        |
+| `-SortByModificationDate` | `-smd`          | Sort by last modified date                   |
+| `-SortByCreationDate`     | `-scd`          | Sort by creation date                        |
+| `-SortByLastAccessDate`   | `-sla`          | Sort by last access date                     |
+| `-Descending`             | `-des`, `-desc` | Sort in descending order                     |
 
 ## Managing Your Configuration
 
