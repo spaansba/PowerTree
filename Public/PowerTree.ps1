@@ -226,7 +226,8 @@
     }
 
     if($jsonSettings.ShowExecutionStats) {
-        $treeStats.DisplaySummary($executionResultTime, $outputBuilder, $treeConfig.Quiet, $treeConfig.LineStyle)
+        # Use the new Display-TreeStats function instead of the class method
+        Display-TreeStats -TreeStats $treeStats -ExecutionTime $executionResultTime -OutputBuilder $outputBuilder -Quiet $treeConfig.Quiet -LineStyle $treeConfig.LineStyle -DisplaySize $DisplaySize
     }
 
     if($null -ne $outputBuilder) {

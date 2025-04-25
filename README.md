@@ -282,6 +282,26 @@ Created by Bart Spaans
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+## TreeStats
+
+PowerTree provides execution statistics at the end of the output, showing information about the files and directories processed:
+
+### Basic Stats
+| Stat | Description |
+| ---- | ----------- |
+| Files | Number of files processed |
+| Folders | Number of folders processed |
+| Total Items | Total count of files and folders |
+| Depth | Maximum depth of the directory structure |
+| Total Size | Combined size of all files |
+| Execution Time | Time taken to process the tree |
+
+### Largest Items
+When the `-DisplaySize` parameter is enabled, the following additional information is displayed:
+
+- **Largest File:** Shows the size and full path of the largest file found
+- **Largest Folder:** Shows the size and full path of the largest folder found
+
 ### Upcomming Features
 - Allow for files/folders being automatically excluded by reading the -gitignore in the start folder
 - Option to print out exported functions in javascript/typescript files

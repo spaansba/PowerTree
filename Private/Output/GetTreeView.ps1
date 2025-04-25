@@ -194,6 +194,11 @@ function Get-TreeView {
                          -OutputBuilder $OutputBuilder
                          
         $TreeStats.FoldersPrinted++
+        
+        # Use the already calculated folder size for the stats
+        if ($outputInfo.DirSize -gt 0) {
+            $TreeStats.UpdateLargestFolder($dir.FullName, $outputInfo.DirSize)
+        }
 
         $newTreeIndent = if ($isLast) { "$dirPrefix$($TreeConfig.lineStyle.Space)" } else { "$dirPrefix$($TreeConfig.lineStyle.VerticalLine)" }
         

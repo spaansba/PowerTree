@@ -15,6 +15,8 @@ function Build-OutputLine {
         [bool]$HumanReadableSizes = $true
     )
     
+    $dirSize = 0
+    
     $outputLine = " " * $HeaderTable.HeaderLine.Length
     
     # Process each column and place content at the correct position
@@ -58,8 +60,10 @@ function Build-OutputLine {
                         } else {
                             $content = $Item.Length
                         }
-                        
+                        # Set to zero for files
+                        $dirSize = 0
                     } else {
+                        # Calculate directory size
                         $dirSize = (Get-ChildItem $Item.FullName -Recurse -File -ErrorAction SilentlyContinue | 
                                     Measure-Object -Property Length -Sum).Sum
                          if($HumanReadableSizes){
@@ -111,6 +115,11 @@ function Build-OutputLine {
         }
         SizeLength = if (($Item -is [System.IO.FileInfo]) -and ($HeaderTable.HeaderColumns -contains "Size")) {
             (Get-HumanReadableSize -Bytes $Item.Length -Format "Padded").Length
+        } else {
+            0
+        }
+        DirSize = if ($Item -isnot [System.IO.FileInfo]) {
+            $dirSize
         } else {
             0
         }
