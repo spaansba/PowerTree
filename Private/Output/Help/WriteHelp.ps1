@@ -2,17 +2,20 @@ function Write-Help {
     Write-Host ""
 
     Write-Host "BASIC OPTIONS:" -ForegroundColor Yellow
-    Write-Host "  -Help, -?, -h                       Help"
-    Write-Host "  -Version, -v                        Display current PowerTree version"
-    Write-Host "  -ModuleInfo, -i, -info              Display detailed module information"
-    Write-Host "  -CheckForUpdates, -check            Check for available updates"
-    Write-Host "  -Examples, -ex, -example            Show examples"
-    Write-Host "  -Verbose                            Show verbose output"
     Write-Host "  -Path, -p <path>                    Specify path to search (default: current directory)"
+    Write-Host "  -Verbose                            Show verbose output"
     Write-Host "  -ShowHiddenFiles, -force            Show hidden files and directories"
     Write-Host ""
 
-    Write-Host "Folder Filtering"  -ForegroundColor Yellow
+    Write-Host "HELP OPTIONS:" -ForegroundColor Yellow
+    Write-Host "  -Help, -?, -h                       You are here :)"
+    Write-Host "  -Version, -v                        Print current version"
+    Write-Host "  -ModuleInfo, -i, -info              Print PowerTree information"
+    Write-Host "  -CheckForUpdates, -check            Check for available updates"
+    Write-Host "  -Examples, -ex, -example            Print examples"
+    Write-Host ""
+
+    Write-Host "FOLDER FILTERING"  -ForegroundColor Yellow
     Write-Host "  -Depth -l -level <number>                   Limit display to specified number of directory levels"
     Write-Host "  -ExcludeDirectories, -e, -exclude           Exclude specified directory(s)"
     Write-Host "  -PruneEmptyFolders, -p                      Exclude empty folders from output, also excludes empty folders caused by filters"

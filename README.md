@@ -134,15 +134,15 @@ The main `Start-PowerTree` cmdlet comes with many optional parameters to customi
 | `-Verbose`         |          | Show verbose output                                 |
 | `-ShowHiddenFiles` | `-force` | Show hidden files and directories                   |
 
-## Help Options
+### Help Options
 
 | Parameter          | Alias             | Description                           |
 | ------------------ | ----------------- | ------------------------------------- |
-| `-Help`            | `-?`, `-h`        | Print help information                |
+| `-Help`            | `-?`, `-h`        | Print helpfull information            |
 | `-CheckForUpdates` | `-Check`          | Check if there is an update available |
 | `-Version`         | `-v`              | Print current version                 |
-| `-ModuleInfo`      | `-i`, `-info`     | Print module information              |
-| `-Examples`        | `-ex`, `-example` | Print usage examples                  |
+| `-ModuleInfo`      | `-i`, `-info`     | Print PowerTree information           |
+| `-Examples`        | `-ex`, `-example` | Print examples                        |
 
 ### Folder Filtering Options
 
