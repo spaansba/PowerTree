@@ -1,4 +1,4 @@
-function Display-TreeStats {
+function Show-TreeStats {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)]
@@ -83,6 +83,9 @@ function Display-TreeStats {
     
     if (-not $Quiet) {
         # Display table
+        Write-Host ""
+        Write-Host ""
+        Write-Host "Execution Stats:" -ForegroundColor Magenta
         Write-Host ""
         Write-Host $headerLine -ForegroundColor Cyan
         Write-Host $underscoreLine -ForegroundColor DarkCyan
