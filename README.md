@@ -113,10 +113,10 @@ PowerTree -OutFile tree_output.txt
 
 PowerTree provides two main cmdlets:
 
-- `PowerTree` - The main command for directory visualization with an alias (ptree)
-- `Edit-PowerTreeConfig` - A utility to manage your PowerTree configuration
+- `Start-PowerTree` - The main command for directory visualization. Alias: (ptree, PowerTree)
+- `Edit-PowerTreeConfig` - A utility to manage your PowerTree configuration. Alias: (Edit-PowerTree, Edit-ptree) 
 
-The main PowerTree cmdlet comes with many optional parameters to customize your directory visualization experience.
+The main `PowerTree` cmdlet comes with many optional parameters to customize your directory visualization experience.
 
 ### Basic Options
 
@@ -176,7 +176,7 @@ The main PowerTree cmdlet comes with many optional parameters to customize your 
 PowerTree provides a built-in configuration editor to help you manage your settings:
 powershellCopy# Open or create a PowerTree configuration file in your default editor
 `Edit-PowerTreeConfig`
-The Edit-PowerTreeConfig function will:
+The `Edit-PowerTreeConfig` function will:
 
 Find an existing configuration file if present
 Create a new configuration file with default settings if one doesn't exist
