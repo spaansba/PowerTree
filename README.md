@@ -5,10 +5,59 @@ Advanced directory tree visualization tool for PowerShell with powerful filterin
 ![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/PowerTree)
 ![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PowerTree)
 ![License](https://img.shields.io/github/license/spaansba/PowerTree)
+
+## Example Images
+
 <details>
-  <summary>View PowerTree Examples</summary>
+  <summary>Regular ptree and show the sizes of files/directories. Sorted on size descending</summary>
+  <br>
+
+  Used command
+  <pre><code class="language-powershell">PowerTree -DisplaySize -Descending -SortBySize</code></pre>
+
+  Exactly the same but shorthand
+  <pre><code class="language-powershell">ptree -s -desc -ss</code></pre>
   
-  ![PowerTree Examples](./images/PowerTreeExample.JPG)
+  <img src="./images/Size_SortSize_Desc.JPG" alt="Regular ptree and show the sizes of files PowerTree Example">
+</details>
+
+<details>
+  <summary>All Display options filtered on name descending</summary>
+  <br>
+
+  Used command
+  <pre><code class="language-powershell">PowerTree -DisplaySize -DisplayMode -DisplayModificationDate -DisplayCreationDate -DisplayLastAccessDate -Descending -SortByName</code></pre>
+
+  Exactly the same but shorthand
+  <pre><code class="language-powershell">ptree -s -dm -dmd -dcd -dla -desc -sn</code></pre>
+ 
+  <img src="./images/All_Display_Options.JPG" alt="All Display options filtered on name descending PowerTree Example">
+</details>
+
+<details>
+  <summary>Only show files bigger than 1kb</summary>
+  <br>
+
+  Used command
+  <pre><code class="language-powershell">PowerTree -FileSizeMinimum "1kb" -DisplaySize</code></pre>
+
+  Exactly the same but shorthand
+  <pre><code class="language-powershell">ptree -fsmi "1kb" -s</code></pre>
+ 
+  <img src="./images/File_Size_Minimum.JPG" alt="Only show files bigger than 1kb PowerTree Example">
+</details>
+
+<details>
+  <summary>Directory Only</summary>
+  <br>
+
+  Used command
+  <pre><code class="language-powershell">PowerTree -DirectoryOnly -DisplaySize</code></pre>
+  
+  Exactly the same but shorthand
+  <pre><code class="language-powershell">ptree -d -s</code></pre>
+ 
+  <img src="./images/Directory_Only.JPG" alt="Directory Only PowerTree Example">
 </details>
 
 ## What is PowerTree?
@@ -64,10 +113,10 @@ PowerTree -OutFile tree_output.txt
 
 PowerTree provides two main cmdlets:
 
-- `PowerTree` - The main command for directory visualization with an alias (ptree)
-- `Edit-PowerTreeConfig` - A utility to manage your PowerTree configuration
+- `Start-PowerTree` - The main command for directory visualization. Alias: (`ptree`, `PowerTree`)
+- `Edit-PowerTreeConfig` - A utility to manage your PowerTree configuration. Alias: (`Edit-PowerTree`, `Edit-ptree`) 
 
-The main PowerTree cmdlet comes with many optional parameters to customize your directory visualization experience.
+The main `Start-PowerTree` cmdlet comes with many optional parameters to customize your directory visualization experience.
 
 ### Basic Options
 
@@ -127,7 +176,7 @@ The main PowerTree cmdlet comes with many optional parameters to customize your 
 PowerTree provides a built-in configuration editor to help you manage your settings:
 powershellCopy# Open or create a PowerTree configuration file in your default editor
 `Edit-PowerTreeConfig`
-The Edit-PowerTreeConfig function will:
+The `Edit-PowerTreeConfig` function will:
 
 Find an existing configuration file if present
 Create a new configuration file with default settings if one doesn't exist
@@ -200,7 +249,7 @@ Ptree -DisplaySize -DisplayMode -DisplayModificationDate -ExcludeDirectories bin
 # Export filtered tree to a file
 Ptree -IncludeExtensions ps1,md -ExcludeDirectories .git -OutFile project_docs.txt
 
-# Show tree with file sizes sorted on descending size length with a min file size of 100kb and man file size of 1mb
+# Show tree with file sizes sorted on descending size length with a min file size of 100kb and max file size of 1mb
 Ptree -s -desc -sort size -fsmi 100kb -fsma 1mb
 ```
 
