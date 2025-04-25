@@ -237,6 +237,7 @@ Open the configuration file in your default editor
 | `ShowExecutionStats`           | Show execution statistics                            | `true`    |
 | `MaxDepth`                     | Default maximum depth of directories                 | `-1`      |
 | `LineStyle`                    | Tree display style ("ASCII" or "Unicode")            | `Unicode` |
+| `HumanReadableSizes`           | Sizes will include b, kb, mb, gb etc when true       | `true`    |
 
 ## Examples
 

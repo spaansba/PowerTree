@@ -198,8 +198,6 @@
             if (-not (Test-Path $Path)) {
                 throw "Cannot find path '$Path'"
             }
-
-            Write-Verbose "Loaded settings: $($jsonSettings | ConvertTo-Json -Depth 5)"
             
             $ChildItemDirectoryParams = Build-ChildItemDirectoryParams $ShowHiddenFiles
             $ChildItemFileParams = Build-ChildItemFileParams -ShowHiddenFiles $ShowHiddenFiles `

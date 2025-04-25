@@ -35,6 +35,12 @@ function Write-Configuration {
         Write-Verbose "Quiet: False" 
     }
 
+    if ($TreeConfig.HumanReadableSize -ne $true) {
+        Write-Host "Human Readable Sizes: False" -ForegroundColor Green
+    } else {
+        Write-Verbose "Human Readbale Sizes: True"
+    }
+
     # Explicitly display or verbose output for various configuration options
     if ($TreeConfig.ShowHiddenFiles) {
         Write-Host "ShowHiddenFiles: True" -ForegroundColor Green
