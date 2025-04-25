@@ -78,7 +78,7 @@ CmdletsToExport = '*'
 VariablesToExport = '*'
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'ptree', 'Edit-PtreeConfig'
+AliasesToExport = 'ptree', 'Edit-PtreeConfig', "Start-PowerTree", "Edit-Ptree", "Edit-PowerTree"
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
