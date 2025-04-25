@@ -216,7 +216,8 @@ Open the configuration file in your default editor
   "ShowConnectorLines": true,
   "ShowExecutionStats": true,
   "MaxDepth": -1,
-  "LineStyle": "Unicode"
+  "LineStyle": "Unicode",
+  "HumanReadableSizes": true
 }
 ```
 

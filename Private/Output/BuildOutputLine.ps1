@@ -9,7 +9,10 @@ function Build-OutputLine {
         [System.IO.FileSystemInfo]$Item,
         
         [Parameter(Mandatory=$false)]
-        [string]$TreePrefix = ""
+        [string]$TreePrefix = "",
+
+        [Parameter(Mandatory=$true)]
+        [bool]$HumanReadableSizes = $true
     )
     
     $outputLine = " " * $HeaderTable.HeaderLine.Length
@@ -50,11 +53,20 @@ function Build-OutputLine {
                 # for files get the size of the file
                 "Size" {
                     if ($Item -is [System.IO.FileInfo]) {
-                        $content = Get-HumanReadableSize -Bytes $Item.Length -Format "Padded"
+                        if($HumanReadableSizes){
+                            $content = Get-HumanReadableSize -Bytes $Item.Length -Format "Padded"
+                        } else {
+                            $content = $Item.Length
+                        }
+                        
                     } else {
                         $dirSize = (Get-ChildItem $Item.FullName -Recurse -File -ErrorAction SilentlyContinue | 
                                     Measure-Object -Property Length -Sum).Sum
-                        $content = Get-HumanReadableSize -Bytes $dirSize -Format "Padded"
+                         if($HumanReadableSizes){
+                            $content = Get-HumanReadableSize -Bytes $dirSize -Format "Padded"
+                        } else {
+                            $content = $dirSize
+                        }
                     }
                 }
             }

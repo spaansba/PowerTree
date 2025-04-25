@@ -63,7 +63,11 @@ function Get-TreeView {
     if (-not $TreeConfig.DirectoryOnly -and $files.Count -gt 0) {
         foreach ($file in $files) {
             $treePrefix = if ($IsRoot) { $TreeConfig.LineStyle.VerticalLine } else { "$TreeIndent$($TreeConfig.lineStyle.VerticalLine)" }
-            $outputInfo = Build-OutputLine -HeaderTable $TreeConfig.HeaderTable -Item $file -TreePrefix $treePrefix
+            $outputInfo = Build-OutputLine -HeaderTable $TreeConfig.HeaderTable `
+                                        -Item $file `
+                                        -TreePrefix $treePrefix `
+                                        -HumanReadableSizes $TreeConfig.HumanReadableSizes
+
             if ($outputInfo.SizeColor -and $outputInfo.SizePosition -ge 0 -and $outputInfo.SizeLength -gt 0) {
                 $before = $outputInfo.Line.Substring(0, $outputInfo.SizePosition)
                 $size = $outputInfo.Line.Substring($outputInfo.SizePosition, $outputInfo.SizeLength)
@@ -110,7 +114,11 @@ function Get-TreeView {
         $treePrefix = "$dirPrefix$treeBranch"
         
         # Build and output the directory line
-        $outputInfo = Build-OutputLine -HeaderTable $TreeConfig.HeaderTable -Item $dir -TreePrefix $treePrefix
+        $outputInfo = Build-OutputLine -HeaderTable $TreeConfig.HeaderTable `
+                                    -Item $dir `
+                                    -TreePrefix $treePrefix `
+                                    -HumanReadableSizes $TreeConfig.HumanReadableSizes
+
         Write-OutputLine -Line $outputInfo.Line `
                          -Quiet $TreeConfig.Quiet `
                          -OutputBuilder $OutputBuilder

@@ -16,6 +16,7 @@ class TreeConfig {
     [bool]$Quiet
     [bool]$PruneEmptyFolders
     [hashtable]$LineStyle
+    [bool]$HumanReadableSizes
 }
 
 class TreeStats {

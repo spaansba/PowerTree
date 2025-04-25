@@ -19,5 +19,6 @@ function Get-DefaultConfig {
         ShowExecutionStats = $true
         MaxDepth = -1 # -1 means no depth limit
         LineStyle = "Unicode"
+        HumanReadableSizes = $true 
     }
 }

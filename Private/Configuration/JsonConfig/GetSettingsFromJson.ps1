@@ -34,6 +34,7 @@ function Get-SettingsFromJson {
                     ShowExecutionStats = if ($null -ne $settings.ShowExecutionStats) { $settings.ShowExecutionStats } else { $true }
                     MaxDepth = if ($null -ne $settings.MaxDepth) { $settings.MaxDepth } else { -1 }
                     LineStyle = if ($settings.LineStyle) { $settings.LineStyle } else { "Unicode" }
+                    HumanReadableSizes = if($settings.HumanReadableSizes) {$settings.HumanReadableSizes} else {$true}
                 }
                 
                 # Debugging: Log the parsed settings

@@ -188,7 +188,7 @@
     $treeConfig.Quiet = $Quiet
     $treeConfig.OutFile = Add-DefaultExtension -FilePath $OutFile -Quiet $treeConfig.Quiet
     $treeConfig.PruneEmptyFolders = $PruneEmptyFolders
-    
+    $treeConfig.HumanReadableSizes = $jsonSettings.HumanReadableSizes
     
     $outputBuilder = Initialize-OutputBuilder -TreeConfig $treeConfig -ShowExecutionStats $jsonSettings.ShowExecutionStats
 
