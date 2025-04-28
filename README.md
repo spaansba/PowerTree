@@ -1,6 +1,6 @@
 # PowerTree
 
-Advanced directory tree visualization tool for PowerShell with powerful filtering and display options.
+Advanced directory tree visualization tool for PowerShell (7+) with powerful filtering and display options.
 
 ![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/PowerTree)
 ![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PowerTree)
