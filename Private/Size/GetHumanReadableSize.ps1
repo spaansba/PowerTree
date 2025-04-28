@@ -24,7 +24,8 @@ function Get-HumanReadableSize {
         return "$formattedValue$($sizes[$order])"
     }
     
-    $formattedValue = $formattedValue.Replace(".", ";")
+    # Don't replace the decimal point with semicolon anymore
+    # $formattedValue = $formattedValue.Replace(".", ";")
     
     # Pad the formatted value to ensure consistent width
     $paddedValue = $formattedValue.PadRight(7)

@@ -1,17 +1,34 @@
 function Build-FileSizeParams {
     param (
-        [long]$CommandLineMaxSize,
-        [long]$CommandLineMinSize,
-        [long]$SettingsLineMaxSize,
-        [long]$SettingsLineMinSize
+        [Parameter(Mandatory=$false)]
+        [AllowNull()]
+        [string]$CommandLineMaxSize,
+        
+        [Parameter(Mandatory=$false)]
+        [AllowNull()]
+        [string]$CommandLineMinSize,
+        
+        [Parameter(Mandatory=$false)]
+        [AllowNull()]
+        [string]$SettingsLineMaxSize,
+        
+        [Parameter(Mandatory=$false)]
+        [AllowNull()]
+        [string]$SettingsLineMinSize
     )
+    # Convert string values to bytes
+    $cmdMaxBytes = ConvertTo-Bytes -SizeString $CommandLineMaxSize
+    $cmdMinBytes = ConvertTo-Bytes -SizeString $CommandLineMinSize
+    $settingsMaxBytes = ConvertTo-Bytes -SizeString $SettingsLineMaxSize
+    $settingsMinBytes = ConvertTo-Bytes -SizeString $SettingsLineMinSize
+    
     # Track whether values come from settings
-    $maxFromSettings = $CommandLineMaxSize -lt 0
-    $minFromSettings = $CommandLineMinSize -lt 0
+    $maxFromSettings = $cmdMaxBytes -lt 0
+    $minFromSettings = $cmdMinBytes -lt 0
 
     # Prefer command line values if provided
-    $maxSize = if ($CommandLineMaxSize -ge 0) { $CommandLineMaxSize } else { $SettingsLineMaxSize }
-    $minSize = if ($CommandLineMinSize -ge 0) { $CommandLineMinSize } else { $SettingsLineMinSize }
+    $maxSize = if ($cmdMaxBytes -ge 0) { $cmdMaxBytes } else { $settingsMaxBytes }
+    $minSize = if ($cmdMinBytes -ge 0) { $cmdMinBytes } else { $settingsMinBytes }
 
     # If both max and min are non-negative, validate. Also if one of the values came from the settings add it for clarity
     if ($maxSize -ge 0 -and $minSize -ge 0 -and $maxSize -lt $minSize) {

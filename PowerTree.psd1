@@ -12,7 +12,7 @@
 RootModule = 'PowerTree.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.6'
+ModuleVersion = '1.1.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Desktop', 'Core'
@@ -95,7 +95,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'FileSystem', 'Directory', 'Tree', 'Visualization'
+        Tags = 'FileSystem', 'Directory', 'Tree', 'MacOS', 'Windows', 'Linux', 'PowerTree', 'Tree-Structure', 'File-Size', 'Folder-Size', 'system-administration'
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/spaansba/PowerTree/blob/main/LICENSE'
