@@ -7,7 +7,6 @@ function ConvertTo-Bytes {
         [string]$SizeString = "-1"
     )
 
-    # If null or empty, return -1
     if ($null -eq $SizeString -or $SizeString -eq "") {
         return -1
     }
