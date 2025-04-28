@@ -8,7 +8,7 @@ function Write-Help {
     Write-Host ""
 
     Write-Host "HELP OPTIONS:" -ForegroundColor Yellow
-    Write-Host "  -Help, -?, -h                       You are here :)"
+    Write-Host "  -Help, -h                           You are here :)"
     Write-Host "  -Version, -v                        Print current version"
     Write-Host "  -ModuleInfo, -i, -info              Print PowerTree information"
     Write-Host "  -CheckForUpdates, -check            Check for available updates"
