@@ -26,8 +26,8 @@ function Write-Help {
     Write-Host "   Multiple files should be comma separated" -ForegroundColor Cyan
     Write-Host "  -IncludeExtensions, -if                     Include only files with specified extension(s)"
     Write-Host "  -ExcludeExtensions, -ef                     Exclude files with specified extension(s)"
-    Write-Host "  -FileSizeMinimum -fmsi <size format>        Filters out all sizes below this size"
-    Write-Host "  -FileSizeMaximum -fmsm <size format>        Filters out all sizes above this size"
+    Write-Host "  -FileSizeMinimum -fsmi <size format>        Filters out all sizes below this size"
+    Write-Host "  -FileSizeMaximum -fsma <size format>        Filters out all sizes above this size"
     Write-Host ""
 
     Write-Host "DISPLAY OPTIONS:" -ForegroundColor Yellow
