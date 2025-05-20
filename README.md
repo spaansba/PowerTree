@@ -72,14 +72,13 @@ Exactly the same but shorthand
 
 ## What is PowerTree?
 
-PowerTree is a powerful alternative to the traditional `tree` command available in Windows and Unix systems. It provides rich visualization of directory structures with advanced filtering, sorting, and display options that make exploring and documenting file systems more efficient.
+PowerTree is a alternative to the traditional `tree` command available in Windows and Unix systems. It provides visualization of directory structures with advanced filtering, sorting, and display options that make exploring and documenting file systems more efficient.
 
 Unlike the standard `tree` command, PowerTree offers:
 
 - Detailed file information (size, dates, attributes)
-- Multiple sorting options (by name, size, date)
-- Powerful filtering capabilities (by extension, size, directory)
-- Flexible output format and colorization
+- Multiple sorting options (by name, size, date etc.)
+- Filtering capabilities (by extension, size, directory)
 - Customizable configuration via JSON
 
 ## Installation
