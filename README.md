@@ -6,6 +6,8 @@ Advanced directory tree visualization tool for PowerShell (7+) with powerful fil
 ![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PowerTree)
 ![License](https://img.shields.io/github/license/spaansba/PowerTree)
 
+https://github.com/user-attachments/assets/4f5cc8ea-5b3d-49e5-b309-b35caa59dbe2
+
 ## Example Images
 
 <details>
