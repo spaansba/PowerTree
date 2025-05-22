@@ -180,14 +180,13 @@ The main `Start-PowerTree` cmdlet comes with many optional parameters to customi
 
 ## Managing Your Configuration
 
-PowerTree provides a built-in configuration editor to help you manage your settings:
-powershellCopy# Open or create a PowerTree configuration file in your default editor
-`Edit-PowerTreeConfig`
-The `Edit-PowerTreeConfig` function will:
+PowerTree provides a built-in configuration editor to help you manage your settings.
 
-Find an existing configuration file if present
-Create a new configuration file with default settings if one doesn't exist
-Open the configuration file in your default editor
+`Edit-PowerTreeConfig` function will:
+
+1. Find an existing configuration file if present
+2. Create a new configuration file with default settings if one doesn't exist
+3. Open the configuration file in your default editor
 
 ### Sample Configuration File
 
