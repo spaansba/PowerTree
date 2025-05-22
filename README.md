@@ -5,7 +5,7 @@ A modern replacement for the `tree` command that lets you explore directory stru
 ![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/PowerTree)
 ![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PowerTree)
 ![License](https://img.shields.io/github/license/spaansba/PowerTree)
-![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macOS%20%7C%20windows-blue)
+![Platform](https://img.shields.io/badge/platform-windows%20%7C%20macOS%20%7C%20linux-blue)
 ![PowerShell Version](https://img.shields.io/badge/PowerShell-7.0%2B-blue)
 
 ## Preview Video
@@ -302,3 +302,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 - Allow for files/folders being automatically excluded by reading the -gitignore in the start folder
 - Option to print out exported functions in javascript/typescript files
+- Ability to tree out the registry on windows
+- Option to show ACL
