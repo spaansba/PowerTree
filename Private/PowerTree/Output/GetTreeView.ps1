@@ -200,7 +200,11 @@ function Get-TreeView {
             $TreeStats.UpdateLargestFolder($dir.FullName, $outputInfo.DirSize)
         }
 
-        $newTreeIndent = if ($isLast) { "$dirPrefix$($TreeConfig.lineStyle.Space)" } else { "$dirPrefix$($TreeConfig.lineStyle.VerticalLine)" }
+        if ($isLast) {
+            $newTreeIndent = "$dirPrefix$($TreeConfig.lineStyle.Space)"
+        } else {
+            $newTreeIndent = "$dirPrefix$($TreeConfig.lineStyle.VerticalLine)"
+        }
         
         Get-TreeView -TreeConfig $TreeConfig `
                      -TreeStats $TreeStats `

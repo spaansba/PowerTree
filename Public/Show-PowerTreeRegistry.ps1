@@ -39,8 +39,7 @@ function Show-PowerTreeRegistry {
    $treeRegistryConfig.MaxDepth = $Depth
 
    Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig
-   write-host "succesfull"
 }
 
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE"
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies"
 # Show-PowerTreeRegistry @args
