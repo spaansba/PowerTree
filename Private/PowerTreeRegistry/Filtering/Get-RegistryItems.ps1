@@ -17,6 +17,7 @@ function Get-RegistryItems {
                 TypeName = $valueType.ToString()
                 Name = $displayName
                 Value = $value
+                IsLast = $false  # Initialize as false
             }
         }
     }
@@ -29,8 +30,14 @@ function Get-RegistryItems {
                 TypeName = "Key"
                 Name = $key
                 Path = (Join-Path $RegistryPath $key)
+                IsLast = $false  # Initialize as false
             }
         }
+    }
+    
+    # Mark the last item as IsLast = $true
+    if ($allItems.Count -gt 0) {
+        $allItems[-1].IsLast = $true
     }
     
     return $allItems

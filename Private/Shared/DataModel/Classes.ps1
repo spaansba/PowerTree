@@ -26,6 +26,7 @@ class TreeRegistryConfig {
     [string[]]$ExcludedKeys
     [string[]]$IncludedKeys
     [int]$MaxDepth
+    [hashtable]$LineStyle
 }
 
 class TreeStats {
