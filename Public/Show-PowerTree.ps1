@@ -1,4 +1,4 @@
-﻿function PowerTree {
+﻿function Show-PowerTree {
     [CmdletBinding()]
     param(
         [Parameter(Position=0)]

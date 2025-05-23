@@ -1,7 +1,8 @@
 # Define script-level variables
 $script:ModuleRoot = $PSScriptRoot
-New-Alias -Name "ptree" -Value "PowerTree"
-New-Alias -Name "Start-PowerTree" -Value "PowerTree"
+New-Alias -Name "ptree" -Value "Show-PowerTree"
+New-Alias -Name "Start-PowerTree" -Value "Show-PowerTree"
+New-Alias -Name "PowerTree" -Value "Show-PowerTree"
 New-Alias -Name "Edit-PtreeConfig" -Value "Edit-PowerTreeConfig"
 New-Alias -Name "Edit-Ptree" -Value "Edit-PowerTreeConfig"
 New-Alias -Name "Edit-PowerTree" -Value "Edit-PowerTreeConfig"
@@ -43,4 +44,4 @@ foreach ($import in $Public) {
 
 # Export public functions
 Export-ModuleMember -Function $Public.BaseName
-Export-ModuleMember -Function $Public.BaseName -Alias "ptree", "Start-PowerTree", "Edit-PtreeConfig", "Edit-Ptree", "Edit-PowerTree"
+Export-ModuleMember -Function $Public.BaseName -Alias "ptree", "Start-PowerTree", "PowerTree", "Edit-PtreeConfig", "Edit-Ptree", "Edit-PowerTree"
