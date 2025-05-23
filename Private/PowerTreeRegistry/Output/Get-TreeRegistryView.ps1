@@ -18,7 +18,7 @@ function Get-TreeRegistryView {
     # Print header and root key name if this is the root call
     if ($IsRoot) {
         Write-Host "Type       Hierarchy" -ForegroundColor Magenta
-        Write-Host "────       ─────────" 
+        Write-Host "────       ─────────" -ForegroundColor Magenta
         $keyName = Split-Path $CurrentPath -Leaf
         Write-Host "Key        $TreeIndent$keyName"
     }
@@ -34,9 +34,11 @@ function Get-TreeRegistryView {
         foreach ($valueName in $regKey.GetValueNames()) {
             $valueType = $regKey.GetValueKind($valueName)
             $displayName = if ($valueName -eq "") { "(Default)" } else { $valueName }
+            $value = $regKey.GetValue($valueName)
             $allItems += @{
                 TypeName = $valueType.ToString()
                 Name = $displayName
+                Value = $value
             }
         }
     }
@@ -70,7 +72,14 @@ function Get-TreeRegistryView {
             Get-TreeRegistryView -TreeRegistryConfig $TreeRegistryConfig -CurrentPath $item.Path -EscapeWildcards $true -TreeIndent $newTreeIndent -IsRoot $false
         } else {
             Write-Host "$($item.TypeName.PadRight(10)) $itemPrefix" -NoNewline
-            Write-Host $item.Name -ForegroundColor DarkGray
+            Write-Host $item.Name -ForegroundColor DarkGray -NoNewline
+            
+            if ($TreeRegistryConfig.DisplayValues) {
+                Write-Host " = " -NoNewline
+                Write-Host $item.Value -ForegroundColor Yellow
+            } else {
+                Write-Host ""
+            }
         }
     }
 }
