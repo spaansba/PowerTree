@@ -29,12 +29,18 @@ function Show-PowerTreeRegistry {
 
    . .\Private\Shared\DataModel\Classes.ps1
    . .\Private\PowerTreeRegistry\Configuration\ParamHelpers\Get-Path.ps1
-   
-   $treeRegistryConfig = [RegistryTreeConfig]::new()
+   . .\Private\PowerTreeRegistry\Output\Get-TreeRegistryView.ps1
+
+   $treeRegistryConfig = [TreeRegistryConfig]::new()
    $treeRegistryConfig.Path = Get-Path -Path $Path
    $treeRegistryConfig.ShowSubKeys = $ShowSubKeys
    $treeRegistryConfig.ExcludedKeys = $Path
    $treeRegistryConfig.IncludedKeys = $Path
    $treeRegistryConfig.MaxDepth = $Depth
-    write-host "succesfull"
+
+   Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig
+   write-host "succesfull"
 }
+
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE"
+# Show-PowerTreeRegistry @args

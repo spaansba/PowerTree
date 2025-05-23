@@ -19,7 +19,7 @@ class TreeConfig {
     [bool]$HumanReadableSizes
 }
 
-class RegistryTreeConfig {
+class TreeRegistryConfig {
     [string]$Path
     [bool]$ShowSubKeys
     [string[]]$ExcludedKeys
