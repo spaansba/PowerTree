@@ -1,7 +1,8 @@
 function Get-RegistryItems {
     param (
         [Parameter(Mandatory=$true)]
-        [string]$RegistryPath
+        [string]$RegistryPath,
+        [bool]$DisplayItemCounts = $false
     )
     
     $regKey = Get-Item -Path $RegistryPath -ErrorAction SilentlyContinue
@@ -26,12 +27,23 @@ function Get-RegistryItems {
     $childKeys = Get-ChildItem -Path $RegistryPath -Name -ErrorAction SilentlyContinue
     if ($childKeys) {
         foreach ($key in $childKeys) {
-            $allItems += @{
+            $keyPath = Join-Path $RegistryPath $key
+            
+            $keyItem = @{
                 TypeName = "Key"
                 Name = $key
-                Path = (Join-Path $RegistryPath $key)
+                Path = $keyPath
                 IsLast = $false  # Initialize as false
             }
+            
+            # Only calculate counts if needed
+            if ($DisplayItemCounts) {
+                $subKey = Get-Item -Path $keyPath -ErrorAction SilentlyContinue
+                $keyItem.ValueCount = if ($subKey) { $subKey.ValueCount } else { 0 }
+                $keyItem.SubKeyCount = (Get-ChildItem -Path $keyPath -ErrorAction SilentlyContinue | Measure-Object).Count
+            }
+            
+            $allItems += $keyItem
         }
     }
     

@@ -27,6 +27,10 @@ class TreeRegistryConfig {
     [string[]]$IncludedKeys
     [int]$MaxDepth
     [hashtable]$LineStyle
+    [bool]$DisplayItemCounts
+    [bool]$DisplayValueTypes
+    [bool]$SortByType
+    
 }
 
 class TreeStats {

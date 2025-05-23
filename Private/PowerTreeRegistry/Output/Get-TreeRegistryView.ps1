@@ -29,7 +29,7 @@ function Get-TreeRegistryView {
         return
     }
 
-    $allItems = Get-RegistryItems -RegistryPath $pathToUse
+    $allItems = Get-RegistryItems -RegistryPath $pathToUse -DisplayItemCounts $TreeRegistryConfig.DisplayItemCounts
 
     foreach ($item in $allItems) {
         if ($item.isLast) {
@@ -40,9 +40,15 @@ function Get-TreeRegistryView {
             $newTreeIndent = "$TreeIndent$($TreeRegistryConfig.lineStyle.VerticalLine)"
         }
 
-        if ($item.TypeName -eq "Key") {
-            Write-Host "$($item.TypeName.PadRight(10)) $itemPrefix$($item.Name)"
-            Get-TreeRegistryView -TreeRegistryConfig $TreeRegistryConfig -CurrentPath $item.Path -EscapeWildcards $true -TreeIndent $newTreeIndent -IsRoot $false -CurrentDepth ($CurrentDepth + 1)
+       if ($item.TypeName -eq "Key") {
+        $countInfo = ""
+        if ($TreeRegistryConfig.DisplayItemCounts) {
+            $countInfo = " ($($item.SubKeyCount) keys, $($item.ValueCount) values)"
+        }
+        Write-Host "$($item.TypeName.PadRight(10)) $itemPrefix$($item.Name)" -NoNewline
+        Write-Host $countInfo -ForegroundColor DarkCyan
+        Get-TreeRegistryView -TreeRegistryConfig $TreeRegistryConfig -CurrentPath $item.Path -EscapeWildcards $true -TreeIndent $newTreeIndent -IsRoot $false -CurrentDepth ($CurrentDepth + 1)
+    
         } else {
             Write-Host "$($item.TypeName.PadRight(10)) $itemPrefix" -NoNewline
             Write-Host $item.Name -ForegroundColor DarkGray -NoNewline

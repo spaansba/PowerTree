@@ -5,12 +5,24 @@ function Show-PowerTreeRegistry {
         [string]$Path = ".",
 
         [Parameter()]
-        [Alias("s")]
+        [Alias("ds")]
         [switch]$DisplaySubKeys,
 
         [Parameter()]
-        [Alias("dv", "v")]
+        [Alias("ddv", "v")]
         [switch]$DontDisplayValues,
+
+        [Parameter()]
+        [Alias("st")]
+        [switch]$SortByType,
+
+        [Parameter()]   
+        [Alias("dvt", "types")]
+        [switch]$DisplayValueTypes,
+
+        [Parameter()]
+        [Alias("dic")]
+        [switch]$DisplayItemCounts,
 
         [Parameter()]
         [Alias("ek", "exclude")]
@@ -50,6 +62,9 @@ function Show-PowerTreeRegistry {
    $treeRegistryConfig.IncludedKeys = $Path
    $treeRegistryConfig.MaxDepth = if ($Depth -ne -1) { $Depth } else { $jsonSettings.MaxDepth }
    $treeRegistryConfig.LineStyle = Build-TreeLineStyle -Style $jsonSettings.LineStyle
+   $treeRegistryConfig.DisplayItemCounts = $DisplayItemCounts
+   $treeRegistryConfig.DisplayValueTypes = $DisplayValueTypes
+   $treeRegistryConfig.SortByType = $SortByType
 
    Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig
 }
