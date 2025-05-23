@@ -19,7 +19,7 @@ function Get-TreeRegistryView {
 
     if ($IsRoot) {
         Write-Host "Type       Hierarchy" -ForegroundColor Magenta
-        Write-Host "────       ─────────" -ForegroundColor Magenta
+        Write-Host $TreeRegistryConfig.lineStyle.RegistryHeaderSeparator
         $keyName = Split-Path $CurrentPath -Leaf
         Write-Host "Key        $TreeIndent$keyName"
     }
