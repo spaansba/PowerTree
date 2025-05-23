@@ -22,7 +22,7 @@ class TreeConfig {
 class TreeRegistryConfig {
     [string]$Path
     [bool]$DisplaySubKeys
-    [bool]$DisplayValues
+    [bool]$DontDisplayValues
     [string[]]$ExcludedKeys
     [string[]]$IncludedKeys
     [int]$MaxDepth

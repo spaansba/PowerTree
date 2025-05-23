@@ -9,8 +9,8 @@ function Show-PowerTreeRegistry {
         [switch]$DisplaySubKeys,
 
         [Parameter()]
-        [Alias("v")]
-        [switch]$DisplayValues,
+        [Alias("dv", "v")]
+        [switch]$DontDisplayValues,
 
         [Parameter()]
         [Alias("ek", "exclude")]
@@ -45,7 +45,7 @@ function Show-PowerTreeRegistry {
    $treeRegistryConfig = [TreeRegistryConfig]::new()
    $treeRegistryConfig.Path = Get-Path -Path $Path
    $treeRegistryConfig.DisplaySubKeys = $DisplaySubKeys
-   $treeRegistryConfig.DisplayValues = $DisplayValues
+   $treeRegistryConfig.DontDisplayValues = $DontDisplayValues
    $treeRegistryConfig.ExcludedKeys = $Path
    $treeRegistryConfig.IncludedKeys = $Path
    $treeRegistryConfig.MaxDepth = if ($Depth -ne -1) { $Depth } else { $jsonSettings.MaxDepth }
@@ -54,5 +54,5 @@ function Show-PowerTreeRegistry {
    Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig
 }
 
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies" -DisplayValues
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies"
 # Show-PowerTreeRegistry @args
