@@ -14,10 +14,10 @@
     CompatiblePSEditions   = @('Desktop', 'Core')
 
     # Exports
-    FunctionsToExport = @('Show-PowerTree', 'Edit-PowerTreeConfig')
+    FunctionsToExport = @('Show-PowerTree', 'Edit-PowerTreeConfig', "Show-PowerTreeRegistry")
     CmdletsToExport   = @()
     VariablesToExport = @()
-    AliasesToExport   = @('ptree', 'Start-PowerTree', 'PowerTree', 'Edit-PtreeConfig', 'Edit-Ptree', 'Edit-PowerTree')
+    AliasesToExport   = @('ptree', 'Start-PowerTree', 'PowerTree', 'Edit-PtreeConfig', 'Edit-Ptree', 'Edit-PowerTree', "ptreer")
 
     # PowerShell Gallery metadata
     PrivateData = @{

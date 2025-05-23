@@ -42,6 +42,7 @@ $Aliases = @{
     'Edit-PtreeConfig' = 'Edit-PowerTreeConfig'
     'Edit-Ptree' = 'Edit-PowerTreeConfig'
     'Edit-PowerTree' = 'Edit-PowerTreeConfig'
+    'ptreer' = 'Show-PowerTreeRegistry'
 }
 
 foreach ($alias in $Aliases.GetEnumerator()) {

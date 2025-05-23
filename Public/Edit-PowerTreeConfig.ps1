@@ -73,5 +73,3 @@ function Edit-PowerTreeConfig {
         Write-Warning "Could not open file: $_"
     }
 }
-
-Export-ModuleMember -Function Get-PowerTreeSettingsFromJson, Edit-PowerTreeConfig
