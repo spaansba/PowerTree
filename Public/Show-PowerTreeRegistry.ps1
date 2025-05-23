@@ -34,7 +34,12 @@ function Show-PowerTreeRegistry {
    . .\Private\Shared\DataModel\Classes.ps1
    . .\Private\PowerTreeRegistry\Configuration\ParamHelpers\Get-Path.ps1
    . .\Private\PowerTreeRegistry\Output\Get-TreeRegistryView.ps1
-
+   . .\Private\PowerTreeRegistry\Filtering\Get-RegistryItems.ps1
+   . .\Private\Shared\JsonConfig\Get-SettingsFromJson.ps1
+   . .\Private\Shared\JsonConfig\Get-DefaultConfig.ps1
+   . .\Private\Shared\JsonConfig\Get-ConfigPaths.ps1
+   $jsonSettings = Get-SettingsFromJson
+   write-host $jsonSettings
    $treeRegistryConfig = [TreeRegistryConfig]::new()
    $treeRegistryConfig.Path = Get-Path -Path $Path
    $treeRegistryConfig.DisplaySubKeys = $DisplaySubKeys
@@ -42,7 +47,7 @@ function Show-PowerTreeRegistry {
    $treeRegistryConfig.ExcludedKeys = $Path
    $treeRegistryConfig.IncludedKeys = $Path
    $treeRegistryConfig.MaxDepth = $Depth
-
+  
    Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig
 }
 

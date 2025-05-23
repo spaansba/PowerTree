@@ -15,7 +15,6 @@ function Get-TreeRegistryView {
         $CurrentPath
     }
     
-    # Print header and root key name if this is the root call
     if ($IsRoot) {
         Write-Host "Type       Hierarchy" -ForegroundColor Magenta
         Write-Host "────       ─────────" -ForegroundColor Magenta
@@ -23,39 +22,8 @@ function Get-TreeRegistryView {
         Write-Host "Key        $TreeIndent$keyName"
     }
     
-    # Get the registry key object using the full path
-    $regKey = Get-Item -Path $pathToUse -ErrorAction SilentlyContinue
+    $allItems = Get-RegistryItems -RegistryPath $pathToUse
     
-    # Collect all items (values and child keys) in a single array
-    $allItems = @()
-    
-    # Add values
-    if ($regKey -and $regKey.ValueCount -gt 0) {
-        foreach ($valueName in $regKey.GetValueNames()) {
-            $valueType = $regKey.GetValueKind($valueName)
-            $displayName = if ($valueName -eq "") { "(Default)" } else { $valueName }
-            $value = $regKey.GetValue($valueName)
-            $allItems += @{
-                TypeName = $valueType.ToString()
-                Name = $displayName
-                Value = $value
-            }
-        }
-    }
-    
-    # Add child keys
-    $childKeys = Get-ChildItem -Path $pathToUse -Name -ErrorAction SilentlyContinue
-    if ($childKeys) {
-        foreach ($key in $childKeys) {
-            $allItems += @{
-                TypeName = "Key"
-                Name = $key
-                Path = (Join-Path $CurrentPath $key)
-            }
-        }
-    }
-    
-    # Process all items
     foreach ($item in $allItems) {
         $isLast = ($item -eq $allItems[-1])
         
