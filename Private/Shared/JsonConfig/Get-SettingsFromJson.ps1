@@ -1,6 +1,10 @@
 function Get-SettingsFromJson {
     [CmdletBinding()]
     param(
+        [Parameter(Mandatory=$true)]
+        [ValidateSet("FileSystem", "Registry")]
+        [string]$Mode,
+        
         [string[]]$ConfigPaths = (Get-ConfigPaths)
     )
     
@@ -17,38 +21,90 @@ function Get-SettingsFromJson {
                 
                 Write-Verbose "Settings loaded from $path"
                 
+                # Base hashtable with shared settings
                 $settingsHashtable = @{
-                    ExcludeDirectories = if ($settings.ExcludeDirectories -is [array]) { $settings.ExcludeDirectories } else { @() }
+                    ShowConnectorLines = if ($null -ne $settings.Shared.ShowConnectorLines) { $settings.Shared.ShowConnectorLines } else { $defaultSettings.Shared.ShowConnectorLines }
+                    ShowExecutionStats = if ($null -ne $settings.Shared.ShowExecutionStats) { $settings.Shared.ShowExecutionStats } else { $defaultSettings.Shared.ShowExecutionStats }
+                    LineStyle = if ($settings.Shared.LineStyle) { $settings.Shared.LineStyle } else { $defaultSettings.Shared.LineStyle }
                     Sorting = @{
-                        By = $settings.Sorting.By
-                        SortFolders = $settings.Sorting.SortFolders
+                        By = if ($settings.Shared.Sorting.By) { $settings.Shared.Sorting.By } else { $defaultSettings.Shared.Sorting.By }
+                        SortFolders = if ($null -ne $settings.Shared.Sorting.SortFolders) { $settings.Shared.Sorting.SortFolders } else { $defaultSettings.Shared.Sorting.SortFolders }
                     }
-                    Files = @{
-                        ExcludeExtensions = if ($settings.Files.ExcludeExtensions -is [array]) { $settings.Files.ExcludeExtensions } else { @() }
-                        IncludeExtensions = if ($settings.Files.IncludeExtensions -is [array]) { $settings.Files.IncludeExtensions } else { @() }
-                        FileSizeMinimum = if ($settings.Files.FileSizeMinimum) { $settings.Files.FileSizeMinimum } else { "-1kb" }
-                        FileSizeMaximum = if ($settings.Files.FileSizeMaximum) { $settings.Files.FileSizeMaximum } else { "-1kb" }
-                        OpenOutputFileOnFinish = if ($null -ne $settings.Files.OpenOutputFileOnFinish) { $settings.Files.OpenOutputFileOnFinish } else { $true }
-                    }
-                    ShowConnectorLines = if ($null -ne $settings.ShowConnectorLines) { $settings.ShowConnectorLines } else { $true }
-                    ShowExecutionStats = if ($null -ne $settings.ShowExecutionStats) { $settings.ShowExecutionStats } else { $true }
-                    MaxDepth = if ($null -ne $settings.MaxDepth) { $settings.MaxDepth } else { -1 }
-                    LineStyle = if ($settings.LineStyle) { $settings.LineStyle } else { "Unicode" }
-                    HumanReadableSizes = if($null -ne $settings.HumanReadableSizes) {$settings.HumanReadableSizes} else {$true}
                 }
                 
-                # Debugging: Log the parsed settings
-                Write-Verbose ("Parsed Settings: " + ($settingsHashtable | ConvertTo-Json -Depth 5))
+                # Add mode-specific settings
+                switch ($Mode) {
+                    "FileSystem" {
+                        $settingsHashtable += @{
+                            MaxDepth = if ($null -ne $settings.FileSystem.MaxDepth) { $settings.FileSystem.MaxDepth } else { $defaultSettings.FileSystem.MaxDepth }
+                            ExcludeDirectories = if ($settings.FileSystem.ExcludeDirectories -is [array]) { $settings.FileSystem.ExcludeDirectories } else { $defaultSettings.FileSystem.ExcludeDirectories }
+                            HumanReadableSizes = if ($null -ne $settings.FileSystem.HumanReadableSizes) { $settings.FileSystem.HumanReadableSizes } else { $defaultSettings.FileSystem.HumanReadableSizes }
+                            Files = @{
+                                ExcludeExtensions = if ($settings.FileSystem.Files.ExcludeExtensions -is [array]) { $settings.FileSystem.Files.ExcludeExtensions } else { $defaultSettings.FileSystem.Files.ExcludeExtensions }
+                                IncludeExtensions = if ($settings.FileSystem.Files.IncludeExtensions -is [array]) { $settings.FileSystem.Files.IncludeExtensions } else { $defaultSettings.FileSystem.Files.IncludeExtensions }
+                                FileSizeMinimum = if ($settings.FileSystem.Files.FileSizeMinimum) { $settings.FileSystem.Files.FileSizeMinimum } else { $defaultSettings.FileSystem.Files.FileSizeMinimum }
+                                FileSizeMaximum = if ($settings.FileSystem.Files.FileSizeMaximum) { $settings.FileSystem.Files.FileSizeMaximum } else { $defaultSettings.FileSystem.Files.FileSizeMaximum }
+                                OpenOutputFileOnFinish = if ($null -ne $settings.FileSystem.Files.OpenOutputFileOnFinish) { $settings.FileSystem.Files.OpenOutputFileOnFinish } else { $defaultSettings.FileSystem.Files.OpenOutputFileOnFinish }
+                            }
+                        }
+                    }
+                    "Registry" {
+                        $settingsHashtable += @{
+                            MaxDepth = if ($null -ne $settings.Registry.MaxDepth) { $settings.Registry.MaxDepth } else { $defaultSettings.Registry.MaxDepth }
+                            ExcludeKeys = if ($settings.Registry.ExcludeKeys -is [array]) { $settings.Registry.ExcludeKeys } else { $defaultSettings.Registry.ExcludeKeys }
+                            ValueTypes = if ($settings.Registry.ValueTypes -is [array]) { $settings.Registry.ValueTypes } else { $defaultSettings.Registry.ValueTypes }
+                            EscapeWildcards = if ($null -ne $settings.Registry.EscapeWildcards) { $settings.Registry.EscapeWildcards } else { $defaultSettings.Registry.EscapeWildcards }
+                        }
+                    }
+                }
                 
+                Write-Verbose ("Parsed $Mode Settings: " + ($settingsHashtable | ConvertTo-Json -Depth 5))
                 return $settingsHashtable
             }
         }
         
         Write-Verbose "Config file not found in any of the potential locations. Using default settings."
-        return $defaultSettings
+        return Get-FlattenedDefaultSettings -Mode $Mode -DefaultSettings $defaultSettings
+        
     } catch {
         Write-Warning "Error loading settings file: $($_.Exception.Message)"
         Write-Verbose "Using default settings instead."
-        return $defaultSettings
+        return Get-FlattenedDefaultSettings -Mode $Mode -DefaultSettings $defaultSettings
     }
+}
+
+function Get-FlattenedDefaultSettings {
+    param(
+        [string]$Mode,
+        [hashtable]$DefaultSettings
+    )
+    
+    $flattened = @{
+        ShowConnectorLines = $DefaultSettings.Shared.ShowConnectorLines
+        ShowExecutionStats = $DefaultSettings.Shared.ShowExecutionStats
+        LineStyle = $DefaultSettings.Shared.LineStyle
+        Sorting = $DefaultSettings.Shared.Sorting
+    }
+    
+    switch ($Mode) {
+        "FileSystem" {
+            $flattened += @{
+                MaxDepth = $DefaultSettings.FileSystem.MaxDepth
+                ExcludeDirectories = $DefaultSettings.FileSystem.ExcludeDirectories
+                HumanReadableSizes = $DefaultSettings.FileSystem.HumanReadableSizes
+                Files = $DefaultSettings.FileSystem.Files
+            }
+        }
+        "Registry" {
+            $flattened += @{
+                MaxDepth = $DefaultSettings.Registry.MaxDepth
+                DisplayValues = $DefaultSettings.Registry.DisplayValues
+                ExcludeKeys = $DefaultSettings.Registry.ExcludeKeys
+                ValueTypes = $DefaultSettings.Registry.ValueTypes
+                EscapeWildcards = $DefaultSettings.Registry.EscapeWildcards
+            }
+        }
+    }
+    
+    return $flattened
 }

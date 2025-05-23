@@ -38,18 +38,20 @@ function Show-PowerTreeRegistry {
    . .\Private\Shared\JsonConfig\Get-SettingsFromJson.ps1
    . .\Private\Shared\JsonConfig\Get-DefaultConfig.ps1
    . .\Private\Shared\JsonConfig\Get-ConfigPaths.ps1
-   $jsonSettings = Get-SettingsFromJson
+
+   $jsonSettings = Get-SettingsFromJson -Mode "Registry"
    write-host $jsonSettings
+
    $treeRegistryConfig = [TreeRegistryConfig]::new()
    $treeRegistryConfig.Path = Get-Path -Path $Path
    $treeRegistryConfig.DisplaySubKeys = $DisplaySubKeys
    $treeRegistryConfig.DisplayValues = $DisplayValues
    $treeRegistryConfig.ExcludedKeys = $Path
    $treeRegistryConfig.IncludedKeys = $Path
-   $treeRegistryConfig.MaxDepth = $Depth
+   $treeRegistryConfig.MaxDepth = if ($Depth -ne -1) { $Depth } else { $jsonSettings.MaxDepth }
   
    Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig
 }
 
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies" -DisplayValues
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies" -DisplayValues -l 0
 # Show-PowerTreeRegistry @args

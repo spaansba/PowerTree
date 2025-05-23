@@ -154,7 +154,7 @@
     }
 
     $treeStats = [TreeStats]::new()
-    $jsonSettings = Get-SettingsFromJson
+    $jsonSettings = Get-SettingsFromJson -Mode "FileSystem"
 
     $treeConfig = [TreeConfig]::new()
     $treeConfig.Path = $Path

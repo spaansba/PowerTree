@@ -2,7 +2,7 @@
 @{
     # Core module information
     RootModule        = 'PowerTree.psm1'
-    ModuleVersion     = '1.1.4'
+    ModuleVersion     = '1.1.5'
     GUID              = 'bd5a541e-746e-438d-9b57-28f6d9df01a3'
     Author            = 'Bart Spaans'
     CompanyName       = 'Personal'
