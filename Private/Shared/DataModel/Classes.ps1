@@ -19,6 +19,14 @@ class TreeConfig {
     [bool]$HumanReadableSizes
 }
 
+class RegistryTreeConfig {
+    [string]$Path
+    [bool]$ShowSubKeys
+    [string[]]$ExcludedKeys
+    [string[]]$IncludedKeys
+    [int]$MaxDepth
+}
+
 class TreeStats {
     [long]$FilesPrinted = 0
     [long]$FoldersPrinted = 0

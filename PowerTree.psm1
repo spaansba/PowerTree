@@ -9,7 +9,7 @@ New-Alias -Name "Edit-PowerTree" -Value "Edit-PowerTreeConfig"
 New-Alias -Name "ptreer" -Value "Show-PowerTreeRegistry"
 
 # Import classes first to ensure they are available to all functions
-$ClassFiles = @(Get-ChildItem -Path "$PSScriptRoot\Private\DataModel\Classes.ps1" -ErrorAction SilentlyContinue)
+$ClassFiles = @(Get-ChildItem -Path "$PSScriptRoot\Private\Shared\DataModel\Classes.ps1" -ErrorAction SilentlyContinue)
 foreach ($import in $ClassFiles) {
     try {
         . $import.FullName
@@ -22,7 +22,7 @@ foreach ($import in $ClassFiles) {
 
 # Import all remaining private functions (recursively)
 $Private = @(Get-ChildItem -Path "$PSScriptRoot\Private\*.ps1" -Recurse -ErrorAction SilentlyContinue | 
-             Where-Object { $_.FullName -ne "$PSScriptRoot\Private\DataModel\Classes.ps1" })
+             Where-Object { $_.FullName -ne "$PSScriptRoot\Private\Shared\DataModel\Classes.ps1" })
 foreach ($import in $Private) {
     try {
         . $import.FullName
