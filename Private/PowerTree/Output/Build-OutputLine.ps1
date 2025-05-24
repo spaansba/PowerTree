@@ -64,7 +64,7 @@ function Build-OutputLine {
                         $dirSize = 0
                     } else {
                         # Calculate directory size
-                        $dirSize = (Get-ChildItem $Item.FullName -Recurse -File -ErrorAction SilentlyContinue | 
+                        $dirSize = (Get-ChildItem -LiteralPath $Item.FullName -Recurse -File -ErrorAction SilentlyContinue | 
                                     Measure-Object -Property Length -Sum).Sum
                          if($HumanReadableSizes){
                             $content = Get-HumanReadableSize -Bytes $dirSize -Format "Padded"

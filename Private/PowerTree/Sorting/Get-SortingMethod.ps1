@@ -64,7 +64,7 @@ function Group-Items {
         "Size" {
             $Items | Sort-Object -Property { if ($_ -is [System.IO.DirectoryInfo]) {
                 # For directories, calculate total size of contents
-                (Get-ChildItem $_.FullName -Recurse -File -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum
+                (Get-ChildItem -LiteralPath $_.FullName -Recurse -File -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum
             } else {
                 # For files, use file length
                 $_.Length
@@ -86,7 +86,7 @@ function Group-Items {
             "Size" { 
                 return $Items | Sort-Object -Property { 
                     if ($_ -is [System.IO.DirectoryInfo]) {
-                        (Get-ChildItem $_.FullName -Recurse -File -ErrorAction SilentlyContinue | 
+                        (Get-ChildItem -LiteralPath $_.FullName -Recurse -File -ErrorAction SilentlyContinue | 
                             Measure-Object -Property Length -Sum).Sum
                     } else {
                         $_.Length

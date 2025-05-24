@@ -69,7 +69,7 @@ function Get-RegistryItems {
     }
     
     # Add child keys to the all items object
-    $childKeys = Get-ChildItem -Path $RegistryPath -Name -ErrorAction SilentlyContinue
+    $childKeys = Get-ChildItem -LiteralPath $RegistryPath -Name -ErrorAction SilentlyContinue
     if ($childKeys) {
         # Sort child keys by name with descending option (unless overridden by type sorting)
         if (-not $SortValuesByType) {
@@ -92,8 +92,8 @@ function Get-RegistryItems {
             
             # Only calculate counts if needed
             if ($DisplayItemCounts) {
-                $keyItem | Add-Member -NotePropertyName "ValueCount" -NotePropertyValue $(if ((Get-Item -Path $keyPath -ErrorAction SilentlyContinue)) { (Get-Item -Path $keyPath).ValueCount } else { 0 })
-                $keyItem | Add-Member -NotePropertyName "SubKeyCount" -NotePropertyValue $((Get-ChildItem -Path $keyPath -ErrorAction SilentlyContinue | Measure-Object).Count)
+                $keyItem | Add-Member -NotePropertyName "ValueCount" -NotePropertyValue $(if ((Get-Item -LiteralPath $keyPath -ErrorAction SilentlyContinue)) { (Get-Item -Path $keyPath).ValueCount } else { 0 })
+                $keyItem | Add-Member -NotePropertyName "SubKeyCount" -NotePropertyValue $((Get-ChildItem -LiteralPath $keyPath -ErrorAction SilentlyContinue | Measure-Object).Count)
             }
             
             $allItems += $keyItem

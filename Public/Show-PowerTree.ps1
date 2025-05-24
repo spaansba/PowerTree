@@ -127,7 +127,7 @@
         [Alias("q", "silent")]
         [switch]$Quiet
     )
-        write-host "sdfsd"
+
     if ($CheckForUpdates) {
         Write-CheckForUpdates
         return

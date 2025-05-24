@@ -12,13 +12,13 @@ function Get-FolderSize {
     )
     
     $folders = if ($Recurse) {
-        Get-ChildItem -Path $Path -Directory -Recurse
+        Get-ChildItem -LiteralPath $Path -Directory -Recurse
     } else {
-        Get-ChildItem -Path $Path -Directory
+        Get-ChildItem -LiteralPath $Path -Directory
     }
     
     $results = foreach ($folder in $folders) {
-        $size = (Get-ChildItem $folder.FullName -Recurse -File -ErrorAction SilentlyContinue | 
+        $size = (Get-ChildItem -LiteralPath $folder.FullName -Recurse -File -ErrorAction SilentlyContinue | 
                 Measure-Object -Property Length -Sum).Sum
         
         $readableSize = if ($HumanReadable) {

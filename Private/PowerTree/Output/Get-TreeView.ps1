@@ -30,7 +30,7 @@ function Get-TreeView {
     $TreeStats.UpdateMaxDepth($CurrentDepth)
 
     # Get directories filtering out excluded directories
-    $dirItems = Get-ChildItem @ChildItemDirectoryParams -Path $CurrentPath
+    $dirItems = Get-ChildItem @ChildItemDirectoryParams -LiteralPath $CurrentPath
     $directories = if ($null -ne $dirItems -and $dirItems.Count -gt 0) {
         $filteredDirs = $dirItems | Where-Object {
             $TreeConfig.ExcludeDirectories.Count -eq 0 -or $TreeConfig.ExcludeDirectories -notcontains $_.Name
@@ -50,7 +50,7 @@ function Get-TreeView {
     }
 
     $files = if (-not $TreeConfig.DirectoryOnly) { 
-        $fileList = Get-ChildItem -Path "$CurrentPath\*" @ChildItemFileParams 
+        $fileList = Get-ChildItem -LiteralPath $CurrentPath @ChildItemFileParams 
         
         if ($null -ne $fileList -and $fileList.Count -gt 0) {
             $filteredBySize = Get-FilesByFilteredSize $fileList -FileSizeBounds $TreeConfig.FileSizeBounds
@@ -206,6 +206,7 @@ function Get-TreeView {
             $newTreeIndent = "$dirPrefix$($TreeConfig.lineStyle.VerticalLine)"
         }
         
+
         Get-TreeView -TreeConfig $TreeConfig `
                      -TreeStats $TreeStats `
                      -ChildItemDirectoryParams $ChildItemDirectoryParams `
