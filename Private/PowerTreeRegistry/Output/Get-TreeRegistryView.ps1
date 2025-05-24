@@ -33,7 +33,9 @@ function Get-TreeRegistryView {
         -DisplayItemCounts $TreeRegistryConfig.DisplayItemCounts `
         -SortValuesByType $TreeRegistryConfig.SortValuesByType `
         -SortDescending $TreeRegistryConfig.SortDescending `
-        -UseRegistryDataTypes $TreeRegistryConfig.UseRegistryDataTypes
+        -UseRegistryDataTypes $TreeRegistryConfig.UseRegistryDataTypes `
+        -Exclude $TreeRegistryConfig.Exclude `
+        -Include $TreeRegistryConfig.Include
 
     foreach ($item in $allItems) {
         if ($item.isLast) {

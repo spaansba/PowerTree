@@ -1,3 +1,5 @@
+
+
 function Get-RegistryItems {
     param (
         [Parameter(Mandatory=$true)]
@@ -5,7 +7,9 @@ function Get-RegistryItems {
         [bool]$DisplayItemCounts = $false,
         [bool]$SortValuesByType = $false,
         [bool]$SortDescending = $false,
-        [bool]$UseRegistryDataTypes = $false
+        [bool]$UseRegistryDataTypes = $false,
+        [string[]]$Exclude = @(),
+        [string[]]$Include = @()
     )
     
     # Registry type mapping from PowerShell types to registry types
@@ -19,7 +23,13 @@ function Get-RegistryItems {
         'Unknown'      = 'REG_NONE'
     }
     
-    $regKey = Get-Item -Path $RegistryPath -ErrorAction SilentlyContinue
+    # Check if we need to do any filtering
+    $hasIncludeFilters = $Include.Count -gt 0
+    $hasExcludeFilters = $Exclude.Count -gt 0
+    $hasValueFilters = $hasIncludeFilters -or $hasExcludeFilters
+    $hasKeyFilters = $hasExcludeFilters
+    
+    $regKey = Get-Item -LiteralPath $RegistryPath -ErrorAction SilentlyContinue
     $allItems = @()
     
     # Add values to the all items object
@@ -29,6 +39,16 @@ function Get-RegistryItems {
             $valueType = $regKey.GetValueKind($valueName)
             $displayName = if ($valueName -eq "") { "(Default)" } else { $valueName }
             $value = $regKey.GetValue($valueName)
+            
+            # Apply include/exclude filters only if needed (include and exclude both apply to values)
+            if ($hasValueFilters) {
+                $shouldInclude = ($Include.Count -eq 0) -or (Test-FilterMatch -ItemName $displayName -Patterns $Include)
+                $shouldExclude = Test-FilterMatch -ItemName $displayName -Patterns $Exclude
+                
+                if (-not $shouldInclude -or $shouldExclude) {
+                    continue
+                }
+            }
             
             # Choose between PowerShell type or Registry type
             $displayType = if ($UseRegistryDataTypes) {
@@ -71,16 +91,28 @@ function Get-RegistryItems {
     # Add child keys to the all items object
     $childKeys = Get-ChildItem -LiteralPath $RegistryPath -Name -ErrorAction SilentlyContinue
     if ($childKeys) {
+        # Apply exclude filters to child keys only if needed (include doesn't apply to keys)
+        if ($hasKeyFilters) {
+            $filteredChildKeys = @()
+            foreach ($key in $childKeys) {
+                if (-not (Test-FilterMatch -ItemName $key -Patterns $Exclude)) {
+                    $filteredChildKeys += $key
+                }
+            }
+        } else {
+            $filteredChildKeys = $childKeys
+        }
+        
         # Sort child keys by name with descending option (unless overridden by type sorting)
-        if (-not $SortValuesByType) {
+        if (-not $SortValuesByType -and $filteredChildKeys.Count -gt 0) {
             if ($SortDescending) {
-                $childKeys = $childKeys | Sort-Object -Descending
+                $filteredChildKeys = $filteredChildKeys | Sort-Object -Descending
             } else {
-                $childKeys = $childKeys | Sort-Object
+                $filteredChildKeys = $filteredChildKeys | Sort-Object
             }
         }
         
-        foreach ($key in $childKeys) {
+        foreach ($key in $filteredChildKeys) {
             $keyPath = Join-Path $RegistryPath $key
             
             $keyItem = [PSCustomObject]@{
@@ -92,7 +124,7 @@ function Get-RegistryItems {
             
             # Only calculate counts if needed
             if ($DisplayItemCounts) {
-                $keyItem | Add-Member -NotePropertyName "ValueCount" -NotePropertyValue $(if ((Get-Item -LiteralPath $keyPath -ErrorAction SilentlyContinue)) { (Get-Item -Path $keyPath).ValueCount } else { 0 })
+                $keyItem | Add-Member -NotePropertyName "ValueCount" -NotePropertyValue $(if ((Get-Item -LiteralPath $keyPath -ErrorAction SilentlyContinue)) { (Get-Item -LiteralPath $keyPath).ValueCount } else { 0 })
                 $keyItem | Add-Member -NotePropertyName "SubKeyCount" -NotePropertyValue $((Get-ChildItem -LiteralPath $keyPath -ErrorAction SilentlyContinue | Measure-Object).Count)
             }
             

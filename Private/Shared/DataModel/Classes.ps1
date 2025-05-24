@@ -23,8 +23,8 @@ class TreeRegistryConfig {
     [string]$Path
     [bool]$DisplaySubKeys
     [bool]$NoValues
-    [string[]]$ExcludedKeys
-    [string[]]$IncludedKeys
+    [string[]]$Exclude
+    [string[]]$Include
     [int]$MaxDepth
     [hashtable]$LineStyle
     [bool]$DisplayItemCounts

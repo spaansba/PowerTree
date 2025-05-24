@@ -33,12 +33,12 @@ function Show-PowerTreeRegistry {
         [switch]$DisplayItemCounts,
 
         [Parameter()]
-        [Alias("ek", "exclude")]
-        [string[]]$ExcludedKeys = @(),
+        [Alias("e","exc")]
+        [string[]]$Exclude = @(),
 
         [Parameter()]
-        [Alias("ik", "include")]
-        [string[]]$IncludeKeys = @(),
+        [Alias("i", "inc")]
+        [string[]]$Include = @(),
 
         [Parameter()]
         [Alias("l", "level")]
@@ -59,6 +59,7 @@ function Show-PowerTreeRegistry {
    . .\Private\Shared\JsonConfig\Get-DefaultConfig.ps1
    . .\Private\Shared\JsonConfig\Get-ConfigPaths.ps1
    . .\Private\Shared\Build-TreeLineStyle.ps1
+   . .\Private\PowerTreeRegistry\Filtering\Test-FilterMatch.ps1
 
    $jsonSettings = Get-SettingsFromJson -Mode "Registry"
 
@@ -66,8 +67,8 @@ function Show-PowerTreeRegistry {
    $treeRegistryConfig.Path = Get-Path -Path $Path
    $treeRegistryConfig.DisplaySubKeys = $DisplaySubKeys
    $treeRegistryConfig.NoValues = $NoValues
-   $treeRegistryConfig.ExcludedKeys = $Path
-   $treeRegistryConfig.IncludedKeys = $Path
+   $treeRegistryConfig.Exclude = $Exclude
+   $treeRegistryConfig.Include = $Include
    $treeRegistryConfig.MaxDepth = if ($Depth -ne -1) { $Depth } else { $jsonSettings.MaxDepth }
    $treeRegistryConfig.LineStyle = Build-TreeLineStyle -Style $jsonSettings.LineStyle
    $treeRegistryConfig.DisplayItemCounts = $DisplayItemCounts
@@ -78,5 +79,5 @@ function Show-PowerTreeRegistry {
    Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig
 }
 
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft" -dic -desc
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft" -dic -desc  -e "Windows ??"
 # Show-PowerTreeRegistry @args
