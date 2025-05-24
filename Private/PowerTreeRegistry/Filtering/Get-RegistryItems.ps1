@@ -4,8 +4,20 @@ function Get-RegistryItems {
         [string]$RegistryPath,
         [bool]$DisplayItemCounts = $false,
         [bool]$SortValuesByType = $false,
-        [bool]$SortDescending = $false
+        [bool]$SortDescending = $false,
+        [bool]$UseRegistryDataTypes = $false
     )
+    
+    # Registry type mapping from PowerShell types to registry types
+    $registryTypeMap = @{
+        'String'       = 'REG_SZ'
+        'ExpandString' = 'REG_EXPAND_SZ'
+        'Binary'       = 'REG_BINARY'
+        'DWord'        = 'REG_DWORD'
+        'MultiString'  = 'REG_MULTI_SZ'
+        'QWord'        = 'REG_QWORD'
+        'Unknown'      = 'REG_NONE'
+    }
     
     $regKey = Get-Item -Path $RegistryPath -ErrorAction SilentlyContinue
     $allItems = @()
@@ -17,8 +29,16 @@ function Get-RegistryItems {
             $valueType = $regKey.GetValueKind($valueName)
             $displayName = if ($valueName -eq "") { "(Default)" } else { $valueName }
             $value = $regKey.GetValue($valueName)
+            
+            # Choose between PowerShell type or Registry type
+            $displayType = if ($UseRegistryDataTypes) {
+                $registryTypeMap[$valueType.ToString()]
+            } else {
+                $valueType.ToString()
+            }
+            
             $valueItems += [PSCustomObject]@{
-                TypeName = $valueType.ToString()
+                TypeName = $displayType
                 Name = $displayName
                 Value = $value
                 IsLast = $false

@@ -17,8 +17,8 @@ function Show-PowerTreeRegistry {
         [switch]$SortValuesByType,
 
         [Parameter()]   
-        [Alias("dvt", "types")]
-        [switch]$DisplayValueTypes,
+        [Alias("dt", "types", "rdt")]
+        [switch]$UseRegistryDataTypes,
 
         [Parameter()]
         [Alias("des", "desc", "descending")]
@@ -67,12 +67,12 @@ function Show-PowerTreeRegistry {
    $treeRegistryConfig.MaxDepth = if ($Depth -ne -1) { $Depth } else { $jsonSettings.MaxDepth }
    $treeRegistryConfig.LineStyle = Build-TreeLineStyle -Style $jsonSettings.LineStyle
    $treeRegistryConfig.DisplayItemCounts = $DisplayItemCounts
-   $treeRegistryConfig.DisplayValueTypes = $DisplayValueTypes
    $treeRegistryConfig.SortValuesByType = $SortValuesByType
    $treeRegistryConfig.SortDescending = $SortDescending
+   $treeRegistryConfig.UseRegistryDataTypes = $UseRegistryDataTypes
 
    Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig
 }
 
-Show-PowerTreeRegistry -Path "HKLM:\HARDWARE\DESCRIPTION" -dic 
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft\" -dic -rdt
 # Show-PowerTreeRegistry @args

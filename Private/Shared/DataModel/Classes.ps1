@@ -28,9 +28,9 @@ class TreeRegistryConfig {
     [int]$MaxDepth
     [hashtable]$LineStyle
     [bool]$DisplayItemCounts
-    [bool]$DisplayValueTypes
     [bool]$SortValuesByType
     [bool]$SortDescending
+    [bool]$UseRegistryDataTypes
 }
 
 class TreeStats {

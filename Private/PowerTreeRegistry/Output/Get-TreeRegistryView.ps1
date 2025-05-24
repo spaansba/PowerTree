@@ -29,7 +29,11 @@ function Get-TreeRegistryView {
         return
     }
 
-    $allItems = Get-RegistryItems -RegistryPath $pathToUse -DisplayItemCounts $TreeRegistryConfig.DisplayItemCounts -SortValuesByType $TreeRegistryConfig.SortValuesByType -SortDescending $TreeRegistryConfig.SortDescending
+    $allItems = Get-RegistryItems -RegistryPath $pathToUse `
+        -DisplayItemCounts $TreeRegistryConfig.DisplayItemCounts `
+        -SortValuesByType $TreeRegistryConfig.SortValuesByType `
+        -SortDescending $TreeRegistryConfig.SortDescending `
+        -UseRegistryDataTypes $TreeRegistryConfig.UseRegistryDataTypes
 
     foreach ($item in $allItems) {
         if ($item.isLast) {
