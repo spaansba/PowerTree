@@ -2,7 +2,7 @@
     [CmdletBinding()]
     param(
         [Parameter(Position=0)]
-        [string]$Path = ".",
+        [string]$LiteralPath = ".",
 
         [Parameter()]
         [Alias("l", "level")]
@@ -169,7 +169,7 @@
     $jsonSettings = Get-SettingsFromJson -Mode "FileSystem"
 
     $treeConfig = [TreeConfig]::new()
-    $treeConfig.Path = $Path
+    $treeConfig.Path = $LiteralPath
     $treeConfig.LineStyle = Build-TreeLineStyle -Style $jsonSettings.LineStyle
     $treeConfig.DirectoryOnly = $DirectoryOnly
     $treeConfig.ExcludeDirectories = Build-ExcludedDirectoryParams -CommandLineExcludedDir $ExcludeDirectories `
@@ -207,8 +207,8 @@
     # Main entry point
     $executionResultTime = Measure-Command {
         try {
-            if (-not (Test-Path $Path)) {
-                throw "Cannot find path '$Path'"
+            if (-not (Test-Path $LiteralPath)) {
+                throw "Cannot find path '$LiteralPath'"
             }
             
             $ChildItemDirectoryParams = Build-ChildItemDirectoryParams $ShowHiddenFiles

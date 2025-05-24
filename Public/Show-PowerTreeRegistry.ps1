@@ -78,5 +78,5 @@ function Show-PowerTreeRegistry {
    Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig
 }
 
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microso*" -dic -desc
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft" -dic -desc
 # Show-PowerTreeRegistry @args

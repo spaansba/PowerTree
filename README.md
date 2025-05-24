@@ -9,6 +9,7 @@ A modern replacement for the `tree` command that lets you explore directory stru
 ![PowerShell Version](https://img.shields.io/badge/PowerShell-7.0%2B-blue)
 
 ## Preview Video
+
 https://github.com/user-attachments/assets/4f5cc8ea-5b3d-49e5-b309-b35caa59dbe2
 
 ## Example Images
@@ -122,11 +123,11 @@ The main `Start-PowerTree` cmdlet comes with many optional parameters to customi
 
 ### Basic Options
 
-| Parameter          | Alias    | Description                                         |
-| ------------------ | -------- | --------------------------------------------------- |
-| `-Path <string>`   |          | Specify path to search (default: current directory) |
-| `-Verbose`         |          | Show verbose output                                 |
-| `-ShowHiddenFiles` | `-force` | Show hidden files and directories                   |
+| Parameter               | Alias    | Description                                                |
+| ----------------------- | -------- | ---------------------------------------------------------- |
+| `-LiteralPath <string>` |          | Specify LiteralPath to search (default: current directory) |
+| `-Verbose`              |          | Show verbose output                                        |
+| `-ShowHiddenFiles`      | `-force` | Show hidden files and directories                          |
 
 ### Help Options
 

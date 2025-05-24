@@ -2,7 +2,7 @@ function Write-Help {
     Write-Host ""
 
     Write-Host "BASIC OPTIONS:" -ForegroundColor Yellow
-    Write-Host "  -Path, -p <path>                    Specify path to search (default: current directory)"
+    Write-Host "  -LiteralPath, -p <LiteralPath>                    Specify path to search (default: current directory)"
     Write-Host "  -Verbose                            Show verbose output"
     Write-Host "  -ShowHiddenFiles, -force            Show hidden files and directories"
     Write-Host ""
