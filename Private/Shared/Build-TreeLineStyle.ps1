@@ -14,7 +14,7 @@ function Build-TreeLineStyle {
             Vertical = "|"       
             Space = "    "       
             SingleLine = "-"  
-            RegistryHeaderSeparator = "----       ---------"
+            RegistryHeaderSeparator = "----         ---------"
         }
         Unicode = @{
             Branch = "├───"    
@@ -23,7 +23,7 @@ function Build-TreeLineStyle {
             Vertical = "│"         
             Space = "    "     
             SingleLine = "─"
-            RegistryHeaderSeparator = "────       ─────────"       
+            RegistryHeaderSeparator = "────         ─────────"       
         }
     }
     

@@ -14,11 +14,15 @@ function Show-PowerTreeRegistry {
 
         [Parameter()]
         [Alias("st")]
-        [switch]$SortByType,
+        [switch]$SortValuesByType,
 
         [Parameter()]   
         [Alias("dvt", "types")]
         [switch]$DisplayValueTypes,
+
+        [Parameter()]
+        [Alias("des", "desc", "descending")]
+        [switch]$SortDescending,
 
         [Parameter()]
         [Alias("dic")]
@@ -64,10 +68,11 @@ function Show-PowerTreeRegistry {
    $treeRegistryConfig.LineStyle = Build-TreeLineStyle -Style $jsonSettings.LineStyle
    $treeRegistryConfig.DisplayItemCounts = $DisplayItemCounts
    $treeRegistryConfig.DisplayValueTypes = $DisplayValueTypes
-   $treeRegistryConfig.SortByType = $SortByType
+   $treeRegistryConfig.SortValuesByType = $SortValuesByType
+   $treeRegistryConfig.SortDescending = $SortDescending
 
    Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig
 }
 
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies"
+Show-PowerTreeRegistry -Path "HKLM:\HARDWARE\DESCRIPTION" -dic 
 # Show-PowerTreeRegistry @args

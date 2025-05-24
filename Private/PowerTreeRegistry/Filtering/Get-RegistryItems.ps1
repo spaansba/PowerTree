@@ -2,7 +2,9 @@ function Get-RegistryItems {
     param (
         [Parameter(Mandatory=$true)]
         [string]$RegistryPath,
-        [bool]$DisplayItemCounts = $false
+        [bool]$DisplayItemCounts = $false,
+        [bool]$SortValuesByType = $false,
+        [bool]$SortDescending = $false
     )
     
     $regKey = Get-Item -Path $RegistryPath -ErrorAction SilentlyContinue
@@ -10,45 +12,90 @@ function Get-RegistryItems {
     
     # Add values to the all items object
     if ($regKey -and $regKey.ValueCount -gt 0) {
+        $valueItems = @()
         foreach ($valueName in $regKey.GetValueNames()) {
             $valueType = $regKey.GetValueKind($valueName)
             $displayName = if ($valueName -eq "") { "(Default)" } else { $valueName }
             $value = $regKey.GetValue($valueName)
-            $allItems += @{
+            $valueItems += [PSCustomObject]@{
                 TypeName = $valueType.ToString()
                 Name = $displayName
                 Value = $value
-                IsLast = $false  # Initialize as false
+                IsLast = $false
             }
+        }
+        
+        # Sort values like Registry Editor: (Default) first, then alphabetical (unless overridden by type sorting)
+        if (-not $SortValuesByType) {
+            $defaultValue = $valueItems | Where-Object { $_.Name -eq "(Default)" }
+            $otherValues = $valueItems | Where-Object { $_.Name -ne "(Default)" }
+            
+            # Sort other values by name with descending option
+            if ($SortDescending) {
+                $otherValues = $otherValues | Sort-Object Name -Descending
+            } else {
+                $otherValues = $otherValues | Sort-Object Name
+            }
+            
+            # Add default first (if exists), then other values
+            if ($defaultValue) {
+                $allItems += $defaultValue
+            }
+            $allItems += $otherValues
+        } else {
+            # When sorting by type, include all values for later sorting
+            $allItems += $valueItems
         }
     }
     
     # Add child keys to the all items object
     $childKeys = Get-ChildItem -Path $RegistryPath -Name -ErrorAction SilentlyContinue
     if ($childKeys) {
+        # Sort child keys by name with descending option (unless overridden by type sorting)
+        if (-not $SortValuesByType) {
+            if ($SortDescending) {
+                $childKeys = $childKeys | Sort-Object -Descending
+            } else {
+                $childKeys = $childKeys | Sort-Object
+            }
+        }
+        
         foreach ($key in $childKeys) {
             $keyPath = Join-Path $RegistryPath $key
             
-            $keyItem = @{
+            $keyItem = [PSCustomObject]@{
                 TypeName = "Key"
                 Name = $key
                 Path = $keyPath
-                IsLast = $false  # Initialize as false
+                IsLast = $false
             }
             
             # Only calculate counts if needed
             if ($DisplayItemCounts) {
-                $subKey = Get-Item -Path $keyPath -ErrorAction SilentlyContinue
-                $keyItem.ValueCount = if ($subKey) { $subKey.ValueCount } else { 0 }
-                $keyItem.SubKeyCount = (Get-ChildItem -Path $keyPath -ErrorAction SilentlyContinue | Measure-Object).Count
+                $keyItem | Add-Member -NotePropertyName "ValueCount" -NotePropertyValue $(if ((Get-Item -Path $keyPath -ErrorAction SilentlyContinue)) { (Get-Item -Path $keyPath).ValueCount } else { 0 })
+                $keyItem | Add-Member -NotePropertyName "SubKeyCount" -NotePropertyValue $((Get-ChildItem -Path $keyPath -ErrorAction SilentlyContinue | Measure-Object).Count)
             }
             
             $allItems += $keyItem
         }
     }
     
-    # Mark the last item as IsLast = $true
+    # Sort by TypeName if requested (this overrides the natural registry order)
+    if ($SortValuesByType -and $allItems.Count -gt 0) {
+        if ($SortDescending) {
+            $allItems = $allItems | Sort-Object TypeName -Descending
+        } else {
+            $allItems = $allItems | Sort-Object TypeName
+        }
+    }
+    
+    # Mark the last item as IsLast = $true (do this AFTER sorting)
     if ($allItems.Count -gt 0) {
+        # Reset all IsLast flags
+        foreach ($item in $allItems) {
+            $item.IsLast = $false
+        }
+        # Set the last item
         $allItems[-1].IsLast = $true
     }
     
