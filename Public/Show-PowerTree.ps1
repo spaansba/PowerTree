@@ -202,7 +202,7 @@
     $treeConfig.PruneEmptyFolders = $PruneEmptyFolders
     $treeConfig.HumanReadableSizes = $jsonSettings.HumanReadableSizes
     
-    $outputBuilder = Initialize-OutputBuilder -TreeConfig $treeConfig -ShowExecutionStats $jsonSettings.ShowExecutionStats
+    $outputBuilder = Invoke-OutputBuilder -TreeConfig $treeConfig -ShowExecutionStats $jsonSettings.ShowExecutionStats
 
     # Main entry point
     $executionResultTime = Measure-Command {

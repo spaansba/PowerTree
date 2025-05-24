@@ -64,7 +64,7 @@ function Show-PowerTreeRegistry {
    . .\Private\PowerTreeRegistry\Filtering\Get-ProcessedRegistryValues.ps1
    . .\Private\PowerTreeRegistry\Filtering\Set-LastItemFlag.ps1
    . .\Private\PowerTreeRegistry\Sorting\Invoke-RegistryItemSorting.ps1
-
+   . .\Private\PowerTreeRegistry\Configuration\Write-RegistryConfiguration.ps1
    $jsonSettings = Get-SettingsFromJson -Mode "Registry"
 
    $treeRegistryConfig = [TreeRegistryConfig]::new()
@@ -79,9 +79,9 @@ function Show-PowerTreeRegistry {
    $treeRegistryConfig.SortValuesByType = $SortValuesByType
    $treeRegistryConfig.SortDescending = $SortDescending
    $treeRegistryConfig.UseRegistryDataTypes = $UseRegistryDataTypes
-
+   Write-RegistryConfiguration -TreeRegistryConfig $treeRegistryConfig
    Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig
 }
 
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft" -dic -desc  -e "Windows ??"
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft" 
 # Show-PowerTreeRegistry @args
