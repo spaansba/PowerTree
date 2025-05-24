@@ -60,6 +60,10 @@ function Show-PowerTreeRegistry {
    . .\Private\Shared\JsonConfig\Get-ConfigPaths.ps1
    . .\Private\Shared\Build-TreeLineStyle.ps1
    . .\Private\PowerTreeRegistry\Filtering\Test-FilterMatch.ps1
+   . .\Private\PowerTreeRegistry\Filtering\Get-ProcessedRegistryKeys.ps1
+   . .\Private\PowerTreeRegistry\Filtering\Get-ProcessedRegistryValues.ps1
+   . .\Private\PowerTreeRegistry\Filtering\Set-LastItemFlag.ps1
+   . .\Private\PowerTreeRegistry\Sorting\Invoke-RegistryItemSorting.ps1
 
    $jsonSettings = Get-SettingsFromJson -Mode "Registry"
 
