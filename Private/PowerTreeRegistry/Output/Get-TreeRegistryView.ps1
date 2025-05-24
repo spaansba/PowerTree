@@ -57,7 +57,7 @@ function Get-TreeRegistryView {
             Write-Host "$($item.TypeName.PadRight(12)) $itemPrefix" -NoNewline
             Write-Host $item.Name -ForegroundColor DarkGray -NoNewline
 
-            if (-not $TreeRegistryConfig.DontDisplayValues) {
+            if (-not $TreeRegistryConfig.NoValues) {
                 Write-Host " = " -NoNewline
                 Write-Host $item.Value -ForegroundColor Yellow
             } else {

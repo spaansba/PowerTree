@@ -9,8 +9,12 @@ function Show-PowerTreeRegistry {
         [switch]$DisplaySubKeys,
 
         [Parameter()]
-        [Alias("ddv", "v")]
-        [switch]$DontDisplayValues,
+        [Alias("nv")]
+        [switch]$NoValues,
+
+        # [Parameter()]
+        # [Alias("nv")]
+        # [switch]$No,
 
         [Parameter()]
         [Alias("st")]
@@ -61,7 +65,7 @@ function Show-PowerTreeRegistry {
    $treeRegistryConfig = [TreeRegistryConfig]::new()
    $treeRegistryConfig.Path = Get-Path -Path $Path
    $treeRegistryConfig.DisplaySubKeys = $DisplaySubKeys
-   $treeRegistryConfig.DontDisplayValues = $DontDisplayValues
+   $treeRegistryConfig.NoValues = $NoValues
    $treeRegistryConfig.ExcludedKeys = $Path
    $treeRegistryConfig.IncludedKeys = $Path
    $treeRegistryConfig.MaxDepth = if ($Depth -ne -1) { $Depth } else { $jsonSettings.MaxDepth }
@@ -74,5 +78,5 @@ function Show-PowerTreeRegistry {
    Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig
 }
 
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft\" -dic -rdt
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microso*" -dic -desc
 # Show-PowerTreeRegistry @args
