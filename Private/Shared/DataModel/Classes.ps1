@@ -31,6 +31,21 @@ class TreeRegistryConfig {
     [bool]$SortValuesByType
     [bool]$SortDescending
     [bool]$UseRegistryDataTypes
+    [string]$OutFile
+}
+
+class RegistryStats {
+    [int]$KeysProcessed = 0
+    [int]$ValuesProcessed = 0
+    [int]$MaxDepthReached = 0
+    [int]$TotalSubKeys = 0
+    [int]$TotalValues = 0
+    
+    [void] UpdateDepth([int]$depth) {
+        if ($depth -gt $this.MaxDepthReached) {
+            $this.MaxDepthReached = $depth
+        }
+    }
 }
 
 class TreeStats {
@@ -63,12 +78,5 @@ class TreeStats {
         if ($depth -gt $this.MaxDepth) {
             $this.MaxDepth = $depth
         }
-    }
-
-  
-    [void] DisplaySummary([System.TimeSpan]$executionResultTime, [System.Text.StringBuilder]$OutputBuilder, [bool]$Quiet, [hashtable]$LineStyle) {
-        # Display summary is no longer used - functionality moved to Display-TreeStats function
-        # This method is kept for backward compatibility
-        Write-Verbose "TreeStats.DisplaySummary called - using Display-TreeStats function instead"
     }
 }

@@ -165,10 +165,10 @@
         $DisplayMode= $true
     }
 
-    $treeStats = [TreeStats]::new()
+    $treeStats = New-Object TreeStats
     $jsonSettings = Get-SettingsFromJson -Mode "FileSystem"
 
-    $treeConfig = [TreeConfig]::new()
+    $treeConfig = New-Object TreeConfig
     $treeConfig.Path = $LiteralPath
     $treeConfig.LineStyle = Build-TreeLineStyle -Style $jsonSettings.LineStyle
     $treeConfig.DirectoryOnly = $DirectoryOnly
@@ -198,7 +198,10 @@
                                                       -SettingsLineMaxSize $jsonSettings.Files.FileSizeMaximum `
                                                       -SettingsLineMinSize $jsonSettings.Files.FileSizeMinimum
     $treeConfig.Quiet = $Quiet
-    $treeConfig.OutFile = Add-DefaultExtension -FilePath $OutFile -Quiet $treeConfig.Quiet
+    $treeConfig.OutFile = Add-DefaultExtension -FilePath $OutFile `
+                                                -Quiet $treeConfig.Quiet `
+                                                -IsRegistry $false
+                                                
     $treeConfig.PruneEmptyFolders = $PruneEmptyFolders
     $treeConfig.HumanReadableSizes = $jsonSettings.HumanReadableSizes
     

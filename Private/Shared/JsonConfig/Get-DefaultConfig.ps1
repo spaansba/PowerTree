@@ -6,6 +6,7 @@ function Get-DefaultConfig {
         Shared = @{
             ShowConnectorLines = $true
             ShowExecutionStats = $true
+            ShowConfigurations = $true
             LineStyle = "Unicode"
             Sorting = @{
                 By = "Name"

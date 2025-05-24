@@ -25,6 +25,7 @@ function Get-SettingsFromJson {
                 $settingsHashtable = @{
                     ShowConnectorLines = if ($null -ne $settings.Shared.ShowConnectorLines) { $settings.Shared.ShowConnectorLines } else { $defaultSettings.Shared.ShowConnectorLines }
                     ShowExecutionStats = if ($null -ne $settings.Shared.ShowExecutionStats) { $settings.Shared.ShowExecutionStats } else { $defaultSettings.Shared.ShowExecutionStats }
+                    ShowConfigurations = if ($null -ne $settings.Shared.ShowConfigurations) { $settings.Shared.ShowConfigurations } else { $defaultSettings.Shared.ShowConfigurations }
                     LineStyle = if ($settings.Shared.LineStyle) { $settings.Shared.LineStyle } else { $defaultSettings.Shared.LineStyle }
                     Sorting = @{
                         By = if ($settings.Shared.Sorting.By) { $settings.Shared.Sorting.By } else { $defaultSettings.Shared.Sorting.By }

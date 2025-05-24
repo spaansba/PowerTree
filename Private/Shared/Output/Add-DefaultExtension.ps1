@@ -3,7 +3,8 @@
 function Add-DefaultExtension {
     param (
         [string]$FilePath,
-        [bool]$Quiet
+        [bool]$Quiet,
+        [bool]$IsRegistry
     )
     
     if ([string]::IsNullOrEmpty($FilePath)) {

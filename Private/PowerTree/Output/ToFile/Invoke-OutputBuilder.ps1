@@ -3,7 +3,7 @@ function Invoke-OutputBuilder {
     param (
         [Parameter(Mandatory=$true)]
         [TreeConfig]$TreeConfig,
-        [boolean]$ShowExecutionStats
+        [bool]$ShowExecutionStats
     )
 
     # Only create OutputBuilder if we need to save to a file
