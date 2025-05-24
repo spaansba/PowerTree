@@ -33,6 +33,10 @@
         [switch]$PruneEmptyFolders,
 
         [Parameter()]
+        [Alias("da")]
+        [switch]$DisplayAll,
+
+        [Parameter()]
         [Alias("dm", "m")]
         [switch]$DisplayMode,
                 
@@ -151,6 +155,14 @@
     if ($Examples) {
         Write-Examples
         return
+    }
+
+    if($DisplayAll){
+        $DisplayCreationDate = $true
+        $DisplayLastAccessDate = $true
+        $DisplayModificationDate = $true
+        $DisplaySize = $true
+        $DisplayMode= $true
     }
 
     $treeStats = [TreeStats]::new()
