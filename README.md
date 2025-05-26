@@ -2,8 +2,8 @@
 
 A modern replacement for the `tree` command that lets you explore directory structures and Windows Registry with detailed information and advanced filtering possibilities.
 
-![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/PowerTree)
-![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PowerTree)
+[![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/PowerTree)](https://www.powershellgallery.com/packages/PowerTree)
+[![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PowerTree)](https://www.powershellgallery.com/packages/PowerTree)
 ![License](https://img.shields.io/github/license/spaansba/PowerTree)
 ![Platform](https://img.shields.io/badge/platform-windows%20%7C%20macOS%20%7C%20linux-blue)
 ![PowerShell Version](https://img.shields.io/badge/PowerShell-7.0%2B-blue)
