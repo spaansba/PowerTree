@@ -46,65 +46,59 @@ Opens the PowerTree configuration file in the default editor. If no configuratio
 
 **Configuration File Structure:**
 
-```json
+```
 {
-  // Regular PowerTree
   "FileSystem": {
-    // Maximum directory depth to traverse (-1 = unlimited)
-    // Overwritten by -Depth
     "MaxDepth": -1,
     "Files": {
-      // Only show files with these extensions (empty = all files) same as -IncludeExtensions
       "IncludeExtensions": [],
-      // Hide files with these extensions same as -ExcludeExtensions
       "ExcludeExtensions": [],
-      // Hide files larger than this size (-1kb = no limit)
-      // Default setting, overwritten by -FileSizeMaximum parameter
       "FileSizeMaximum": "-1kb",
-      // Hide files smaller than this size (-1kb = no limit)
-      // Default setting, overwritten by -FileSizeMinimum parameter
       "FileSizeMinimum": "-1kb"
     },
     "Sorting": {
-      // Default sort method: "Name", "Size", "Date", etc.
-      // Default setting, overwritten by -Sort and -SortBy* parameters
       "By": "Name",
-      // Apply sorting to directories (false = folders first)
-      // Can be changed via Edit-PowerTreeConfig only
       "SortFolders": false
     },
-    // Show sizes as KB/MB/GB instead of raw bytes
     "HumanReadableSizes": true,
-    // Standard directories to always exclude same as -ExcludeDirectories
     "ExcludeDirectories": []
   },
-  // PowerTreeRegistry
   "Registry": {
-    // Maximum registry depth to traverse (-1 = unlimited)
-    // Overwritten by -Depth
     "MaxDepth": -1,
-    // Show registry value data (can be verbose)
-    // Default setting, overwritten by -DisplayValues parameter in Show-PowerTreeRegistry
     "DisplayValues": false,
-    // Registry keys to always exclude
-    // Default setting, overwritten by -ExcludeKeys parameter in Show-PowerTreeRegistry
     "ExcludeKeys": []
   },
   "Shared": {
-    // Tree connector style: "unicode" (├──) or "ascii" (|--)
     "LineStyle": "unicode",
-    // Display timing and file count statistics
     "ShowExecutionStats": true,
-    // Display active configuration at start
     "ShowConfigurations": true,
     "ShowConnectorLines": true,
-    // Automatically open output file when using -OutFile
     "OpenOutputFileOnFinish": true
   }
 }
 ```
 
-If the configuration file doesn't exist, Edit-PowerTreeConfig will create it with sensible defaults.
+**Configuration Options**
+
+| Option | Description | Default | Overridden By |
+|--------|-------------|---------|---------------|
+| `FileSystem.MaxDepth` | Maximum directory depth to traverse (-1 = unlimited) | `-1` | `-Depth` parameter |
+| `FileSystem.ExcludeDirectories` | Standard directories to always exclude | `[]` | `-ExcludeDirectories` parameter |
+| `FileSystem.HumanReadableSizes` | Show sizes as KB/MB/GB instead of raw bytes | `true` | Config file only |
+| `FileSystem.Files.IncludeExtensions` | Only show files with these extensions (empty = all files) | `[]` | `-IncludeExtensions` parameter |
+| `FileSystem.Files.ExcludeExtensions` | Hide files with these extensions | `[]` | `-ExcludeExtensions` parameter |
+| `FileSystem.Files.FileSizeMinimum` | Hide files smaller than this size (-1kb = no limit) | `"-1kb"` | `-FileSizeMinimum` parameter |
+| `FileSystem.Files.FileSizeMaximum` | Hide files larger than this size (-1kb = no limit) | `"-1kb"` | `-FileSizeMaximum` parameter |
+| `FileSystem.Sorting.By` | Default sort method ("Name", "Size", "Date", etc.) | `"Name"` | `-Sort` and `-SortBy*` parameters |
+| `FileSystem.Sorting.SortFolders` | Apply sorting to directories (false = folders first) | `false` | Config file only |
+| `Registry.MaxDepth` | Maximum registry depth to traverse (-1 = unlimited) | `-1` | `-Depth` parameter |
+| `Registry.DisplayValues` | Show registry value data (can be verbose) | `false` | `-DisplayValues` parameter |
+| `Registry.ExcludeKeys` | Registry keys to always exclude | `[]` | `-ExcludeKeys` parameter |
+| `Shared.LineStyle` | Tree connector style ("unicode" for ├── or "ascii" for \|--) | `"unicode"` | Config file only |
+| `Shared.ShowExecutionStats` | Display timing and file count statistics | `true` | Config file only |
+| `Shared.ShowConfigurations` | Display active configuration at start | `true` | Config file only |
+| `Shared.ShowConnectorLines` | Show tree connector lines | `true` | Config file only |
+| `Shared.OpenOutputFileOnFinish` | Automatically open output file when using -OutFile | `true` | Config file only |
 
 ## RELATED LINKS
 
