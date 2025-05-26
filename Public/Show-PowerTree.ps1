@@ -13,16 +13,8 @@
         [switch]$Help,
 
         [Parameter()]
-        [Alias("v")]
-        [switch]$Version,
-
-        [Parameter()]
         [Alias("i", "info")]
         [switch]$ModuleInfo,
-
-        [Parameter()]
-        [Alias("check")]
-        [switch]$CheckForUpdates,
 
         [Parameter()]
         [Alias("ex", "example")]
@@ -128,11 +120,6 @@
         [string]$OutFile
     )
 
-    if ($CheckForUpdates) {
-        Write-CheckForUpdates
-        return
-    }
-
     if ($Help) {
         Write-Help
         return
@@ -141,11 +128,6 @@
     if($ModuleInfo){
         Write-Info
         return
-    }
-
-    if ($Version) {
-       Write-Version
-       return
     }
 
     if ($Examples) {

@@ -5,25 +5,22 @@ function Write-ConfigurationToHost {
         [object]$Config
     )
 
-    # Determine config type and get OutFile property
-    $outFile = $null
+    $outFile = $Config.OutFile
     $configData = @()
+
+    # Don't show configuration if we're outputting to a file
+    if (-not [string]::IsNullOrEmpty($outFile)) {
+        return
+    }
     
     if ($Config -is [TreeRegistryConfig]) {
-        $outFile = $Config.OutFile
         $configData = Get-RegistryConfigurationData -TreeRegistryConfig $Config
         $lineStyle = $Config.LineStyle.SingleLine
     } elseif ($Config -is [TreeConfig]) {
-        $outFile = $Config.OutFile
         $configData = Get-TreeConfigurationData -TreeConfig $Config
         $lineStyle = "─"
     } else {
         Write-Error "Invalid configuration type. Expected TreeConfig or TreeRegistryConfig."
-        return
-    }
-
-    # Don't show configuration if we're outputting to a file
-    if (-not [string]::IsNullOrEmpty($outFile)) {
         return
     }
     
