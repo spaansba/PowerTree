@@ -8,9 +8,9 @@ A modern replacement for the `tree` command that lets you explore directory stru
 ![Platform](https://img.shields.io/badge/platform-windows%20%7C%20macOS%20%7C%20linux-blue)
 ![PowerShell Version](https://img.shields.io/badge/PowerShell-7.0%2B-blue)
 
-## Preview Video
+## Preview Videos
 
-https://github.com/user-attachments/assets/4f5cc8ea-5b3d-49e5-b309-b35caa59dbe2
+https://github.com/user-attachments/assets/3fbe8eb4-0844-4df8-925a-0608e391be17
 
 ## What is PowerTree?
 
@@ -29,46 +29,12 @@ From [PowerShell Gallery](https://www.powershellgallery.com/packages/PowerTree):
 Install-Module PowerTree
 ```
 
-## Quick Start
+# Commands
 
-### File System Exploration
+## Show-PowerTree   <sup><sub>Alias: `ptree`, `PowerTree`</sub></sup>
+A modern replacement for the tree command that lets you explore directory structures with detailed information and advanced filtering possibilities. Explore all available parameters and advanced features in the [full documentation](docs/Show-PowerTree.md).
 
-```powershell
-# Basic usage - show tree of current directory
-Show-PowerTree
-# or use the alias
-ptree
-
-# Show tree with sizes, sorted by size (descending)
-ptree -DisplaySize -SortBySize -Descending
-
-# Exclude directories and filter by extension
-ptree -ExcludeDirectories node_modules,bin -IncludeExtensions ps1
-
-# Save output to a file
-ptree -OutFile tree_output.txt
-```
-
-### Registry Exploration (Windows Only)
-
-```powershell
-# Show registry tree for a specific path
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Microsoft"
-
-# Show only registry keys (no values)
-Show-PowerTreeRegistry -Path "HKCU:\Software" -NoValues
-
-# Display with item counts and depth limit
-Show-PowerTreeRegistry -Path "HKLM:\SYSTEM" -DisplayItemCounts -Depth 2
-```
-
-# Available Commands
-
-## Show-PowerTree (Alias: `ptree`, `PowerTree`)
-A modern replacement for the tree command that lets you explore directory structures and Windows Registry with detailed information and advanced filtering possibilities.
-[More Information](docs/Show-PowerTree.md)  
-
-### Images
+### Example Images
 
 <details>
   <summary>File system with sizes sorted by size descending</summary>
@@ -114,58 +80,35 @@ ptree -DirectoryOnly -DisplaySize
   <img src="./images/Directory_Only.JPG" alt="PowerTree directory only view">
 </details>
 
-### Key Features
-- **Display Options**: File sizes, cumulative folder sizes (with all subfolders/files), creation date, modification date, or access date and mode
-- **Sorting**: By name, size, creation date, modification date, or access date
-- **Filtering**: Include/exclude files by extension, filter on size (e.g., 1kb-20mb), show only directories, or remove empty directories
-- **Output Options**: Console display or export to file
-- **Cross-Platform**: Works on Windows, macOS, and Linux
+## Show-PowerTreeRegistry   <sup><sub>Alias: `ptreer`, `PowerRegistry`</sub></sup>
+Shows Windows Registry keys and values in tree format. Displays both registry keys and their values, making it easy to see the structure of any registry hive or specific key. Explore all available parameters and advanced features in the [full documentation](docs/Show-PowerTreeRegistry.md).
 
-### Tree Statistics
-PowerTree shows the following stats for your tree. 
+### Example Images
 
-**Basic Statistics:**
-- Files and folders processed
-- Total items count
-- Maximum depth traversed
-- Total size of all files
-- Execution time
-
-**When using `-DisplaySize`:**
-- Largest file found (size and path)
-- Largest folder found (size and path)
+<details>
+    <summary>Default Registry View</summary>
+    <br>
   
-This feature can be disabled through `Edit-PowerTreeConfig` by setting `ShowExecutionStats` to `false`.
+```powershell
+PowerRegistry HKLM:\SOFTWARE\ 
+```
+ <br>
+    <img src="./images/Registry_Default.JPG" alt="Default PowerTree Registry View">
+</details>
 
-## Show-PowerTreeRegistry (Alias: `ptreer`, `PowerRegistry`) (Windows Only)
-Shows Windows Registry keys and values in tree format. Displays both registry keys and their values, making it easy to see the structure of any registry hive or specific key.
-[More Information](docs/Show-PowerTreeRegistry.md)  
+<details>
+    <summary>Filtered Registry View</summary>
+    <br>
+  
+```powershell
+PowerRegistry HKLM:\SOFTWARE\ -DisplayItemCounts -Exclude "*data*" -l 2 -UseRegistryDataTypes
+```
+ <br>
+    <img src="./images/Registry_Filtered.JPG" alt="Filtered PowerTree Registry View">
+</details>
 
-### Images
-
-### Key Features
-- **Registry Navigation**: Explore any registry hive or key with tree structure. Returns both the key and the value
-- **Advanced Filtering**: Include/exclude patterns for keys and values
-- **Output Options**: Console display or export to file
-
-### Tree Statistics
-PowerTree shows execution statistics after each run:
-
-**Basic Statistics:**
-- Keys and values processed
-- Maximum depth traversed
-- Execution time
-
-This feature can be disabled through `Edit-PowerTreeConfig` by setting `ShowExecutionStats` to `false`.
-
-## Edit-PowerTreeConfig (Alias: `Edit-PowerTree`, `Edit-ptree`)
-Opens the configuration file to change default settings. Set which directories to always exclude, default sorting, and tree display style.
-[More Information](docs/Edit-PowerTreeConfig.md)  
-
-### Key Features
-- **JSON Configuration**: Fully configurable via JSON
-- **Visual Customization**: Set visual custimizations not available through parameters. E.G. Tree line styles (├── vs |--), show/hide execution stats, human-readable sizes (10MB vs 10485760)
-- **Parameter Defaults**: Configure default exclusions (e.g., always exclude node_modules, bin, obj directories), file size limits, and depth restrictions
+## Edit-PowerTreeConfig   <sup><sub>Alias: `Edit-PowerTree`, `Edit-ptree`</sub></sup>
+Opens the configuration file to change default settings. Set which directories to always exclude, default sorting, and tree display style. Explore all available parameters and advanced features in the [full documentation](docs/Edit-PowerTreeConfig.md).
 
 ## Common Use Cases
 
@@ -175,11 +118,11 @@ Opens the configuration file to change default settings. Set which directories t
 # Find large files consuming disk space
 ptree -DisplaySize -SortBySize -Descending -FileSizeMinimum 100MB
 
-# Explore registry configuration
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Microsoft" -DisplayItemCounts
-
 # Document directory structure for compliance
 ptree -DisplayAll -OutFile system_audit.txt
+
+# Audit installed software and versions
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" -Depth 2 -OutFile "output.txt"
 ```
 
 ### Development Workflows
