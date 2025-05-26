@@ -59,12 +59,12 @@ function Show-PowerTreeRegistry {
     . .\Private\PowerTreeRegistry\Filtering\Get-ProcessedRegistryValues.ps1
     . .\Private\PowerTreeRegistry\Filtering\Set-LastItemFlag.ps1
     . .\Private\PowerTreeRegistry\Sorting\Invoke-RegistryItemSorting.ps1
-    . .\Private\PowerTreeRegistry\Configuration\Write-RegistryConfiguration.ps1
     . .\Private\Shared\Output\Add-DefaultExtension.ps1
     . .\Private\PowerTreeRegistry\Output\ToFile\Invoke-OutputBuilderRegistry.ps1
     . .\Private\PowerTreeRegistry\Output\Get-RegistryConfigurationData.ps1
     . .\Private\PowerTreeRegistry\Output\Show-RegistryStats.ps1
     . .\Private\Shared\Output\Format-ExecutionTime.ps1
+    . .\Private\Shared\Output\Write-ConfigurationToHost.ps1
     
     $jsonSettings = Get-SettingsFromJson -Mode "Registry"
 
@@ -99,7 +99,7 @@ function Show-PowerTreeRegistry {
             
         } else {
             if($jsonSettings.ShowConfigurations){
-                Write-RegistryConfiguration -TreeRegistryConfig $treeRegistryConfig 
+                Write-ConfigurationToHost -Config $treeRegistryConfig 
             }
             $registryStats = Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig
         }
@@ -123,8 +123,10 @@ function Show-PowerTreeRegistry {
         if ($null -eq $fullOutputPath) {
             $fullOutputPath = $treeRegistryConfig.OutFile
         }
+        Write-Host ""
         Write-Host "Output saved to: $($fullOutputPath)" -ForegroundColor Cyan
+        Write-Host ""
     }
 }
 
-# Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft" 
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft" 

@@ -1,140 +1,109 @@
-# PowerTree Output
-# Generated: 05/26/2025 09:17:15
-# Path: .
-# Output File: x.txt
-# Sort By: Name Ascending
-# Displayed Columns: Mode, Creation Date, Last Access Date, Modification Date, Size
+# PowerTreeRegistry Output
+# Generated: 05/26/2025 09:50:16
+# Registry Path: HKLM:\SOFTWARE\Policies\Microsoft
 
-Files    Folders    Total Items    Depth    Total Size    Execution Time    
-─────    ───────    ───────────    ─────    ──────────    ──────────────    
-66       29         95             4        1;36   MB     169 ms            
+Configuration:
+─────────────
+Sort By                Registry Order Ascending
+Type Format            String, DWord, etc.
+NoValues               False
+DisplayItemCounts      False
+SortValuesByType       False
+Max Depth              Unlimited
+Include (Values)       None
+Exclude (Keys/Values)  None
 
-Largest File: 909;57 KB  C:\Users\barts\OneDrive\Bureaublad\Projects\Scripts\PowerTree\images\PowerTree_Example.gif
-Largest Folder: 1;21   MB  C:\Users\barts\OneDrive\Bureaublad\Projects\Scripts\PowerTree\images
-Mode     Creation Date       Last Access Date    Modification Date   Size         Hierarchy
-──────   ─────────────────   ─────────────────   ─────────────────   ──────────   ─────────
--a---    2025-04-04 09:41    2025-05-26 08:42    2025-04-25 05:15    7       B    │   .gitIgnore
--a---    2025-05-24 16:47    2025-05-26 09:04    2025-05-26 09:04    167     B    │   CHANGELOG.MD
--a---    2025-04-04 12:06    2025-05-26 09:04    2025-04-04 12:06    1;06   KB    │   LICENSE
--a---    2025-05-24 17:47    2025-05-26 09:04    2025-05-24 17:47    692     B    │   package.psd1
--a---    2025-04-04 08:33    2025-05-26 09:02    2025-05-23 15:12    1;36   KB    │   PowerTree.psd1
--a---    2025-04-04 08:33    2025-05-26 09:02    2025-05-23 11:23    1;84   KB    │   PowerTree.psm1
--a---    2025-04-04 12:35    2025-05-26 09:04    2025-05-26 09:04    12;71  KB    │   README.md
--a---    2025-05-26 08:25    2025-05-26 09:16    2025-05-26 09:16    6;47   KB    │   x.txt
-                                                                                  │
-d----    2025-04-04 09:31    2025-05-26 08:52    2025-04-04 09:31    703     B    ├───.vscode
--a---    2025-04-04 09:31    2025-05-26 08:52    2025-05-23 12:17    703     B    │   │   launch.json
-                                                                                  │
-d----    2025-04-04 14:05    2025-05-26 08:42    2025-05-22 09:14    1;21   MB    ├───images
--a---    2025-04-24 14:30    2025-05-26 09:04    2025-04-24 14:30    178;78 KB    │   │   All_Display_Options.JPG
--a---    2025-04-24 14:33    2025-05-26 09:04    2025-04-24 14:33    28;25  KB    │   │   Directory_Only.JPG
--a---    2025-04-24 14:32    2025-05-26 09:04    2025-04-24 14:32    53;07  KB    │   │   File_Size_Minimum.JPG
--a---    2025-05-22 09:14    2025-05-26 09:04    2025-05-22 09:14    909;57 KB    │   │   PowerTree_Example.gif
--a---    2025-04-24 14:29    2025-05-26 09:04    2025-04-24 14:29    69;32  KB    │   │   Size_SortSize_Desc.JPG
-                                                                                  │
-d----    2025-05-24 17:47    2025-05-26 08:42    2025-05-24 17:47    17;5   KB    ├───out
--a---    2025-05-24 17:47    2025-05-26 09:04    2025-05-24 17:47    17;5   KB    │   │   Get-TreeView.exe
-                                                                                  │   │
-d----    2025-05-24 17:47    2025-05-26 08:42    2025-05-24 17:47    0       B    │   └───bin
-                                                                                  │
-d----    2025-04-04 08:58    2025-05-26 08:42    2025-05-23 11:22    92;01  KB    ├───Private
-                                                                                  │   │
-d----    2025-05-23 11:21    2025-05-26 08:42    2025-05-23 11:23    60;71  KB    │   ├───PowerTree
-                                                                                  │   │   │
-d----    2025-04-04 08:58    2025-05-26 08:42    2025-05-24 17:50    10;34  KB    │   │   ├───Configuration
--a---    2025-04-04 08:58    2025-05-26 09:02    2025-04-05 17:50    258     B    │   │   │   │   Constants.ps1
--a---    2025-04-04 08:58    2025-05-26 09:07    2025-05-26 09:07    5;26   KB    │   │   │   │   Write-Configuration.ps1
-                                                                                  │   │   │   │
-d----    2025-04-06 19:41    2025-05-26 08:42    2025-05-24 17:50    4;82   KB    │   │   │   └───ParamHelpers
--a---    2025-04-06 19:42    2025-05-26 09:02    2025-04-06 19:43    305     B    │   │   │       │   Build-ChildItemDirectoryParams.ps1
--a---    2025-04-06 19:42    2025-05-26 09:02    2025-04-06 19:43    2;01   KB    │   │   │       │   Build-ChildItemFileParams.ps1
--a---    2025-04-06 19:41    2025-05-26 09:02    2025-04-06 19:42    654     B    │   │   │       │   Build-ExcludeDirectoryParams.ps1
--a---    2025-04-06 19:41    2025-05-26 09:02    2025-04-28 09:56    1;88   KB    │   │   │       │   Build-FileSizeParam.ps1
-                                                                                  │   │   │
-d----    2025-04-04 08:58    2025-05-26 08:42    2025-05-24 17:50    969     B    │   │   ├───Filtering
--a---    2025-04-06 19:38    2025-05-26 09:02    2025-04-06 19:39    969     B    │   │   │   │   Format-FileExtensions.ps1
-                                                                                  │   │   │
-d----    2025-04-04 08:58    2025-05-26 08:42    2025-05-24 17:48    40;8   KB    │   │   ├───Output
--a---    2025-04-06 19:35    2025-05-26 09:02    2025-05-24 17:53    5;16   KB    │   │   │   │   Build-OutputLine.ps1
--a---    2025-05-24 17:47    2025-05-26 09:13    2025-05-26 09:13    8;89   KB    │   │   │   │   Get-TreeView.ps1
--a---    2025-04-25 09:56    2025-05-26 09:17    2025-05-26 09:17    2;86   KB    │   │   │   │   Show-TreeStats.ps1
--a---    2025-04-06 19:14    2025-05-26 09:13    2025-05-26 09:13    256     B    │   │   │   │   Write-OutputLine.ps1
-                                                                                  │   │   │   │
-d----    2025-04-06 19:34    2025-05-26 08:42    2025-05-24 17:50    2;75   KB    │   │   │   ├───Header
--a---    2025-04-04 08:58    2025-05-26 09:02    2025-05-24 18:08    2;25   KB    │   │   │   │   │   Get-HeaderTable.ps1
--a---    2025-04-06 19:34    2025-05-26 09:16    2025-05-26 09:16    513     B    │   │   │   │   │   Write-HeaderOutput.ps1
-                                                                                  │   │   │   │
-d----    2025-04-06 19:36    2025-05-26 08:42    2025-05-24 17:49    12;76  KB    │   │   │   ├───Help
--a---    2025-04-25 06:22    2025-05-26 09:02    2025-04-25 08:01    428     B    │   │   │   │   │   Write-CheckForUpdates.ps1
--a---    2025-04-06 19:36    2025-05-26 09:09    2025-05-26 09:09    5;15   KB    │   │   │   │   │   Write-Examples.ps1
--a---    2025-04-04 08:58    2025-05-26 09:08    2025-05-26 09:08    4;3    KB    │   │   │   │   │   Write-Help.ps1
--a---    2025-04-25 05:59    2025-05-26 09:02    2025-04-25 08:00    2;28   KB    │   │   │   │   │   Write-Info.ps1
--a---    2025-04-25 05:52    2025-05-26 09:02    2025-05-24 17:49    621     B    │   │   │   │   │   Write-Version.ps1
-                                                                                  │   │   │   │
-d----    2025-04-06 19:44    2025-05-26 08:42    2025-05-24 18:52    7      KB    │   │   │   ├───ToFile
--a---    2025-04-06 19:44    2025-05-26 09:08    2025-05-26 09:08    4;13   KB    │   │   │   │   │   Invoke-OutputBuilder.ps1
--a---    2025-04-06 19:45    2025-05-26 09:02    2025-04-06 19:45    2;87   KB    │   │   │   │   │   Write-ToFile.ps1
-                                                                                  │   │   │   │
-d----    2025-04-25 07:27    2025-05-26 08:42    2025-05-24 17:49    1;13   KB    │   │   │   └───Update
--a---    2025-04-25 07:27    2025-05-26 09:02    2025-04-25 07:28    1;13   KB    │   │   │       │   Get-UpdateAvailable.ps1
-                                                                                  │   │   │
-d----    2025-04-06 19:21    2025-05-26 08:42    2025-05-24 17:49    5;22   KB    │   │   ├───Size
--a---    2025-04-06 19:38    2025-05-26 09:02    2025-04-06 19:38    1002    B    │   │   │   │   Get-FilesByFilteredSize.ps1
--a---    2025-04-06 19:22    2025-05-26 09:02    2025-05-24 17:53    1;33   KB    │   │   │   │   Get-FolderSize.ps1
--a---    2025-04-06 19:37    2025-05-26 09:02    2025-04-28 10:18    748     B    │   │   │   │   Get-HumanReadableSize.ps1
--a---    2025-04-06 19:37    2025-05-26 09:02    2025-04-06 19:37    552     B    │   │   │   │   Get-SizeColor.ps1
-                                                                                  │   │   │   │
-d----    2025-04-28 09:55    2025-05-26 08:42    2025-05-24 17:48    1;64   KB    │   │   │   └───Conversion
--a---    2025-04-28 09:56    2025-05-26 09:02    2025-04-28 10:18    1;64   KB    │   │   │       │   Convert-ToBytes.ps1
-                                                                                  │   │   │
-d----    2025-04-04 08:58    2025-05-26 08:42    2025-05-24 17:50    3;41   KB    │   │   └───Sorting
--a---    2025-04-04 08:58    2025-05-26 09:02    2025-05-24 17:53    3;41   KB    │   │       │   Get-SortingMethod.ps1
-                                                                                  │   │
-d----    2025-05-23 11:21    2025-05-26 08:42    2025-05-24 18:38    18;38  KB    │   ├───PowerTreeRegistry
-                                                                                  │   │   │
-d----    2025-05-23 11:34    2025-05-26 08:42    2025-05-24 18:47    1;14   KB    │   │   ├───Configuration
--a---    2025-05-24 18:46    2025-05-26 08:44    2025-05-24 20:58    839     B    │   │   │   │   Write-RegistryConfiguration.ps1
-                                                                                  │   │   │   │
-d----    2025-05-23 11:34    2025-05-26 08:42    2025-05-23 11:37    328     B    │   │   │   └───ParamHelpers
--a---    2025-05-23 11:37    2025-05-26 08:44    2025-05-23 12:10    328     B    │   │   │       │   Get-Path.ps1
-                                                                                  │   │   │
-d----    2025-05-23 15:05    2025-05-26 08:42    2025-05-24 18:39    5;24   KB    │   │   ├───Filtering
--a---    2025-05-24 18:39    2025-05-26 08:19    2025-05-26 08:19    1;51   KB    │   │   │   │   Get-ProcessedRegistryKeys.ps1
--a---    2025-05-24 18:39    2025-05-26 08:44    2025-05-24 18:39    1;42   KB    │   │   │   │   Get-ProcessedRegistryValues.ps1
--a---    2025-05-23 15:05    2025-05-26 08:19    2025-05-26 08:19    1;66   KB    │   │   │   │   Get-RegistryItems.ps1
--a---    2025-05-24 18:38    2025-05-26 08:44    2025-05-24 18:39    325     B    │   │   │   │   Set-LastItemFlag.ps1
--a---    2025-05-24 18:30    2025-05-26 08:44    2025-05-24 18:32    351     B    │   │   │   │   Test-FilterMatch.ps1
-                                                                                  │   │   │
-d----    2025-05-23 12:18    2025-05-26 08:42    2025-05-24 19:58    10;06  KB    │   │   ├───Output
--a---    2025-05-24 19:22    2025-05-26 08:23    2025-05-26 08:23    2;04   KB    │   │   │   │   Get-RegistryConfigurationData.ps1
--a---    2025-05-23 12:18    2025-05-26 08:20    2025-05-26 08:20    4;65   KB    │   │   │   │   Get-TreeRegistryView.ps1
--a---    2025-05-24 19:52    2025-05-26 09:00    2025-05-26 09:00    1;98   KB    │   │   │   │   Show-RegistryStats.ps1
-                                                                                  │   │   │   │
-d----    2025-05-24 18:45    2025-05-26 08:42    2025-05-24 18:45    1;39   KB    │   │   │   └───ToFile
--a---    2025-05-24 18:42    2025-05-26 09:00    2025-05-26 09:00    1;39   KB    │   │   │       │   Invoke-OutputBuilderRegistry.ps1
-                                                                                  │   │   │
-d----    2025-05-24 18:38    2025-05-26 08:42    2025-05-24 18:38    1;95   KB    │   │   └───Sorting
--a---    2025-05-24 18:38    2025-05-26 08:44    2025-05-24 18:38    1;95   KB    │   │       │   Invoke-RegistryItemSorting.ps1
-                                                                                  │   │
-d----    2025-05-23 11:22    2025-05-26 08:42    2025-05-24 18:52    12;91  KB    │   └───Shared
--a---    2025-04-06 19:43    2025-05-26 08:44    2025-05-23 16:26    896     B    │       │   Build-TreeLineStyle.ps1
-                                                                                  │       │
-d----    2025-04-04 08:58    2025-05-26 08:42    2025-04-25 09:55    3      KB    │       ├───DataModel
--a---    2025-04-04 08:58    2025-05-26 09:10    2025-05-26 09:10    1;92   KB    │       │   │   Classes.ps1
--a---    2025-04-25 09:55    2025-05-26 08:53    2025-04-25 09:55    1;08   KB    │       │   │   ClassLoader.ps1
-                                                                                  │       │
-d----    2025-04-06 19:39    2025-05-26 08:42    2025-05-23 15:09    7;96   KB    │       ├───JsonConfig
--a---    2025-04-06 19:40    2025-05-26 08:44    2025-04-06 19:41    344     B    │       │   │   Get-ConfigPaths.ps1
--a---    2025-04-06 19:40    2025-05-26 08:44    2025-05-24 19:38    1;04   KB    │       │   │   Get-DefaultConfig.ps1
--a---    2025-04-06 19:39    2025-05-26 08:44    2025-05-24 19:38    6;58   KB    │       │   │   Get-SettingsFromJson.ps1
-                                                                                  │       │
-d----    2025-05-24 18:52    2025-05-26 08:46    2025-05-26 08:46    1;08   KB    │       └───Output
--a---    2025-04-06 19:45    2025-05-26 09:10    2025-05-26 09:10    437     B    │           │   Add-DefaultExtension.ps1
--a---    2025-05-26 08:46    2025-05-26 08:50    2025-05-26 08:50    156     B    │           │   Convert-StatsInOutputFile.ps1
--a---    2025-05-26 08:07    2025-05-26 09:13    2025-05-26 08:11    509     B    │           │   Format-ExecutionTime.ps1
-                                                                                  │
-d----    2025-04-04 08:58    2025-05-26 08:42    2025-05-23 12:39    16;44  KB    └───Public
--a---    2025-04-04 13:21    2025-05-26 09:02    2025-05-23 10:43    2;65   KB        │   Edit-PowerTreeConfig.ps1
--a---    2025-04-04 08:58    2025-05-26 09:10    2025-05-26 09:10    8;49   KB        │   Show-PowerTree.ps1
--a---    2025-05-23 10:37    2025-05-26 09:10    2025-05-26 09:10    5;3    KB        │   Show-PowerTreeRegistry.ps1
+Execution Stats:
+───────────────
+Keys    Values    Total Items    Max Depth    Execution Time    
+────    ──────    ───────────    ─────────    ──────────────    
+65      19        84             4            135 ms            
+
+Type         Hierarchy
+────         ─────────
+Key          Microsoft
+Key          ├───Cryptography
+Key          │   └───Configuration
+Key          │       └───SSL
+Key          │           └───00010002
+Key          ├───MSDeploy
+Key          │   └───3
+String       │       ├───(Default) = 
+DWord        │       └───EnableTelemetry = 1
+Key          ├───Peernet
+DWord        │   └───Disabled = 0
+Key          ├───SystemCertificates
+Key          │   ├───CA
+Key          │   │   ├───Certificates
+Key          │   │   ├───CRLs
+Key          │   │   └───CTLs
+Key          │   ├───Disallowed
+Key          │   │   ├───Certificates
+Key          │   │   ├───CRLs
+Key          │   │   └───CTLs
+Key          │   ├───Root
+Key          │   │   ├───Certificates
+Key          │   │   ├───CRLs
+Key          │   │   └───CTLs
+Key          │   ├───trust
+Key          │   │   ├───Certificates
+Key          │   │   ├───CRLs
+Key          │   │   └───CTLs
+Key          │   ├───TrustedPeople
+Key          │   │   ├───Certificates
+Key          │   │   ├───CRLs
+Key          │   │   └───CTLs
+Key          │   └───TrustedPublisher
+Key          │       ├───Certificates
+Key          │       ├───CRLs
+Key          │       └───CTLs
+Key          ├───TPM
+DWord        │   └───OSManagedAuthLevel = 5
+Key          ├───Windows
+Key          │   ├───Appx
+String       │   │   └───MdmHosts = ^(?:[^\/]*)\.MANAGE[^\.]*\.(MICROSOFT\.(COM|US)|MICROSOFTONLINE\.CN)$
+Key          │   ├───BITS
+Key          │   ├───CurrentVersion
+Key          │   │   └───Internet Settings
+DWord        │   │       ├───CallLegacyWCMPolicies = 0
+Key          │   │       └───Cache
+Key          │   ├───DataCollection
+Key          │   ├───EnhancedStorageDevices
+DWord        │   │   └───TCGSecurityActivationDisabled = 0
+Key          │   ├───IPSec
+Key          │   │   └───Policy
+Key          │   ├───Network Connections
+DWord        │   │   └───NC_PersonalFirewallConfig = 0
+Key          │   ├───NetworkConnectivityStatusIndicator
+String       │   │   └───(Default) = 
+Key          │   ├───NetworkProvider
+Key          │   │   └───HardenedPaths
+Key          │   ├───safer
+Key          │   │   └───codeidentifiers
+DWord        │   │       └───authenticodeenabled = 0
+Key          │   ├───SettingSync
+DWord        │   │   └───EnableBackupForWin8Apps = 1
+Key          │   ├───System
+Key          │   ├───WcmSvc
+Key          │   │   ├───GroupPolicy
+Key          │   │   └───Local
+DWord        │   │       └───WCMPresent = 1
+Key          │   ├───WorkplaceJoin
+String       │   │   └───(Default) = 
+Key          │   └───WSDAPI
+Key          │       └───Discovery Proxies
+Key          ├───Windows Defender
+Key          │   └───Policy Manager
+Key          └───Windows NT
+Key              ├───Terminal Services
+Key              │   └───Client
+DWord            │       ├───fEnableUsbBlockDeviceBySetupClass = 1
+DWord            │       ├───fEnableUsbNoAckIsochWriteToDevice = 80
+DWord            │       ├───fEnableUsbSelectDeviceByInterface = 1
+Key              │       ├───UsbBlockDeviceBySetupClasses
+String           │       │   └───1000 = {3376f4ce-ff8d-40a2-a80f-bb4359d1415c}
+Key              │       └───UsbSelectDeviceByInterfaces
+String           │           └───1000 = {6bdd1fc6-810f-11d0-bec7-08002be2092f}
+Key              └───Windows File Protection
+String               └───KnownDllList = nlhtml.dll
 

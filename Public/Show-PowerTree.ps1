@@ -214,7 +214,7 @@
                                                             -CommandLineExcludeExt $ExcludeExtensions `
                                                             -FileSettings $jsonSettings.Files
 
-            Write-Configuration -TreeConfig $treeConfig 
+            Write-ConfigurationToHost -Config $treeConfig 
 
             Write-HeaderToOutput -HeaderTable $treeConfig.HeaderTable `
                               -OutputBuilder $outputBuilder `
