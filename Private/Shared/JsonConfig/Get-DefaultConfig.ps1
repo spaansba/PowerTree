@@ -8,10 +8,7 @@ function Get-DefaultConfig {
             ShowExecutionStats = $true
             ShowConfigurations = $true
             LineStyle = "Unicode"
-            Sorting = @{
-                By = "Name"
-                SortFolders = $false
-            }
+            OpenOutputFileOnFinish = $true
         }
         FileSystem = @{
             MaxDepth = -1 # -1 means no depth limit
@@ -21,15 +18,16 @@ function Get-DefaultConfig {
                 IncludeExtensions = @()
                 FileSizeMinimum = "-1kb"
                 FileSizeMaximum = "-1kb"
-                OpenOutputFileOnFinish = $true
+            }
+            Sorting = @{
+                By = "Name"
+                SortFolders = $false
             }
             HumanReadableSizes = $true
         }
         Registry = @{
             MaxDepth = -1 # -1 means no depth limit
             ExcludeKeys = @()
-            ValueTypes = @("String", "DWord", "QWord", "Binary", "MultiString", "ExpandString")
-            EscapeWildcards = $true
         }
     }
 }

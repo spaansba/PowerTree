@@ -14,11 +14,11 @@ A modern replacement for the tree command with advanced filtering, sorting, and 
 ## SYNTAX
 
 ```
-Show-PowerTree [[-LiteralPath] <String>] [-Depth <Int32>] [-Help] [-Examples] [-PruneEmptyFolders]
- [-DisplayAll] [-DisplayMode] [-DisplaySize] [-DisplayModificationDate] [-DisplayCreationDate]
- [-DisplayLastAccessDate] [-DirectoryOnly] [-ExcludeDirectories <String[]>] [-Sort <String>]
- [-SortByModificationDate] [-SortByCreationDate] [-SortByLastAccessDate] [-SortBySize] [-SortByName]
- [-Descending] [-FileSizeMinimum <String>] [-FileSizeMaximum <String>] [-FileSizeFilter <String>]
+Show-PowerTree [[-LiteralPath] <String>] [-Depth <Int32>] [-Examples] [-PruneEmptyFolders] [-DisplayAll]
+ [-DisplayMode] [-DisplaySize] [-DisplayModificationDate] [-DisplayCreationDate] [-DisplayLastAccessDate]
+ [-DirectoryOnly] [-ExcludeDirectories <String[]>] [-Sort <String>] [-SortByModificationDate]
+ [-SortByCreationDate] [-SortByLastAccessDate] [-SortBySize] [-SortByName] [-Descending]
+ [-FileSizeMinimum <String>] [-FileSizeMaximum <String>] [-FileSizeFilter <String>]
  [-ExcludeExtensions <String[]>] [-IncludeExtensions <String[]>] [-ShowHiddenFiles] [-OutFile <String>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
@@ -314,21 +314,6 @@ Aliases: fsmi
 Required: False
 Position: Named
 Default value: -1kb
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Help
-{{ Fill Help Description }}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: h, ?
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

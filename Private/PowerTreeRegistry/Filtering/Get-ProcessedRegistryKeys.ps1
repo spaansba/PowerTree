@@ -26,10 +26,11 @@ function Get-ProcessedRegistryKeys {
     
     $keyItems = @()
     foreach ($key in $filteredChildKeys) {
+        $keyPath = Join-Path $RegistryPath $key
         $keyItem = [PSCustomObject]@{
             TypeName = "Key"
             Name = $key
-            Path = Join-Path $RegistryPath $key
+            Path = $keyPath
             IsLast = $false
         }
         

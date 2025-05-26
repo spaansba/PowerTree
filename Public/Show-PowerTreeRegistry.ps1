@@ -129,4 +129,4 @@ function Show-PowerTreeRegistry {
     }
 }
 
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft" 
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft" -DisplayItemCounts -Exclude "windows*"

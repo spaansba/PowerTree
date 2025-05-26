@@ -10,75 +10,33 @@
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Edit-PowerTreeConfig is a utility cmdlet that manages your PowerTree configuration file. It automatically locates or creates the configuration file and opens it in the appropriate editor for your operating system.</maml:para>
-      <maml:para>The configuration file allows you to customize default behaviors for PowerTree, including:</maml:para>
-      <maml:para>- Default sorting preferences</maml:para>
-      <maml:para>- Display options</maml:para>
-      <maml:para>- Line style preferences</maml:para>
-      <maml:para>- File filtering defaults</maml:para>
-      <maml:para>- Performance settings</maml:para>
+      <maml:para>Edit-PowerTreeConfig is a utility cmdlet that manages your PowerTree and PowerTreeRegistry configuration file. It automatically locates or creates the configuration file and opens it in the appropriate editor for your operating system.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Edit-PowerTreeConfig</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="proga">
-          <maml:name>ProgressAction</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill ProgressAction Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-          <dev:type>
-            <maml:name>ActionPreference</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
-    <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="proga">
-        <maml:name>ProgressAction</maml:name>
-        <maml:description>
-          <maml:para>{{ Fill ProgressAction Description }}</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        <dev:type>
-          <maml:name>ActionPreference</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>None</maml:name>
-        </dev:type>
-        <maml:description>
-          <maml:para>You cannot pipe objects to Edit-PowerTreeConfig.</maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>None</maml:name>
-        </dev:type>
-        <maml:description>
-          <maml:para>Edit-PowerTreeConfig does not generate output. It opens the configuration file in an editor.</maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
+    <command:parameters />
+    <command:inputTypes />
+    <command:returnValues />
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Configuration File Location: - Windows: `$env:USERPROFILE\.PowerTree\config.json` - macOS/Linux: `$HOME/.PowerTree/config.json` Default Editor Behavior: - Windows: Opens with the system default application for JSON files - macOS: Uses the `open` command to launch the default editor - Linux: Attempts to use `xdg-open`, `nano`, `vim`, or `vi` in that order Configuration File Structure: The configuration file is a JSON document with the following main sections:</maml:para>
-        <maml:para>- `LineStyle`: Tree display styling options</maml:para>
-        <maml:para>- `Sorting`: Default sorting preferences</maml:para>
-        <maml:para>- `Files`: File filtering and handling options</maml:para>
-        <maml:para>- `ShowConnectorLines`: Whether to show tree connector lines</maml:para>
-        <maml:para>- `MaxDepth`: Default maximum depth limit</maml:para>
-        <maml:para>- `HumanReadableSizes`: Whether to display sizes in human-readable format</maml:para>
-        <maml:para>- `ShowExecutionStats`: Whether to show performance statistics</maml:para>
+        <maml:para>Configuration File Location: - Windows: `$env:USERPROFILE\.PowerTree\config.json` - macOS/Linux: `$HOME/.PowerTree/config.json` Default Editor Behavior: - Windows: Opens with the system default application for JSON files - macOS: Uses the `open` command to launch the default editor - Linux: Attempts to use `xdg-open`, `nano`, `vim`, or `vi` in that order Configuration File Structure: { "FileSystem": { "MaxDepth": -1, "Files": { "IncludeExtensions": [], "ExcludeExtensions": [], "FileSizeMaximum": "-1kb", "FileSizeMinimum": "-1kb" }, "Sorting": { "By": "Name", "SortFolders": false }, "HumanReadableSizes": true, "ExcludeDirectories": [] }, "Registry": { "MaxDepth": -1, "DisplayValues": false, "ExcludeKeys": [] }, "Shared": { "LineStyle": "unicode", "ShowExecutionStats": true, "ShowConfigurations": true, "ShowConnectorLines": true, "OpenOutputFileOnFinish": true } } Configuration Options: FileSystem Section (for Show-PowerTree): - `MaxDepth`: Maximum directory depth to traverse (-1 = unlimited). Overwritten by `-Depth` parameter.</maml:para>
+        <maml:para>- `Files.IncludeExtensions`: Only show files with these extensions (empty = all files). Same as `-IncludeExtensions` parameter.</maml:para>
+        <maml:para>- `Files.ExcludeExtensions`: Hide files with these extensions. Same as `-ExcludeExtensions` parameter.</maml:para>
+        <maml:para>- `Files.FileSizeMaximum`: Hide files larger than this size (-1kb = no limit). Overwritten by `-FileSizeMaximum` parameter.</maml:para>
+        <maml:para>- `Files.FileSizeMinimum`: Hide files smaller than this size (-1kb = no limit). Overwritten by `-FileSizeMinimum` parameter.</maml:para>
+        <maml:para>- `Sorting.By`: Default sort method ("Name", "Size", "Date", etc.). Overwritten by `-Sort` and `-SortBy*` parameters.</maml:para>
+        <maml:para>- `Sorting.SortFolders`: Apply sorting to directories (false = folders first). Can only be changed via configuration file.</maml:para>
+        <maml:para>- `HumanReadableSizes`: Show sizes as KB/MB/GB instead of raw bytes. Can only be changed via configuration file.</maml:para>
+        <maml:para>- `ExcludeDirectories`: Standard directories to always exclude. Same as `-ExcludeDirectories` parameter. Registry Section (for Show-PowerTreeRegistry): - `MaxDepth`: Maximum registry depth to traverse (-1 = unlimited). Overwritten by `-Depth` parameter.</maml:para>
+        <maml:para>- `DisplayValues`: Show registry value data (can be verbose). Overwritten by `-DisplayValues` parameter.</maml:para>
+        <maml:para>- `ExcludeKeys`: Registry keys to always exclude. Overwritten by `-ExcludeKeys` parameter. Shared Section (for both cmdlets): - `LineStyle`: Tree connector style ("unicode" for ├── or "ascii" for |--). Can only be changed via configuration file.</maml:para>
+        <maml:para>- `ShowExecutionStats`: Display timing and file count statistics. Can only be changed via configuration file.</maml:para>
+        <maml:para>- `ShowConfigurations`: Display active configuration at start. Can only be changed via configuration file.</maml:para>
+        <maml:para>- `ShowConnectorLines`: Show tree connector lines. Can only be changed via configuration file.</maml:para>
+        <maml:para>- `OpenOutputFileOnFinish`: Automatically open output file when using `-OutFile`. Can only be changed via configuration file.</maml:para>
         <maml:para></maml:para>
         <maml:para>If the configuration file doesn't exist, Edit-PowerTreeConfig will create it with sensible defaults.</maml:para>
       </maml:alert>
@@ -89,13 +47,6 @@
         <dev:code>PS C:\&gt; Edit-PowerTreeConfig</dev:code>
         <dev:remarks>
           <maml:para>Opens the PowerTree configuration file in the default editor. If no configuration file exists, creates a new one with default settings.</maml:para>
-        </dev:remarks>
-      </command:example>
-      <command:example>
-        <maml:title>-------------------- Example 2: Using alias --------------------</maml:title>
-        <dev:code>PS C:\&gt; Edit-PowerTree</dev:code>
-        <dev:remarks>
-          <maml:para>Alternative way to open the configuration file using the alias.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

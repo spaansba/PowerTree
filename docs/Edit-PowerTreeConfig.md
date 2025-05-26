@@ -19,15 +19,7 @@ Edit-PowerTreeConfig [-ProgressAction <ActionPreference>] [<CommonParameters>]
 
 ## DESCRIPTION
 
-Edit-PowerTreeConfig is a utility cmdlet that manages your PowerTree configuration file. It automatically locates or creates the configuration file and opens it in the appropriate editor for your operating system.
-
-The configuration file allows you to customize default behaviors for PowerTree, including:
-
-- Default sorting preferences
-- Display options
-- Line style preferences
-- File filtering defaults
-- Performance settings
+Edit-PowerTreeConfig is a utility cmdlet that manages your PowerTree and PowerTreeRegistry configuration file. It automatically locates or creates the configuration file and opens it in the appropriate editor for your operating system.
 
 ## EXAMPLES
 
@@ -38,46 +30,6 @@ PS C:\> Edit-PowerTreeConfig
 ```
 
 Opens the PowerTree configuration file in the default editor. If no configuration file exists, creates a new one with default settings.
-
-### Example 2: Using alias
-
-```powershell
-PS C:\> Edit-PowerTree
-```
-
-Alternative way to open the configuration file using the alias.
-
-## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-### None
-
-You cannot pipe objects to Edit-PowerTreeConfig.
-
-## OUTPUTS
-
-### None
-
-Edit-PowerTreeConfig does not generate output. It opens the configuration file in an editor.
 
 ## NOTES
 
@@ -93,15 +45,64 @@ Edit-PowerTreeConfig does not generate output. It opens the configuration file i
 - **Linux:** Attempts to use `xdg-open`, `nano`, `vim`, or `vi` in that order
 
 **Configuration File Structure:**
-The configuration file is a JSON document with the following main sections:
 
-- `LineStyle`: Tree display styling options
-- `Sorting`: Default sorting preferences
-- `Files`: File filtering and handling options
-- `ShowConnectorLines`: Whether to show tree connector lines
-- `MaxDepth`: Default maximum depth limit
-- `HumanReadableSizes`: Whether to display sizes in human-readable format
-- `ShowExecutionStats`: Whether to show performance statistics
+```json
+{
+  // Regular PowerTree
+  "FileSystem": {
+    // Maximum directory depth to traverse (-1 = unlimited)
+    // Overwritten by -Depth
+    "MaxDepth": -1,
+    "Files": {
+      // Only show files with these extensions (empty = all files) same as -IncludeExtensions
+      "IncludeExtensions": [],
+      // Hide files with these extensions same as -ExcludeExtensions
+      "ExcludeExtensions": [],
+      // Hide files larger than this size (-1kb = no limit)
+      // Default setting, overwritten by -FileSizeMaximum parameter
+      "FileSizeMaximum": "-1kb",
+      // Hide files smaller than this size (-1kb = no limit)
+      // Default setting, overwritten by -FileSizeMinimum parameter
+      "FileSizeMinimum": "-1kb"
+    },
+    "Sorting": {
+      // Default sort method: "Name", "Size", "Date", etc.
+      // Default setting, overwritten by -Sort and -SortBy* parameters
+      "By": "Name",
+      // Apply sorting to directories (false = folders first)
+      // Can be changed via Edit-PowerTreeConfig only
+      "SortFolders": false
+    },
+    // Show sizes as KB/MB/GB instead of raw bytes
+    "HumanReadableSizes": true,
+    // Standard directories to always exclude same as -ExcludeDirectories
+    "ExcludeDirectories": []
+  },
+  // PowerTreeRegistry
+  "Registry": {
+    // Maximum registry depth to traverse (-1 = unlimited)
+    // Overwritten by -Depth
+    "MaxDepth": -1,
+    // Show registry value data (can be verbose)
+    // Default setting, overwritten by -DisplayValues parameter in Show-PowerTreeRegistry
+    "DisplayValues": false,
+    // Registry keys to always exclude
+    // Default setting, overwritten by -ExcludeKeys parameter in Show-PowerTreeRegistry
+    "ExcludeKeys": []
+  },
+  "Shared": {
+    // Tree connector style: "unicode" (├──) or "ascii" (|--)
+    "LineStyle": "unicode",
+    // Display timing and file count statistics
+    "ShowExecutionStats": true,
+    // Display active configuration at start
+    "ShowConfigurations": true,
+    "ShowConnectorLines": true,
+    // Automatically open output file when using -OutFile
+    "OpenOutputFileOnFinish": true
+  }
+}
+```
 
 If the configuration file doesn't exist, Edit-PowerTreeConfig will create it with sensible defaults.
 

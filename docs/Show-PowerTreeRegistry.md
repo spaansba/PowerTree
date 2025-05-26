@@ -1,6 +1,6 @@
 ---
-external help file: PowerTree-help.xml
-Module Name: PowerTree
+external help file:
+Module Name:
 online version: https://github.com/spaansba/PowerTree
 schema: 2.0.0
 ---
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 
 ### -Exclude
 
-Excludes registry keys or values that match the specified patterns.
+Excludes registry keys or values that match the specified patterns. For example -Exlude "_windows _" removes all keys and values that mention windows.
 
 ```yaml
 Type: String[]
@@ -150,7 +150,11 @@ Accept wildcard characters: False
 
 ### -NoValues
 
-Shows only registry keys, excluding registry values.
+Removes the values from subkeys.
+For example:
+EnableTelemetry = 1
+becomes:
+EnableTelemetry
 
 ```yaml
 Type: SwitchParameter
@@ -166,7 +170,7 @@ Accept wildcard characters: False
 
 ### -OutFile
 
-Saves the registry tree output to the specified file path.
+Saves the registry tree output to a text file instead of displaying it in the console. Faster than regular since we dont have to write to the host. Accepts both a name or a full path
 
 ```yaml
 Type: String
@@ -214,7 +218,7 @@ Accept wildcard characters: False
 
 ### -SortValuesByType
 
-Sorts registry values by their data type.
+Sorts registry values by their data type. This will group all strings/binary etc for a key
 
 ```yaml
 Type: SwitchParameter
@@ -230,7 +234,7 @@ Accept wildcard characters: False
 
 ### -UseRegistryDataTypes
 
-Displays registry values using their native registry data type names.
+Displays registry values using their native registry data type names. Will turn "string" into "REG_SZ" etc.
 
 ```yaml
 Type: SwitchParameter
@@ -243,36 +247,6 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-### None
-
-You cannot pipe objects to Show-PowerTreeRegistry.
-
-## OUTPUTS
-
-### System.String
-
-Show-PowerTreeRegistry outputs the registry tree structure as text to the console and optionally to a file.
 
 ## NOTES
 
@@ -295,7 +269,7 @@ When using `-UseRegistryDataTypes`, you'll see native registry types like:
 - REG_EXPAND_SZ (Expandable string)
 
 **Performance Considerations:**
-Large registry subtrees can take time to process. Use `-Depth` to limit traversal depth for better performance.
+Large registry subtrees can take time to process. Use `-Depth` to limit traversal depth for better performance. Or -OutFile "yourfile.txt" to reduce writing to the host.
 
 **Platform Support:**
 This cmdlet is only available on Windows systems and will display an error on other platforms.

@@ -27,10 +27,7 @@ function Get-SettingsFromJson {
                     ShowExecutionStats = if ($null -ne $settings.Shared.ShowExecutionStats) { $settings.Shared.ShowExecutionStats } else { $defaultSettings.Shared.ShowExecutionStats }
                     ShowConfigurations = if ($null -ne $settings.Shared.ShowConfigurations) { $settings.Shared.ShowConfigurations } else { $defaultSettings.Shared.ShowConfigurations }
                     LineStyle = if ($settings.Shared.LineStyle) { $settings.Shared.LineStyle } else { $defaultSettings.Shared.LineStyle }
-                    Sorting = @{
-                        By = if ($settings.Shared.Sorting.By) { $settings.Shared.Sorting.By } else { $defaultSettings.Shared.Sorting.By }
-                        SortFolders = if ($null -ne $settings.Shared.Sorting.SortFolders) { $settings.Shared.Sorting.SortFolders } else { $defaultSettings.Shared.Sorting.SortFolders }
-                    }
+                    OpenOutputFileOnFinish = if ($null -ne $settings.Shared.OpenOutputFileOnFinish) { $settings.Shared.OpenOutputFileOnFinish } else { $defaultSettings.Shared.OpenOutputFileOnFinish }
                 }
                 
                 # Add mode-specific settings
@@ -45,7 +42,10 @@ function Get-SettingsFromJson {
                                 IncludeExtensions = if ($settings.FileSystem.Files.IncludeExtensions -is [array]) { $settings.FileSystem.Files.IncludeExtensions } else { $defaultSettings.FileSystem.Files.IncludeExtensions }
                                 FileSizeMinimum = if ($settings.FileSystem.Files.FileSizeMinimum) { $settings.FileSystem.Files.FileSizeMinimum } else { $defaultSettings.FileSystem.Files.FileSizeMinimum }
                                 FileSizeMaximum = if ($settings.FileSystem.Files.FileSizeMaximum) { $settings.FileSystem.Files.FileSizeMaximum } else { $defaultSettings.FileSystem.Files.FileSizeMaximum }
-                                OpenOutputFileOnFinish = if ($null -ne $settings.FileSystem.Files.OpenOutputFileOnFinish) { $settings.FileSystem.Files.OpenOutputFileOnFinish } else { $defaultSettings.FileSystem.Files.OpenOutputFileOnFinish }
+                            }
+                            Sorting = @{
+                                By = if ($settings.FileSystem.Sorting.By) { $settings.FileSystem.Sorting.By } else { $defaultSettings.FileSystem.Sorting.By }
+                                SortFolders = if ($null -ne $settings.FileSystem.Sorting.SortFolders) { $settings.FileSystem.Sorting.SortFolders } else { $defaultSettings.FileSystem.Sorting.SortFolders }
                             }
                         }
                     }
@@ -53,8 +53,6 @@ function Get-SettingsFromJson {
                         $settingsHashtable += @{
                             MaxDepth = if ($null -ne $settings.Registry.MaxDepth) { $settings.Registry.MaxDepth } else { $defaultSettings.Registry.MaxDepth }
                             ExcludeKeys = if ($settings.Registry.ExcludeKeys -is [array]) { $settings.Registry.ExcludeKeys } else { $defaultSettings.Registry.ExcludeKeys }
-                            ValueTypes = if ($settings.Registry.ValueTypes -is [array]) { $settings.Registry.ValueTypes } else { $defaultSettings.Registry.ValueTypes }
-                            EscapeWildcards = if ($null -ne $settings.Registry.EscapeWildcards) { $settings.Registry.EscapeWildcards } else { $defaultSettings.Registry.EscapeWildcards }
                         }
                     }
                 }
