@@ -1,6 +1,6 @@
 # PowerTree
 
-A modern replacement for the `tree` command that lets you explore directory structures with detailed file information and filtering possibilities.
+A modern replacement for the `tree` command that lets you explore directory structures and Windows Registry with detailed information and advanced filtering possibilities.
 
 ![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/PowerTree)
 ![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/PowerTree)
@@ -12,78 +12,14 @@ A modern replacement for the `tree` command that lets you explore directory stru
 
 https://github.com/user-attachments/assets/4f5cc8ea-5b3d-49e5-b309-b35caa59dbe2
 
-## Example Images
-
-<details>
-  <summary>Regular ptree and show the sizes of files/directories. Sorted on size descending</summary>
-  <br>
-
-Used command
-
-  <pre><code class="language-powershell">PowerTree -DisplaySize -Descending -SortBySize</code></pre>
-
-Exactly the same but shorthand
-
-  <pre><code class="language-powershell">ptree -s -desc -ss</code></pre>
-
-  <img src="./images/Size_SortSize_Desc.JPG" alt="Regular ptree and show the sizes of files PowerTree Example">
-</details>
-
-<details>
-  <summary>All Display options filtered on name descending</summary>
-  <br>
-
-Used command
-
-  <pre><code class="language-powershell">PowerTree -DisplaySize -DisplayMode -DisplayModificationDate -DisplayCreationDate -DisplayLastAccessDate -Descending -SortByName</code></pre>
-
-Exactly the same but shorthand
-
-  <pre><code class="language-powershell">ptree -s -dm -dmd -dcd -dla -desc -sn</code></pre>
-
-  <img src="./images/All_Display_Options.JPG" alt="All Display options filtered on name descending PowerTree Example">
-</details>
-
-<details>
-  <summary>Only show files bigger than 1kb</summary>
-  <br>
-
-Used command
-
-  <pre><code class="language-powershell">PowerTree -FileSizeMinimum "1kb" -DisplaySize</code></pre>
-
-Exactly the same but shorthand
-
-  <pre><code class="language-powershell">ptree -fsmi "1kb" -s</code></pre>
-
-  <img src="./images/File_Size_Minimum.JPG" alt="Only show files bigger than 1kb PowerTree Example">
-</details>
-
-<details>
-  <summary>Directory Only</summary>
-  <br>
-
-Used command
-
-  <pre><code class="language-powershell">PowerTree -DirectoryOnly -DisplaySize</code></pre>
-
-Exactly the same but shorthand
-
-  <pre><code class="language-powershell">ptree -d -s</code></pre>
-
-  <img src="./images/Directory_Only.JPG" alt="Directory Only PowerTree Example">
-</details>
-
 ## What is PowerTree?
 
-PowerTree is a alternative to the traditional `tree` command available in Windows and Unix systems. It provides visualization of directory structures with advanced filtering, sorting, and display options that make exploring and documenting file systems more efficient.
+PowerTree is a comprehensive tree visualization tool that provides two main capabilities:
 
-Unlike the standard `tree` command, PowerTree offers:
+- **File System Explorer**: A modern alternative to the traditional `tree` command with advanced filtering, sorting, and display options
+- **Registry Explorer**: Windows Registry visualization in tree format (Windows only)
 
-- Detailed file information (size, dates, attributes)
-- Multiple sorting options (by name, size, date etc.)
-- Filtering capabilities (by extension, size, directory)
-- Customizable configuration via JSON
+Unlike standard tree commands, PowerTree offers detailed information display, multiple sorting options, filtering capabilities, and customizable configuration.
 
 ## Installation
 
@@ -95,196 +31,164 @@ Install-Module PowerTree
 
 ## Quick Start
 
+### File System Exploration
+
 ```powershell
 # Basic usage - show tree of current directory
-PowerTree
-
-# Use the alias for quicker access
+Show-PowerTree
+# or use the alias
 ptree
 
 # Show tree with sizes, sorted by size (descending)
-PowerTree -DisplaySize -SortBySize -Descending
+ptree -DisplaySize -SortBySize -Descending
 
-# Exclude certain directories and show only PowerShell scripts
-PowerTree -ExcludeDirectories node_modules,bin -IncludeExtensions ps1
+# Exclude directories and filter by extension
+ptree -ExcludeDirectories node_modules,bin -IncludeExtensions ps1
 
 # Save output to a file
-PowerTree -OutFile tree_output.txt
+ptree -OutFile tree_output.txt
 ```
 
-## Cmdlets and Parameters
-
-PowerTree provides two main cmdlets:
-
-- `Start-PowerTree` - The main command for directory visualization. Alias: (`ptree`, `PowerTree`)
-- `Edit-PowerTreeConfig` - A utility to manage your PowerTree configuration. Alias: (`Edit-PowerTree`, `Edit-ptree`)
-
-The main `Start-PowerTree` cmdlet comes with many optional parameters to customize your directory visualization experience.
-
-### Basic Options
-
-| Parameter               | Alias    | Description                                                |
-| ----------------------- | -------- | ---------------------------------------------------------- |
-| `-LiteralPath <string>` |          | Specify LiteralPath to search (default: current directory) |
-| `-Verbose`              |          | Show verbose output                                        |
-| `-ShowHiddenFiles`      | `-force` | Show hidden files and directories                          |
-
-### Help Options
-
-| Parameter          | Alias             | Description                           |
-| ------------------ | ----------------- | ------------------------------------- |
-| `-Help`            | `-h`              | Print helpfull information            |
-| `-CheckForUpdates` | `-Check`          | Check if there is an update available |
-| `-Version`         | `-v`              | Print current version                 |
-| `-ModuleInfo`      | `-i`, `-info`     | Print PowerTree information           |
-| `-Examples`        | `-ex`, `-example` | Print examples                        |
-
-### Folder Filtering Options
-
-| Parameter                        | Alias            | Description                                           |
-| -------------------------------- | ---------------- | ----------------------------------------------------- |
-| `-Depth <int>`                   | `-l`, `-level`   | Limit display to specified number of directory levels |
-| `-ExcludeDirectories <string[]>` | `-e`, `-exclude` | Exclude specified directories                         |
-| `-PruneEmptyFolders`             | `-p`, `-prune`   | Exclude empty folders from output                     |
-| `-DirectoryOnly`                 | `-d`, `-dir`     | Display only directories (no files)                   |
-
-### File Filtering Options
-
-| Parameter                       | Alias   | Description                                    |
-| ------------------------------- | ------- | ---------------------------------------------- |
-| `-IncludeExtensions <string[]>` | `-if`   | Include only files with specified extension(s) |
-| `-ExcludeExtensions <string[]>` | `-ef`   | Exclude files with specified extension(s)      |
-| `-FileSizeMinimum <string>`     | `-fsmi` | Filter out files smaller than specified size   |
-| `-FileSizeMaximum <string>`     | `-fsma` | Filter out files larger than specified size    |
-
-### Display Options
-
-| Parameter                  | Alias         | Description                               |
-| -------------------------- | ------------- | ----------------------------------------- |
-| `-OutFile <string>`        | `-o`, `-of`   | Save output to specified file path        |
-| `-DisplaySize`             | `-s`, `-size` | Show file sizes in human-readable format  |
-| `-DisplayMode`             | `-dm`, `-m`   | Show file/folder attributes (d,a,r,h,s,l) |
-| `-DisplayModificationDate` | `-dmd`        | Show last modified date                   |
-| `-DisplayCreationDate`     | `-dcd`        | Show creation date                        |
-| `-DisplayLastAccessDate`   | `-dla`        | Show last access date                     |
-
-### Sorting Options
-
-| Parameter                 | Alias           | Description                                  |
-| ------------------------- | --------------- | -------------------------------------------- |
-| `-Sort <string>`          |                 | Specify sort method (size, name, md, cd, la) |
-| `-SortBySize`             | `-ss`           | Sort by file size                            |
-| `-SortByName`             | `-sn`           | Sort alphabetically by name (default)        |
-| `-SortByModificationDate` | `-smd`          | Sort by last modified date                   |
-| `-SortByCreationDate`     | `-scd`          | Sort by creation date                        |
-| `-SortByLastAccessDate`   | `-sla`          | Sort by last access date                     |
-| `-Descending`             | `-des`, `-desc` | Sort in descending order                     |
-
-## Managing Your Configuration
-
-PowerTree provides a built-in configuration editor to help you manage your settings.
-
-`Edit-PowerTreeConfig` function will:
-
-1. Find an existing configuration file if present
-2. Create a new configuration file with default settings if one doesn't exist
-3. Open the configuration file in your default editor
-
-### Sample Configuration File
-
-```json
-{
-  "ExcludeDirectories": ["node_modules", ".next"],
-  "Sorting": {
-    "By": "Name",
-    "SortFolders": false
-  },
-  "Files": {
-    "ExcludeExtensions": [],
-    "IncludeExtensions": [],
-    "FileSizeMinimum": "-1kb",
-    "FileSizeMaximum": "-1kb",
-    "OpenOutputFileOnFinish": true
-  },
-  "ShowConnectorLines": true,
-  "ShowExecutionStats": true,
-  "MaxDepth": -1,
-  "LineStyle": "Unicode",
-  "HumanReadableSizes": true
-}
-```
-
-### Configuration Options
-
-| Option                         | Description                                          | Default   |
-| ------------------------------ | ---------------------------------------------------- | --------- |
-| `ExcludeDirectories`           | Standard array of directories to exclude             | `[]`      |
-| `Sorting.By`                   | Default sort method                                  | `"Name"`  |
-| `Sorting.SortFolders`          | Whether to apply sorting to folders                  | `false`   |
-| `Files.ExcludeExtensions`      | Standard array of file extensions to exclude         | `[]`      |
-| `Files.IncludeExtensions`      | Standard array of file extensions to include         | `[]`      |
-| `Files.FileSizeMinimum`        | Minimum file size to include                         | `"-1kb"`  |
-| `Files.FileSizeMaximum`        | Maximum file size to include                         | `"-1kb"`  |
-| `Files.OpenOutputFileOnFinish` | With -o automatically open output file when finished | `true`    |
-| `ShowConnectorLines`           | Show connector lines in tree view                    | `true`    |
-| `ShowExecutionStats`           | Show execution statistics                            | `true`    |
-| `MaxDepth`                     | Default maximum depth of directories                 | `-1`      |
-| `LineStyle`                    | Tree display style ("ASCII" or "Unicode")            | `Unicode` |
-| `HumanReadableSizes`           | Sizes will include b, kb, mb, gb etc when true       | `true`    |
-
-## Examples
-
-### Basic Usage
+### Registry Exploration (Windows Only)
 
 ```powershell
-# Show tree of current directory
-Ptree
+# Show registry tree for a specific path
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Microsoft"
 
-# Show only directories (no files)
-Ptree -DirectoryOnly
+# Show only registry keys (no values)
+Show-PowerTreeRegistry -Path "HKCU:\Software" -NoValues
 
-# Show tree with file sizes
-Ptree -DirectoryOnly -s
+# Display with item counts and depth limit
+Show-PowerTreeRegistry -Path "HKLM:\SYSTEM" -DisplayItemCounts -Depth 2
 ```
 
-### Advanced Combinations
+## Available Commands
+
+PowerTree provides three main cmdlets:
+
+| Command                  | Alias                          | Description                         | Documentation                                               |
+| ------------------------ | ------------------------------ | ----------------------------------- | ----------------------------------------------------------- |
+| `Show-PowerTree`         | `ptree`, `PowerTree`           | File system tree visualization      | [Show-PowerTree.md](docs/Show-PowerTree.md)                 |
+| `Show-PowerTreeRegistry` | `ptreer`, `PowerRegistry`      | Windows Registry tree visualization | [Show-PowerTreeRegistry.md](docs/Show-PowerTreeRegistry.md) |
+| `Edit-PowerTreeConfig`   | `Edit-PowerTree`, `Edit-ptree` | Configuration file editor           | [Edit-PowerTreeConfig.md](docs/Edit-PowerTreeConfig.md)     |
+
+## Key Features
+
+### File System Explorer (Show-PowerTree)
+
+- **Display Options**: File sizes, cumulative folder sizes (with all subfolders/files), creation date, modification date, or access date and mode
+- **Sorting**: By name, size, creation date, modification date, or access date
+- **Filtering**: Include/exclude files by extension, filter on size (e.g., 1kb-20mb), show only directories, or remove empty directories
+- **Output Options**: Console display or export to file
+- **Cross-Platform**: Works on Windows, macOS, and Linux
+
+### Registry Explorer (Show-PowerTreeRegistry) (Windows Only)
+
+- **Registry Navigation**: Explore any registry hive or key with tree structure. Returns both the key and the value
+- **Advanced Filtering**: Include/exclude patterns for keys and values
+- **Output Options**: Console display or export to file
+
+### Configuration Management (Edit-PowerTreeConfig)
+
+- **JSON Configuration**: Fully configurable via JSON
+- **Visual Customization**: Set visual custimizations not available through parameters. E.G. Tree line styles (├── vs |--), show/hide execution stats, human-readable sizes (10MB vs 10485760)
+- **Parameter Defaults**: Configure default exclusions (e.g., always exclude node_modules, bin, obj directories), file size limits, and depth restrictions
+
+## Example Images
+
+<details>
+  <summary>File system with sizes sorted by size descending</summary>
+  <br>
 
 ```powershell
-# Find large files, sort by size descending
-Ptree -DisplaySize -SortBySize -Descending -FileSizeMinimum 10MB
-
-# Show tree with all metadata, excluding common build directories
-Ptree -DisplaySize -DisplayMode -DisplayModificationDate -ExcludeDirectories bin,obj,node_modules
-
-# Export filtered tree to a file
-Ptree -IncludeExtensions ps1,md -ExcludeDirectories .git -OutFile project_docs.txt
-
-# Show tree with file sizes sorted on descending size length with a min file size of 100kb and max file size of 1mb
-Ptree -s -desc -sort size -fsmi 100kb -fsma 1mb
+ptree -DisplaySize -Descending -SortBySize
 ```
+
+  <img src="./images/Size_SortSize_Desc.JPG" alt="PowerTree with file sizes sorted by size">
+</details>
+
+<details>
+  <summary>All display options with name sorting</summary>
+  <br>
+
+```powershell
+ptree -DisplayAll -Descending -SortByName
+```
+
+  <img src="./images/All_Display_Options.JPG" alt="PowerTree with all display options">
+</details>
+
+<details>
+  <summary>File size filtering</summary>
+  <br>
+
+```powershell
+ptree -FileSizeMinimum "1kb" -DisplaySize
+```
+
+  <img src="./images/File_Size_Minimum.JPG" alt="PowerTree with file size filtering">
+</details>
+
+<details>
+  <summary>Directory only view</summary>
+  <br>
+
+```powershell
+ptree -DirectoryOnly -DisplaySize
+```
+
+  <img src="./images/Directory_Only.JPG" alt="PowerTree directory only view">
+</details>
+
+## Common Use Cases
+
+### System Administration
+
+```powershell
+# Find large files consuming disk space
+ptree -DisplaySize -SortBySize -Descending -FileSizeMinimum 100MB
+
+# Explore registry configuration
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Microsoft" -DisplayItemCounts
+
+# Document directory structure for compliance
+ptree -DisplayAll -OutFile system_audit.txt
+```
+
+### Development Workflows
+
+```powershell
+# Exclude build artifacts and show only source files
+ptree -ExcludeDirectories bin,obj,node_modules -IncludeExtensions cs,js,ts
+
+# Check project structure and sizes
+ptree -DisplaySize -ExcludeDirectories .git,.vs -Depth 3
+
+# Export project documentation
+ptree -IncludeExtensions md,txt -OutFile project_docs.txt
+```
+
+## Configuration
+
+PowerTree supports persistent configuration through a JSON file. Use `Edit-PowerTreeConfig` to customize default behaviors:
+
+```powershell
+Edit-PowerTreeConfig
+```
+
+This opens your configuration file where you can set default sorting, filtering, display options, and more. See [Edit-PowerTreeConfig.md](Edit-PowerTreeConfig.md) for complete configuration reference.
+
+## Documentation
+
+For detailed parameter references and advanced usage examples:
+
+- **[Show-PowerTree Documentation](Show-PowerTree.md)** - Complete file system tree reference
+- **[Show-PowerTreeRegistry Documentation](Show-PowerTreeRegistry.md)** - Windows Registry exploration guide
+- **[Edit-PowerTreeConfig Documentation](Edit-PowerTreeConfig.md)** - Configuration management reference
 
 ## TreeStats
 
-PowerTree provides execution statistics at the end of the output, showing information about the files and directories processed.
-TreeStats can be fully turned off by setting `ShowExecutionStats` in `Edit-PowerTreeConfig`
-
-### Basic Stats
-
-| Stat           | Description                              |
-| -------------- | ---------------------------------------- |
-| Files          | Number of files processed                |
-| Folders        | Number of folders processed              |
-| Total Items    | Total count of files and folders         |
-| Depth          | Maximum depth of the directory structure |
-| Total Size     | Combined size of all files               |
-| Execution Time | Time taken to process the tree           |
-
-### Largest Items
-
-When the `-DisplaySize` parameter is enabled, the following additional information is displayed:
-
-- **Largest File:** Shows the size and full path of the largest file found
-- **Largest Folder:** Shows the size and full path of the largest folder found
+PowerTree provides execution statistics showing files/folders processed, total size, execution time, and largest items found. This feature can be customized or disabled through the configuration file.
 
 ## License
 
@@ -298,9 +202,9 @@ Created by Bart Spaans
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-### Upcomming Features
+### Upcoming Features
 
-- Allow for files/folders being automatically excluded by reading the -gitignore in the start folder
-- Option to print out exported functions in javascript/typescript files
-- Ability to tree out the registry on windows
-- Option to show ACL
+- Git integration (automatic .gitignore exclusion)
+- Export function signatures from JavaScript/TypeScript files
+- Access Control List (ACL) display options
+- Enhanced registry data type visualization
