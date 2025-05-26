@@ -11,9 +11,6 @@ function Show-TreeStats {
         [System.Text.StringBuilder]$OutputBuilder = $null,
         
         [Parameter(Mandatory=$false)]
-        [bool]$Quiet = $false,
-        
-        [Parameter(Mandatory=$false)]
         [hashtable]$LineStyle = @{ SingleLine = '-' },
         
         [Parameter(Mandatory=$false)]
@@ -64,7 +61,27 @@ function Show-TreeStats {
     $largestFileSize = if ($null -ne $TreeStats.LargestFile) { Get-HumanReadableSize -Bytes $TreeStats.LargestFile.Length -Format "Padded" } else { "0 B" }
     $largestFolderSize = Get-HumanReadableSize -Bytes $TreeStats.LargestFolderSize -Format "Padded"
     
-    if (-not $Quiet) {
+    if ($null -ne $OutputBuilder) {
+        $placeholderText = "Append the stats here later!!"
+        
+        $statsContent = @"
+$headerLine
+$underscoreLine
+$valuesLine
+
+"@
+        
+        if ($DisplaySize) {
+            $statsContent += @"
+
+Largest File: $largestFileSize $largestFilePath
+Largest Folder: $largestFolderSize $($TreeStats.LargestFolder)
+
+"@
+        }
+        
+        [void]$OutputBuilder.Replace($placeholderText, $statsContent)
+    }else {
         Write-Host ""
         Write-Host $headerLine -ForegroundColor Cyan
         Write-Host $underscoreLine -ForegroundColor DarkCyan
@@ -78,25 +95,5 @@ function Show-TreeStats {
             Write-Host "Largest Folder:" -NoNewline -ForegroundColor Cyan
             Write-Host " $largestFolderSize $($TreeStats.LargestFolder)"
         }
-    }
-    
-    if ($null -ne $OutputBuilder) {
-        $placeholderText = "Append the stats here later!!"
-        
-        $statsContent = @"
-$headerLine
-$underscoreLine
-$valuesLine
-"@
-        
-        if ($DisplaySize) {
-            $statsContent += @"
-
-Largest File: $largestFileSize $largestFilePath
-Largest Folder: $largestFolderSize $($TreeStats.LargestFolder)
-"@
-        }
-        
-        [void]$OutputBuilder.Replace($placeholderText, $statsContent)
     }
 }

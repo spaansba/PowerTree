@@ -3,16 +3,11 @@
 function Add-DefaultExtension {
     param (
         [string]$FilePath,
-        [bool]$Quiet,
         [bool]$IsRegistry
     )
     
     if ([string]::IsNullOrEmpty($FilePath)) {
-        # If no filepath is set and Quiet is true, use default "PowerTree.txt"
-        if ($Quiet) {
-            return "PowerTree.txt"
-        }
-        return $FilePath # meaning no outfile
+        return $FilePath
     }
     
     if ([string]::IsNullOrEmpty([System.IO.Path]::GetExtension($FilePath))) {

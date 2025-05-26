@@ -159,15 +159,14 @@ The main `Start-PowerTree` cmdlet comes with many optional parameters to customi
 
 ### Display Options
 
-| Parameter                  | Alias           | Description                               |
-| -------------------------- | --------------- | ----------------------------------------- |
-| `-OutFile <string>`        | `-o`, `-of`     | Save output to specified file path        |
-| `-Quiet`                   | `-q`, `-silent` | Suppress console output                   |
-| `-DisplaySize`             | `-s`, `-size`   | Show file sizes in human-readable format  |
-| `-DisplayMode`             | `-dm`, `-m`     | Show file/folder attributes (d,a,r,h,s,l) |
-| `-DisplayModificationDate` | `-dmd`          | Show last modified date                   |
-| `-DisplayCreationDate`     | `-dcd`          | Show creation date                        |
-| `-DisplayLastAccessDate`   | `-dla`          | Show last access date                     |
+| Parameter                  | Alias         | Description                               |
+| -------------------------- | ------------- | ----------------------------------------- |
+| `-OutFile <string>`        | `-o`, `-of`   | Save output to specified file path        |
+| `-DisplaySize`             | `-s`, `-size` | Show file sizes in human-readable format  |
+| `-DisplayMode`             | `-dm`, `-m`   | Show file/folder attributes (d,a,r,h,s,l) |
+| `-DisplayModificationDate` | `-dmd`        | Show last modified date                   |
+| `-DisplayCreationDate`     | `-dcd`        | Show creation date                        |
+| `-DisplayLastAccessDate`   | `-dla`        | Show last access date                     |
 
 ### Sorting Options
 

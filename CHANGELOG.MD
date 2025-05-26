@@ -5,3 +5,5 @@ Added display all for file systewm
 - Added show config to config
 
 - Change the getHelp
+
+- Remnove quiete

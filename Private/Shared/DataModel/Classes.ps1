@@ -13,7 +13,6 @@ class TreeConfig {
     [int]$MaxDepth
     [hashtable]$FileSizeBounds
     [string]$OutFile
-    [bool]$Quiet
     [bool]$PruneEmptyFolders
     [hashtable]$LineStyle
     [bool]$HumanReadableSizes

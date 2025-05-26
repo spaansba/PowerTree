@@ -32,7 +32,6 @@ function Write-Help {
 
     Write-Host "DISPLAY OPTIONS:" -ForegroundColor Yellow
     Write-Host "  -OutFile, -o, -of <filepath>                Save output to specified file path (defaults to .txt if no extension specified)"
-    Write-Host "  -quiet, -q, -silent <number>                Suppress output to console (turns -OutFile on with default ./PowerTree.txt), (recommended for big trees)"
     Write-Host "  -DisplaySize, -s, -size                     Display file sizes in human-readable format"
     Write-Host "  -DisplayMode, -m, -dm                       Display mode of in file/folder (d - dir, a - archive, r - Read-only, h - hidden, s - system, l - reparse point, symlink etc)"
     Write-Host "  -DisplayModificationDate, -dmd,             Display modification date"

@@ -125,11 +125,7 @@
 
         [Parameter()]
         [Alias("o", "of")]
-        [string]$OutFile,
-
-        [Parameter()]
-        [Alias("q", "silent")]
-        [switch]$Quiet
+        [string]$OutFile
     )
 
     if ($CheckForUpdates) {
@@ -197,9 +193,7 @@
                                                       -CommandlineMinSize $FileSizeMinimum `
                                                       -SettingsLineMaxSize $jsonSettings.Files.FileSizeMaximum `
                                                       -SettingsLineMinSize $jsonSettings.Files.FileSizeMinimum
-    $treeConfig.Quiet = $Quiet
     $treeConfig.OutFile = Add-DefaultExtension -FilePath $OutFile `
-                                                -Quiet $treeConfig.Quiet `
                                                 -IsRegistry $false
                                                 
     $treeConfig.PruneEmptyFolders = $PruneEmptyFolders
@@ -224,7 +218,6 @@
 
             Write-HeaderToOutput -HeaderTable $treeConfig.HeaderTable `
                               -OutputBuilder $outputBuilder `
-                              -Quiet $treeConfig.Quiet `
                               -LineStyle $treeConfig.LineStyle
 
             Get-TreeView -TreeConfig $treeConfig `
@@ -241,7 +234,7 @@
     }
 
     if($jsonSettings.ShowExecutionStats) {
-        Show-TreeStats -TreeStats $treeStats -ExecutionTime $executionResultTime -OutputBuilder $outputBuilder -Quiet $treeConfig.Quiet -LineStyle $treeConfig.LineStyle -DisplaySize $DisplaySize
+        Show-TreeStats -TreeStats $treeStats -ExecutionTime $executionResultTime -OutputBuilder $outputBuilder -LineStyle $treeConfig.LineStyle -DisplaySize $DisplaySize
     }
 
     if($null -ne $outputBuilder) {

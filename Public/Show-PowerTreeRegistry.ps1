@@ -79,7 +79,7 @@ function Show-PowerTreeRegistry {
     $treeRegistryConfig.SortValuesByType = $SortValuesByType
     $treeRegistryConfig.SortDescending = $SortDescending
     $treeRegistryConfig.UseRegistryDataTypes = $UseRegistryDataTypes
-    $treeRegistryConfig.OutFile = Add-DefaultExtension -FilePath $OutFile -Quiet $false -IsRegistry $true
+    $treeRegistryConfig.OutFile = Add-DefaultExtension -FilePath $OutFile -IsRegistry $true
 
     $outputBuilder = $null
     $output = $null
@@ -127,4 +127,4 @@ function Show-PowerTreeRegistry {
     }
 }
 
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft" -o "x"
+# Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft" 

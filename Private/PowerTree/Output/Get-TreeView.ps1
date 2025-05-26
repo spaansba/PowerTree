@@ -114,18 +114,18 @@ function Get-TreeView {
                 $size = $outputInfo.Line.Substring($outputInfo.SizePosition, $outputInfo.SizeLength)
                 $after = $outputInfo.Line.Substring($outputInfo.SizePosition + $outputInfo.SizeLength)
                 
-                if($TreeConfig.Quiet -ne $true){
-                    Write-Host $before -NoNewline
-                    Write-Host $size -ForegroundColor $outputInfo.SizeColor -NoNewline
-                    Write-Host $after
-                }
+               
                 
                 if ($null -ne $OutputBuilder) {
                     [void]$OutputBuilder.AppendLine($outputInfo.Line)
-                }
+                }else 
+                 {
+                     Write-Host $before -NoNewline
+                    Write-Host $size -ForegroundColor $outputInfo.SizeColor -NoNewline
+                    Write-Host $after
+                 }
             } else {
                 Write-OutputLine -Line $outputInfo.Line `
-                                 -Quiet $TreeConfig.Quiet `
                                  -OutputBuilder $OutputBuilder
             }
             
@@ -174,7 +174,6 @@ function Get-TreeView {
             $hierarchyPos = $TreeConfig.HeaderTable.Indentations["Hierarchy"]
             $connector = " " * $hierarchyPos + "$TreeIndent$($TreeConfig.lineStyle.Vertical)"
             Write-OutputLine -Line $connector `
-                             -Quiet $TreeConfig.Quiet `
                              -OutputBuilder $OutputBuilder 
         }
 
@@ -190,7 +189,6 @@ function Get-TreeView {
                                     -HumanReadableSizes $TreeConfig.HumanReadableSizes
 
         Write-OutputLine -Line $outputInfo.Line `
-                         -Quiet $TreeConfig.Quiet `
                          -OutputBuilder $OutputBuilder
                          
         $TreeStats.FoldersPrinted++

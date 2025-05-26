@@ -24,10 +24,6 @@ function Invoke-OutputBuilder {
         [void]$outputBuilder.AppendLine("# DirectoryOnly: True")
     }
 
-    if ($TreeConfig.Quiet) {
-        [void]$outputBuilder.AppendLine("# Quiet Mode: True")
-    }
-
     if ($TreeConfig.PruneEmptyFolders) {
         [void]$outputBuilder.AppendLine("# PruneEmptyFolders: True")
     }

@@ -7,7 +7,7 @@ function Write-Examples {
     Write-Host "POWERFUL COMBINED SCENARIOS:" -ForegroundColor Cyan
     Write-Host "  PowerTree -s -ss -Depth 5 -e .next,node_modules  Show file sizes sorted on file size, 5 levels deep, excluding .next and node_modules"
     Write-Host "  PowerTree -p -Depth 3 -s -ss -desc               Prune empty folders, 3 levels deep, show sizes descending"
-    Write-Host "  PowerTree -Quiet -e node_modules,bin -if ps1,md  Silent mode, exclude specific dirs, show only PS1 and MD files"
+    Write-Host "  PowerTree -e node_modules,bin -if ps1,md         Exclude specific dirs, show only PS1 and MD files"
     Write-Host "  PowerTree -force -fsmi 1MB -smd                  Show hidden files, files larger than 1MB, sorted by modification date"
     Write-Host "  PowerTree -s -dm -dmd                            Show sizes, modes, mod dates"
     Write-Host "  PowerTree -o project_summary.txt -p              Save output to file, prune empty folders"
@@ -22,7 +22,6 @@ function Write-Examples {
     Write-Host "  PowerTree C:\Projects\MyApp             Show files and directories in specified path"
     Write-Host "  PowerTree -Depth 2                      Limit display to 2 directory levels"
     Write-Host "  PowerTree -PruneEmptyFolders            Remove empty folders from the tree"
-    Write-Host "  PowerTree -Quiet                        Suppress console output and save to PowerTree.txt"
     Write-Host ""
     
     Write-Host "FILE & DIRECTORY FILTERING:" -ForegroundColor Cyan
@@ -69,8 +68,6 @@ function Write-Examples {
     Write-Host "OUTPUT OPTIONS:" -ForegroundColor Cyan
     Write-Host "  PowerTree -o tree_output                Save output to tree_output.txt"
     Write-Host "  PowerTree -o C:\temp\tree.md            Save output to specified file path"
-    Write-Host "  PowerTree -Quiet                        Suppress console output, save to PowerTree.txt"
-    Write-Host "  PowerTree -Quiet -o custom_report.txt   Suppress output, save to custom file"
     Write-Host ""
     
     Write-Host "ADVANCED COMBINED EXAMPLES:" -ForegroundColor Cyan
@@ -78,6 +75,5 @@ function Write-Examples {
     Write-Host "  PowerTree -if ps1,log -dmd              Show only PS1 and log files with modification dates"
     Write-Host "  PowerTree -s -ss -desc -fsmi 10MB       Find large files (>10MB), sort by size descending"
     Write-Host "  PowerTree -p -Depth 2 -s                Prune empty folders, show 2 levels with sizes"
-    Write-Host "  PowerTree -Quiet -e bin,obj -s          Silent mode, exclude directories, show sizes"
     Write-Host ""
 }

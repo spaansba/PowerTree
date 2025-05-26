@@ -1,9 +1,12 @@
 function Write-Configuration {
+    [CmdletBinding()]
     param (
+        [Parameter(Mandatory=$true)]
         [PSCustomObject]$TreeConfig
     )
 
-    if ($TreeConfig.Quiet) {
+    # Don't show configuration if we're outputting to a file
+    if (-not [string]::IsNullOrEmpty($TreeConfig.OutFile)) {
         return
     }
     
@@ -30,10 +33,6 @@ function Write-Configuration {
     Write-Verbose "Some settings might be sourced from the .config.json file" 
     Write-Host "Sort By: $sortDisplay" -ForegroundColor Green
     Write-Host "Display: $displayText" -ForegroundColor Green
-    
-    if ($TreeConfig.Quiet -ne $true) {
-        Write-Verbose "Quiet: False" 
-    }
 
     if ($TreeConfig.HumanReadableSize -ne $true) {
         Write-Host "Human Readable Sizes: False" -ForegroundColor Green
