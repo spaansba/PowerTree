@@ -32,6 +32,14 @@ This cmdlet is particularly useful for:
 
 **Note:** This cmdlet is only available on Windows systems.
 
+**Note:** Registry paths can be specified in three ways for user convenience:
+
+- Full format: `Computer\HKEY_LOCAL_MACHINE\Software`
+- Windows format: `HKEY_LOCAL_MACHINE\Software`
+- PowerShell format: `HKLM:\Software`
+
+All formats are automatically converted to `HKLM:\Software`.
+
 ## EXAMPLES
 
 ### Example 1: Show registry tree for a specific path

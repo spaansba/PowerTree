@@ -17,7 +17,7 @@
     FunctionsToExport = @('Show-PowerTree', 'Edit-PowerTreeConfig', "Show-PowerTreeRegistry")
     CmdletsToExport   = @()
     VariablesToExport = @()
-    AliasesToExport   = @('ptree', 'Start-PowerTree', 'PowerTree', 'Edit-PtreeConfig', 'Edit-Ptree', 'Edit-PowerTree', "ptreer")
+    AliasesToExport   = @('ptree', 'Start-PowerTree', 'PowerTree', 'Edit-PtreeConfig', 'Edit-Ptree', 'Edit-PowerTree', "ptreer", "PowerRegistry")
 
     # PowerShell Gallery metadata
     PrivateData = @{

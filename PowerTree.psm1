@@ -7,6 +7,7 @@ New-Alias -Name "Edit-PtreeConfig" -Value "Edit-PowerTreeConfig"
 New-Alias -Name "Edit-Ptree" -Value "Edit-PowerTreeConfig"
 New-Alias -Name "Edit-PowerTree" -Value "Edit-PowerTreeConfig"
 New-Alias -Name "ptreer" -Value "Show-PowerTreeRegistry"
+New-Alias -Name "PowerRegistry" -Value "Show-PowerTreeRegistry"
 
 # Import classes first to ensure they are available to all functions
 $ClassFiles = @(Get-ChildItem -Path "$PSScriptRoot\Private\Shared\DataModel\Classes.ps1" -ErrorAction SilentlyContinue)
@@ -45,4 +46,4 @@ foreach ($import in $Public) {
 
 # Export public functions
 Export-ModuleMember -Function $Public.BaseName
-Export-ModuleMember -Function $Public.BaseName -Alias "ptree", "PowerTree", "Start-PowerTree", "Edit-PtreeConfig", "Edit-Ptree", "Edit-PowerTree", "ptreer"
+Export-ModuleMember -Function $Public.BaseName -Alias "ptree", "PowerTree", "Start-PowerTree", "Edit-PtreeConfig", "Edit-Ptree", "Edit-PowerTree", "ptreer", "PowerRegistry"

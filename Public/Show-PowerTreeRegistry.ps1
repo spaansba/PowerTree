@@ -45,26 +45,6 @@ function Show-PowerTreeRegistry {
         Write-Error "This script can only be run on Windows."
         exit 1 
     }
-
-    . .\Private\Shared\DataModel\Classes.ps1
-    . .\Private\PowerTreeRegistry\Configuration\ParamHelpers\Get-Path.ps1
-    . .\Private\PowerTreeRegistry\Output\Get-TreeRegistryView.ps1
-    . .\Private\PowerTreeRegistry\Filtering\Get-RegistryItems.ps1
-    . .\Private\Shared\JsonConfig\Get-SettingsFromJson.ps1
-    . .\Private\Shared\JsonConfig\Get-DefaultConfig.ps1
-    . .\Private\Shared\JsonConfig\Get-ConfigPaths.ps1
-    . .\Private\Shared\Build-TreeLineStyle.ps1
-    . .\Private\PowerTreeRegistry\Filtering\Test-FilterMatch.ps1
-    . .\Private\PowerTreeRegistry\Filtering\Get-ProcessedRegistryKeys.ps1
-    . .\Private\PowerTreeRegistry\Filtering\Get-ProcessedRegistryValues.ps1
-    . .\Private\PowerTreeRegistry\Filtering\Set-LastItemFlag.ps1
-    . .\Private\PowerTreeRegistry\Sorting\Invoke-RegistryItemSorting.ps1
-    . .\Private\Shared\Output\Add-DefaultExtension.ps1
-    . .\Private\PowerTreeRegistry\Output\ToFile\Invoke-OutputBuilderRegistry.ps1
-    . .\Private\PowerTreeRegistry\Output\Get-RegistryConfigurationData.ps1
-    . .\Private\PowerTreeRegistry\Output\Show-RegistryStats.ps1
-    . .\Private\Shared\Output\Format-ExecutionTime.ps1
-    . .\Private\Shared\Output\Write-ConfigurationToHost.ps1
     
     $jsonSettings = Get-SettingsFromJson -Mode "Registry"
 
@@ -128,5 +108,3 @@ function Show-PowerTreeRegistry {
         Write-Host ""
     }
 }
-
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft" -DisplayItemCounts -Exclude "windows*"
