@@ -8,11 +8,11 @@ function Build-OutputLine {
         [Parameter(Mandatory=$true)]
         [System.IO.FileSystemInfo]$Item,
         
-        [Parameter(Mandatory=$false)]
-        [string]$TreePrefix = "",
+        [Parameter(Mandatory=$true)]
+        [string]$TreePrefix,
 
         [Parameter(Mandatory=$true)]
-        [bool]$HumanReadableSizes = $true
+        [bool]$HumanReadableSizes
     )
     
     $dirSize = 0
@@ -25,7 +25,7 @@ function Build-OutputLine {
             # Handle hierarchy column separately (it contains the tree structure and filename)
             $hierarchyPosition = $HeaderTable.Indentations[$column]
             $content = "$TreePrefix$($Item.Name)"
-            
+
             # Replace characters at the hierarchy position with the content
             if ($hierarchyPosition -lt $outputLine.Length) {
                 $outputLine = $outputLine.Remove($hierarchyPosition)

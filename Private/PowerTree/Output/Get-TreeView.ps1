@@ -99,11 +99,50 @@ function Get-TreeView {
     # Initialize the hasVisibleContent variable - true if we have visible files
     $hasVisibleContent = (-not $TreeConfig.DirectoryOnly -and $files.Count -gt 0)
 
-    # Process files in normal (non-empty-check) mode
+    # Filter directories for pruning if enabled
+    $visibleDirectories = @()
+    if ($directories.Count -gt 0) {
+        foreach ($dir in $directories) {
+            $skipDir = $false
+            if ($TreeConfig.PruneEmptyFolders) {
+                $dirHasContent = Get-TreeView -TreeConfig $TreeConfig `
+                              -TreeStats $TreeStats `
+                              -ChildItemDirectoryParams $ChildItemDirectoryParams `
+                              -ChildItemFileParams $ChildItemFileParams `
+                              -CurrentPath $dir.FullName `
+                              -TreeIndent "" `
+                              -Last $false `
+                              -IsRoot $false `
+                              -CurrentDepth ($CurrentDepth + 1) `
+                              -OutputBuilder $null `
+                              -IsEmptyCheck:$true
+                
+                if (-not $dirHasContent) {
+                    $skipDir = $true
+                }
+            }
+            
+            if (-not $skipDir) {
+                $visibleDirectories += $dir
+                $hasVisibleContent = $true
+            }
+        }
+    }
+
+    # Calculate total items and process them in the correct order
+    $totalItems = $files.Count + $visibleDirectories.Count
+    $currentItemIndex = 0
+
+    # Process files first (they appear before directories in tree output)
     if (-not $TreeConfig.DirectoryOnly -and $files.Count -gt 0) {
-        $hasVisibleContent = $true
         foreach ($file in $files) {
-            $treePrefix = if ($IsRoot) { $TreeConfig.LineStyle.VerticalLine } else { "$TreeIndent$($TreeConfig.lineStyle.VerticalLine)" }
+            $currentItemIndex++
+            $isLastItem = ($currentItemIndex -eq $totalItems)
+            
+            # Build the tree prefix for files
+            $treeBranch = if ($isLastItem) { $TreeConfig.lineStyle.LastBranch } else { $TreeConfig.lineStyle.Branch }
+            $treePrefix = if ($IsRoot) { $treeBranch } else { "$TreeIndent$treeBranch" }
+            
             $outputInfo = Build-OutputLine -HeaderTable $TreeConfig.HeaderTable `
                                         -Item $file `
                                         -TreePrefix $treePrefix `
@@ -114,16 +153,13 @@ function Get-TreeView {
                 $size = $outputInfo.Line.Substring($outputInfo.SizePosition, $outputInfo.SizeLength)
                 $after = $outputInfo.Line.Substring($outputInfo.SizePosition + $outputInfo.SizeLength)
                 
-               
-                
                 if ($null -ne $OutputBuilder) {
                     [void]$OutputBuilder.AppendLine($outputInfo.Line)
-                }else 
-                 {
-                     Write-Host $before -NoNewline
+                } else {
+                    Write-Host $before -NoNewline
                     Write-Host $size -ForegroundColor $outputInfo.SizeColor -NoNewline
                     Write-Host $after
-                 }
+                }
             } else {
                 Write-OutputLine -Line $outputInfo.Line `
                                  -OutputBuilder $OutputBuilder
@@ -133,44 +169,13 @@ function Get-TreeView {
         }
     }
 
-    # Regular processing for directories (non-empty-check calls)
-    $dirCount = $directories.Count
-    $currentDir = 0
-    
-    foreach ($dir in $directories) {
-        $currentDir++
-        $isLast = ($currentDir -eq $dirCount)
-        
-        # If pruning is enabled, check if this directory would be empty after applying filters
-        $skipDir = $false
-        if ($TreeConfig.PruneEmptyFolders) {
-            $dirHasContent = Get-TreeView -TreeConfig $TreeConfig `
-                          -TreeStats $TreeStats `
-                          -ChildItemDirectoryParams $ChildItemDirectoryParams `
-                          -ChildItemFileParams $ChildItemFileParams `
-                          -CurrentPath $dir.FullName `
-                          -TreeIndent "" `
-                          -Last $false `
-                          -IsRoot $false `
-                          -CurrentDepth ($CurrentDepth + 1) `
-                          -OutputBuilder $null `
-                          -IsEmptyCheck:$true
-            
-            if (-not $dirHasContent) {
-                $skipDir = $true
-            }
-        }
-        
-        # Skip this directory if it would be empty after filtering
-        if ($skipDir) {
-            continue
-        }
-
-        # We have a non-empty directory, so mark content as visible
-        $hasVisibleContent = $true
+    # Process directories
+    foreach ($dir in $visibleDirectories) {
+        $currentItemIndex++
+        $isLastItem = ($currentItemIndex -eq $totalItems)
       
         # Print connector line to make it look prettier, can be turned on/off in settings
-        if($TreeConfig.ShowConnectorLines) {
+        if($TreeConfig.ShowConnectorLines -and $files.Count -gt 0) {
             $hierarchyPos = $TreeConfig.HeaderTable.Indentations["Hierarchy"]
             $connector = " " * $hierarchyPos + "$TreeIndent$($TreeConfig.lineStyle.Vertical)"
             Write-OutputLine -Line $connector `
@@ -178,9 +183,8 @@ function Get-TreeView {
         }
 
         # Create the directory prefix with appropriate tree symbols
-        $dirPrefix = if ($IsRoot) { "" } else { $TreeIndent }
-        $treeBranch = if ($isLast) { $TreeConfig.lineStyle.LastBranch } else { $TreeConfig.lineStyle.Branch }
-        $treePrefix = "$dirPrefix$treeBranch"
+        $treeBranch = if ($isLastItem) { $TreeConfig.lineStyle.LastBranch } else { $TreeConfig.lineStyle.Branch }
+        $treePrefix = if ($IsRoot) { $treeBranch } else { "$TreeIndent$treeBranch" }
         
         # Build and output the directory line
         $outputInfo = Build-OutputLine -HeaderTable $TreeConfig.HeaderTable `
@@ -198,20 +202,21 @@ function Get-TreeView {
             $TreeStats.UpdateLargestFolder($dir.FullName, $outputInfo.DirSize)
         }
 
-        if ($isLast) {
-            $newTreeIndent = "$dirPrefix$($TreeConfig.lineStyle.Space)"
+        # Calculate the new tree indent for child items
+        $newTreeIndent = if ($IsRoot) {
+            if ($isLastItem) { $TreeConfig.lineStyle.Space } else { $TreeConfig.lineStyle.VerticalLine }
         } else {
-            $newTreeIndent = "$dirPrefix$($TreeConfig.lineStyle.VerticalLine)"
+            if ($isLastItem) { "$TreeIndent$($TreeConfig.lineStyle.Space)" } else { "$TreeIndent$($TreeConfig.lineStyle.VerticalLine)" }
         }
-        
 
+        # Recursively process the directory
         Get-TreeView -TreeConfig $TreeConfig `
                      -TreeStats $TreeStats `
                      -ChildItemDirectoryParams $ChildItemDirectoryParams `
                      -ChildItemFileParams $ChildItemFileParams `
                      -CurrentPath $dir.FullName `
                      -TreeIndent $newTreeIndent `
-                     -Last $isLast `
+                     -Last $isLastItem `
                      -IsRoot $false `
                      -CurrentDepth ($CurrentDepth + 1) `
                      -OutputBuilder $OutputBuilder
