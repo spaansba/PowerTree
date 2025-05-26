@@ -202,7 +202,7 @@
     }
 
     if($null -ne $outputBuilder) {
-        $outputBuilder.ToString() | Write-ToFile -FilePath $treeConfig.OutFile -OpenOutputFileOnFinish $jsonSettings.Files.OpenOutputFileOnFinish
+        $outputBuilder.ToString() | Write-ToFile -FilePath $treeConfig.OutFile -OpenOutputFileOnFinish $jsonSettings.OpenOutputFileOnFinish
 
         $fullOutputPath = Resolve-Path $treeConfig.OutFile -ErrorAction SilentlyContinue
         if ($null -eq $fullOutputPath) {

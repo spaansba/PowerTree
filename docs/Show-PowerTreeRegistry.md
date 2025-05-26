@@ -279,9 +279,6 @@ When using `-UseRegistryDataTypes`, you'll see native registry types like:
 **Performance Considerations:**
 Large registry subtrees can take time to process. Use `-Depth` to limit traversal depth for better performance. Or -OutFile "yourfile.txt" to reduce writing to the host.
 
-**Platform Support:**
-This cmdlet is only available on Windows systems and will display an error on other platforms.
-
 ## RELATED LINKS
 
 [PowerTree GitHub Repository](https://github.com/spaansba/PowerTree)

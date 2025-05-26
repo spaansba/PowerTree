@@ -106,5 +106,32 @@ function Show-PowerTreeRegistry {
         Write-Host ""
         Write-Host "Output saved to: $($fullOutputPath)" -ForegroundColor Cyan
         Write-Host ""
+        #TODO make own file:
+        if ($jsonSettings.OpenOutputFileOnFinish) {
+            try {
+                Write-Verbose "Opening file: $fullOutputPath "
+                
+                # Use the appropriate method to open the file based on OS
+                if ($IsWindows -or $null -eq $IsWindows) {
+                    # On Windows or PowerShell 5.1 where $IsWindows is not defined
+                    Start-Process $fullOutputPath
+                } elseif ($IsMacOS) {
+                    # On macOS
+                    Start-Process "open" -ArgumentList $fullOutputPath
+                } elseif ($IsLinux) {
+                    # On Linux, try xdg-open first
+                    try {
+                        Start-Process "xdg-open" -ArgumentList $fullOutputPath
+                    } catch {
+                        # If xdg-open fails, try other common utilities
+                        try { Start-Process "nano" -ArgumentList $fullOutputPath } catch { 
+                            Write-Verbose "Could not open file with xdg-open or nano" 
+                        }
+                    }
+                }
+            } catch {
+                Write-Warning "Could not open file after writing: $_"
+            }
+        } 
     }
 }
