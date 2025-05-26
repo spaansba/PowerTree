@@ -1,0 +1,1260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Edit-PowerTreeConfig</command:name>
+      <command:verb>Edit</command:verb>
+      <command:noun>PowerTreeConfig</command:noun>
+      <maml:description>
+        <maml:para>Opens the PowerTree configuration file for editing.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Edit-PowerTreeConfig is a utility cmdlet that manages your PowerTree configuration file. It automatically locates or creates the configuration file and opens it in the appropriate editor for your operating system.</maml:para>
+      <maml:para>The configuration file allows you to customize default behaviors for PowerTree, including:</maml:para>
+      <maml:para>- Default sorting preferences</maml:para>
+      <maml:para>- Display options</maml:para>
+      <maml:para>- Line style preferences</maml:para>
+      <maml:para>- File filtering defaults</maml:para>
+      <maml:para>- Performance settings</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Edit-PowerTreeConfig</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="proga">
+          <maml:name>ProgressAction</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill ProgressAction Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+          <dev:type>
+            <maml:name>ActionPreference</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="proga">
+        <maml:name>ProgressAction</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill ProgressAction Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        <dev:type>
+          <maml:name>ActionPreference</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>You cannot pipe objects to Edit-PowerTreeConfig.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>Edit-PowerTreeConfig does not generate output. It opens the configuration file in an editor.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Configuration File Location: - Windows: `$env:USERPROFILE\.PowerTree\config.json` - macOS/Linux: `$HOME/.PowerTree/config.json` Default Editor Behavior: - Windows: Opens with the system default application for JSON files - macOS: Uses the `open` command to launch the default editor - Linux: Attempts to use `xdg-open`, `nano`, `vim`, or `vi` in that order Configuration File Structure: The configuration file is a JSON document with the following main sections:</maml:para>
+        <maml:para>- `LineStyle`: Tree display styling options</maml:para>
+        <maml:para>- `Sorting`: Default sorting preferences</maml:para>
+        <maml:para>- `Files`: File filtering and handling options</maml:para>
+        <maml:para>- `ShowConnectorLines`: Whether to show tree connector lines</maml:para>
+        <maml:para>- `MaxDepth`: Default maximum depth limit</maml:para>
+        <maml:para>- `HumanReadableSizes`: Whether to display sizes in human-readable format</maml:para>
+        <maml:para>- `ShowExecutionStats`: Whether to show performance statistics</maml:para>
+        <maml:para></maml:para>
+        <maml:para>If the configuration file doesn't exist, Edit-PowerTreeConfig will create it with sensible defaults.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------- Example 1: Open configuration file --------------</maml:title>
+        <dev:code>PS C:\&gt; Edit-PowerTreeConfig</dev:code>
+        <dev:remarks>
+          <maml:para>Opens the PowerTree configuration file in the default editor. If no configuration file exists, creates a new one with default settings.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------- Example 2: Using alias --------------------</maml:title>
+        <dev:code>PS C:\&gt; Edit-PowerTree</dev:code>
+        <dev:remarks>
+          <maml:para>Alternative way to open the configuration file using the alias.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>PowerTree GitHub Repository</maml:linkText>
+        <maml:uri>https://github.com/spaansba/PowerTree</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Show-PowerTree</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Show-PowerTreeRegistry</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Show-PowerTree</command:name>
+      <command:verb>Show</command:verb>
+      <command:noun>PowerTree</command:noun>
+      <maml:description>
+        <maml:para>A modern replacement for the tree command with advanced filtering, sorting, and display options.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>PowerTree is an advanced alternative to the traditional `tree` command available in Windows and Unix systems. It provides visualization of directory structures with advanced filtering, sorting, and display options that make exploring and documenting file systems more efficient.</maml:para>
+      <maml:para>Unlike the standard `tree` command, PowerTree offers:</maml:para>
+      <maml:para>- Detailed file information (size, dates, attributes)</maml:para>
+      <maml:para>- Multiple sorting options (by name, size, date etc.)</maml:para>
+      <maml:para>- Filtering capabilities (by extension, size, directory)</maml:para>
+      <maml:para>- Customizable configuration via JSON</maml:para>
+      <maml:para>- Export functionality to save output to files</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Show-PowerTree</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>LiteralPath</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill LiteralPath Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="l, level">
+          <maml:name>Depth</maml:name>
+          <maml:description>
+            <maml:para>Controls how many levels deep PowerTree will traverse into subdirectories.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>-1 (unlimited)</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="des, desc">
+          <maml:name>Descending</maml:name>
+          <maml:description>
+            <maml:para>Reverses the sort order for any active sorting method, showing results from largest to smallest or Z to A.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="d, dir">
+          <maml:name>DirectoryOnly</maml:name>
+          <maml:description>
+            <maml:para>Shows only folder structure without individual files in the output.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="da">
+          <maml:name>DisplayAll</maml:name>
+          <maml:description>
+            <maml:para>Enables all display options simultaneously including size, creation date, modification date, last accessed date and mode.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="dcd">
+          <maml:name>DisplayCreationDate</maml:name>
+          <maml:description>
+            <maml:para>Displays when each file or folder was originally created.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="dla">
+          <maml:name>DisplayLastAccessDate</maml:name>
+          <maml:description>
+            <maml:para>Displays when files were last opened or accessed.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="dm, m">
+          <maml:name>DisplayMode</maml:name>
+          <maml:description>
+            <maml:para>Displays file system attributes using codes: directory (d), archive (a), readonly (r), hidden (h), system (s), and symbolic link (l).</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="dmd">
+          <maml:name>DisplayModificationDate</maml:name>
+          <maml:description>
+            <maml:para>Displays when files were last modified.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="s, size">
+          <maml:name>DisplaySize</maml:name>
+          <maml:description>
+            <maml:para>Displays file and folder sizes in readable units (KB, MB, GB) instead of raw byte counts. To show exact byte counts instead, use Edit-PowerTreeConfig and set HumanReadableSizes to false.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ex, example">
+          <maml:name>Examples</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Examples Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="e, exclude">
+          <maml:name>ExcludeDirectories</maml:name>
+          <maml:description>
+            <maml:para>Hides the specified folder names from the tree display. Accepts multiple directory names separated by commas.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>@()</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ef">
+          <maml:name>ExcludeExtensions</maml:name>
+          <maml:description>
+            <maml:para>Hides files with the specified file extensions from the output. Accepts multiple extensions separated by commas.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>@()</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="fs, filesize">
+          <maml:name>FileSizeFilter</maml:name>
+          <maml:description>
+            <maml:para>Applies advanced file size filtering using complex criteria in a single parameter.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="fsma">
+          <maml:name>FileSizeMaximum</maml:name>
+          <maml:description>
+            <maml:para>Hides files that exceed the specified size limit. Supports size units like KB, MB, GB. (e.g 10kb)</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>-1kb</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="fsmi">
+          <maml:name>FileSizeMinimum</maml:name>
+          <maml:description>
+            <maml:para>Shows only files larger than the specified threshold. Supports size units like KB, MB, GB. (e.g 10kb)</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>-1kb</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="h, ?">
+          <maml:name>Help</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Help Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="if">
+          <maml:name>IncludeExtensions</maml:name>
+          <maml:description>
+            <maml:para>Shows only files with the specified file extensions, hiding all other file types. Accepts multiple extensions separated by commas.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>@()</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="o, of">
+          <maml:name>OutFile</maml:name>
+          <maml:description>
+            <maml:para>Writes the tree output to a text file instead of displaying it in the console. Faster than regular since we dont have to write to the host. Accepts both a name or a full path</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="prune, p">
+          <maml:name>PruneEmptyFolders</maml:name>
+          <maml:description>
+            <maml:para>Excludes empty folders from the output.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="force">
+          <maml:name>ShowHiddenFiles</maml:name>
+          <maml:description>
+            <maml:para>Shows hidden files and directories. (e.g. .git)</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Sort</maml:name>
+          <maml:description>
+            <maml:para>Sets the sorting criteria using predefined values: size, name, md (modified date), cd (creation date), or la (last access).</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">size</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">name</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">md</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">cd</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">la</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>name</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="scd">
+          <maml:name>SortByCreationDate</maml:name>
+          <maml:description>
+            <maml:para>Sorts by creation date.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="sla, sld">
+          <maml:name>SortByLastAccessDate</maml:name>
+          <maml:description>
+            <maml:para>Sorts by last access date.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="smd">
+          <maml:name>SortByModificationDate</maml:name>
+          <maml:description>
+            <maml:para>Sorts by last modified date.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="sn">
+          <maml:name>SortByName</maml:name>
+          <maml:description>
+            <maml:para>Sorts alphabetically by name (default).</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ss">
+          <maml:name>SortBySize</maml:name>
+          <maml:description>
+            <maml:para>Orders files and folders by their size, from smallest to largest unless combined with -Descending.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="proga">
+          <maml:name>ProgressAction</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill ProgressAction Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+          <dev:type>
+            <maml:name>ActionPreference</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="l, level">
+        <maml:name>Depth</maml:name>
+        <maml:description>
+          <maml:para>Controls how many levels deep PowerTree will traverse into subdirectories.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>-1 (unlimited)</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="des, desc">
+        <maml:name>Descending</maml:name>
+        <maml:description>
+          <maml:para>Reverses the sort order for any active sorting method, showing results from largest to smallest or Z to A.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="d, dir">
+        <maml:name>DirectoryOnly</maml:name>
+        <maml:description>
+          <maml:para>Shows only folder structure without individual files in the output.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="da">
+        <maml:name>DisplayAll</maml:name>
+        <maml:description>
+          <maml:para>Enables all display options simultaneously including size, creation date, modification date, last accessed date and mode.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="dcd">
+        <maml:name>DisplayCreationDate</maml:name>
+        <maml:description>
+          <maml:para>Displays when each file or folder was originally created.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="dla">
+        <maml:name>DisplayLastAccessDate</maml:name>
+        <maml:description>
+          <maml:para>Displays when files were last opened or accessed.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="dm, m">
+        <maml:name>DisplayMode</maml:name>
+        <maml:description>
+          <maml:para>Displays file system attributes using codes: directory (d), archive (a), readonly (r), hidden (h), system (s), and symbolic link (l).</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="dmd">
+        <maml:name>DisplayModificationDate</maml:name>
+        <maml:description>
+          <maml:para>Displays when files were last modified.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="s, size">
+        <maml:name>DisplaySize</maml:name>
+        <maml:description>
+          <maml:para>Displays file and folder sizes in readable units (KB, MB, GB) instead of raw byte counts. To show exact byte counts instead, use Edit-PowerTreeConfig and set HumanReadableSizes to false.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ex, example">
+        <maml:name>Examples</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill Examples Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="e, exclude">
+        <maml:name>ExcludeDirectories</maml:name>
+        <maml:description>
+          <maml:para>Hides the specified folder names from the tree display. Accepts multiple directory names separated by commas.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>@()</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ef">
+        <maml:name>ExcludeExtensions</maml:name>
+        <maml:description>
+          <maml:para>Hides files with the specified file extensions from the output. Accepts multiple extensions separated by commas.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>@()</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="fs, filesize">
+        <maml:name>FileSizeFilter</maml:name>
+        <maml:description>
+          <maml:para>Applies advanced file size filtering using complex criteria in a single parameter.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="fsma">
+        <maml:name>FileSizeMaximum</maml:name>
+        <maml:description>
+          <maml:para>Hides files that exceed the specified size limit. Supports size units like KB, MB, GB. (e.g 10kb)</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>-1kb</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="fsmi">
+        <maml:name>FileSizeMinimum</maml:name>
+        <maml:description>
+          <maml:para>Shows only files larger than the specified threshold. Supports size units like KB, MB, GB. (e.g 10kb)</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>-1kb</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="h, ?">
+        <maml:name>Help</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill Help Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="if">
+        <maml:name>IncludeExtensions</maml:name>
+        <maml:description>
+          <maml:para>Shows only files with the specified file extensions, hiding all other file types. Accepts multiple extensions separated by commas.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>@()</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>LiteralPath</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill LiteralPath Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="o, of">
+        <maml:name>OutFile</maml:name>
+        <maml:description>
+          <maml:para>Writes the tree output to a text file instead of displaying it in the console. Faster than regular since we dont have to write to the host. Accepts both a name or a full path</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="prune, p">
+        <maml:name>PruneEmptyFolders</maml:name>
+        <maml:description>
+          <maml:para>Excludes empty folders from the output.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="force">
+        <maml:name>ShowHiddenFiles</maml:name>
+        <maml:description>
+          <maml:para>Shows hidden files and directories. (e.g. .git)</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Sort</maml:name>
+        <maml:description>
+          <maml:para>Sets the sorting criteria using predefined values: size, name, md (modified date), cd (creation date), or la (last access).</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>name</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="scd">
+        <maml:name>SortByCreationDate</maml:name>
+        <maml:description>
+          <maml:para>Sorts by creation date.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="sla, sld">
+        <maml:name>SortByLastAccessDate</maml:name>
+        <maml:description>
+          <maml:para>Sorts by last access date.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="smd">
+        <maml:name>SortByModificationDate</maml:name>
+        <maml:description>
+          <maml:para>Sorts by last modified date.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="sn">
+        <maml:name>SortByName</maml:name>
+        <maml:description>
+          <maml:para>Sorts alphabetically by name (default).</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ss">
+        <maml:name>SortBySize</maml:name>
+        <maml:description>
+          <maml:para>Orders files and folders by their size, from smallest to largest unless combined with -Descending.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="proga">
+        <maml:name>ProgressAction</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill ProgressAction Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        <dev:type>
+          <maml:name>ActionPreference</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>You cannot pipe objects to Show-PowerTree.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>Show-PowerTree outputs tree structure as text to the console and optionally to a file.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>PowerTree provides extensive customization through a JSON configuration file. Use `Edit-PowerTreeConfig` to modify default settings.</maml:para>
+        <maml:para>File size filters support units: b, kb, mb, gb, tb.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------- Example 1: Basic usage --------------------</maml:title>
+        <dev:code>PS C:\&gt; Show-PowerTree
+# Shorthand
+PS C:\&gt; ptree</dev:code>
+        <dev:remarks>
+          <maml:para>Shows the basic tree structure of the current directory. This is your starting point for exploring any directory structure.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>--------------- Example 2: Show tree with sizes ---------------</maml:title>
+        <dev:code>PS C:\&gt; Show-PowerTree -DisplaySize -SortBySize -Descending -FileSizeMinimum 10MB
+# Shorthand
+PS C:\&gt; ptree -s -ss -desc -fsmi 10MB</dev:code>
+        <dev:remarks>
+          <maml:para>Displays only files larger than 10MB and sorts them from largest to smallest. This creates a "disk usage audit" view of your directory. File sizes are displayed in human-readable format (KB, MB, GB) by default. To show exact byte counts instead, use Edit-PowerTreeConfig and set HumanReadableSizes to false.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>--------------- Example 3: Show tree with sizes ---------------</maml:title>
+        <dev:code>PS C:\&gt; Show-PowerTree -DisplayAll -ExcludeDirectories bin,obj,node_modules
+# Shorthand
+ps C:\&gt; ptree -da -e bin,obj,node_modules</dev:code>
+        <dev:remarks>
+          <maml:para>Shows complete file information (size, dates, mode) while excluding common build/dependency directories.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>------------ Example 4: Place output in other file ------------</maml:title>
+        <dev:code>PS C:\&gt; Show-PowerTree -DisplaySize -OutFile "powertree.txt"
+# Shorthand
+ps C:\&gt; ptree -s -o "powertree"</dev:code>
+        <dev:remarks>
+          <maml:para>Generates a tree view with file sizes and saves the complete output to a text file instead of displaying it in the console. This is faster than console output as it doesn't have to write to the host.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>PowerTree GitHub Repository</maml:linkText>
+        <maml:uri>https://github.com/spaansba/PowerTree</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Edit-PowerTreeConfig</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Show-PowerTreeRegistry</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Show-PowerTreeRegistry</command:name>
+      <command:verb>Show</command:verb>
+      <command:noun>PowerTreeRegistry</command:noun>
+      <maml:description>
+        <maml:para>Displays Windows Registry structure in a tree format with advanced filtering and display options.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Show-PowerTreeRegistry provides a tree-like visualization of the Windows Registry, similar to how Show-PowerTree works for file systems. It allows you to explore registry keys and values with filtering, sorting, and display customization options.</maml:para>
+      <maml:para>This cmdlet is particularly useful for:</maml:para>
+      <maml:para>- Registry exploration and documentation</maml:para>
+      <maml:para>- System administration tasks</maml:para>
+      <maml:para>- Troubleshooting registry-related issues</maml:para>
+      <maml:para>- Creating registry reports Note: This cmdlet is only available on Windows systems.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Show-PowerTreeRegistry</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Path</maml:name>
+          <maml:description>
+            <maml:para>Specifies the registry path to explore. Supports standard registry hive abbreviations.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>. (current registry location)</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="l, level">
+          <maml:name>Depth</maml:name>
+          <maml:description>
+            <maml:para>Limits the display to the specified number of registry levels.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>-1 (unlimited)</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="dic">
+          <maml:name>DisplayItemCounts</maml:name>
+          <maml:description>
+            <maml:para>Shows the count of sub-keys and values for each registry key.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="e, exc">
+          <maml:name>Exclude</maml:name>
+          <maml:description>
+            <maml:para>Excludes registry keys or values that match the specified patterns.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>@()</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="i, inc">
+          <maml:name>Include</maml:name>
+          <maml:description>
+            <maml:para>Includes only registry keys or values that match the specified patterns.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>@()</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="nv">
+          <maml:name>NoValues</maml:name>
+          <maml:description>
+            <maml:para>Shows only registry keys, excluding registry values.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="o, of">
+          <maml:name>OutFile</maml:name>
+          <maml:description>
+            <maml:para>Saves the registry tree output to the specified file path.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="des, desc, descending">
+          <maml:name>SortDescending</maml:name>
+          <maml:description>
+            <maml:para>Sorts items in descending order.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="st">
+          <maml:name>SortValuesByType</maml:name>
+          <maml:description>
+            <maml:para>Sorts registry values by their data type.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="dt, types, rdt">
+          <maml:name>UseRegistryDataTypes</maml:name>
+          <maml:description>
+            <maml:para>Displays registry values using their native registry data type names.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="proga">
+          <maml:name>ProgressAction</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill ProgressAction Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+          <dev:type>
+            <maml:name>ActionPreference</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="l, level">
+        <maml:name>Depth</maml:name>
+        <maml:description>
+          <maml:para>Limits the display to the specified number of registry levels.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>-1 (unlimited)</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="dic">
+        <maml:name>DisplayItemCounts</maml:name>
+        <maml:description>
+          <maml:para>Shows the count of sub-keys and values for each registry key.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="e, exc">
+        <maml:name>Exclude</maml:name>
+        <maml:description>
+          <maml:para>Excludes registry keys or values that match the specified patterns.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>@()</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="i, inc">
+        <maml:name>Include</maml:name>
+        <maml:description>
+          <maml:para>Includes only registry keys or values that match the specified patterns.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>@()</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="nv">
+        <maml:name>NoValues</maml:name>
+        <maml:description>
+          <maml:para>Shows only registry keys, excluding registry values.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="o, of">
+        <maml:name>OutFile</maml:name>
+        <maml:description>
+          <maml:para>Saves the registry tree output to the specified file path.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>Path</maml:name>
+        <maml:description>
+          <maml:para>Specifies the registry path to explore. Supports standard registry hive abbreviations.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>. (current registry location)</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="des, desc, descending">
+        <maml:name>SortDescending</maml:name>
+        <maml:description>
+          <maml:para>Sorts items in descending order.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="st">
+        <maml:name>SortValuesByType</maml:name>
+        <maml:description>
+          <maml:para>Sorts registry values by their data type.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="dt, types, rdt">
+        <maml:name>UseRegistryDataTypes</maml:name>
+        <maml:description>
+          <maml:para>Displays registry values using their native registry data type names.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="proga">
+        <maml:name>ProgressAction</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill ProgressAction Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        <dev:type>
+          <maml:name>ActionPreference</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>You cannot pipe objects to Show-PowerTreeRegistry.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>Show-PowerTreeRegistry outputs the registry tree structure as text to the console and optionally to a file.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Registry Path Formats: You can use standard PowerShell registry provider paths:</maml:para>
+        <maml:para>- `HKLM:` for HKEY_LOCAL_MACHINE</maml:para>
+        <maml:para>- `HKCU:` for HKEY_CURRENT_USER</maml:para>
+        <maml:para>- `HKCR:` for HKEY_CLASSES_ROOT</maml:para>
+        <maml:para>- `HKU:` for HKEY_USERS</maml:para>
+        <maml:para>- `HKCC:` for HKEY_CURRENT_CONFIG Registry Data Types: When using `-UseRegistryDataTypes`, you'll see native registry types like:</maml:para>
+        <maml:para>- REG_SZ (String)</maml:para>
+        <maml:para>- REG_DWORD (32-bit number)</maml:para>
+        <maml:para>- REG_BINARY (Binary data)</maml:para>
+        <maml:para>- REG_MULTI_SZ (Multi-string)</maml:para>
+        <maml:para>- REG_EXPAND_SZ (Expandable string) Performance Considerations: Large registry subtrees can take time to process. Use `-Depth` to limit traversal depth for better performance. Platform Support: This cmdlet is only available on Windows systems and will display an error on other platforms.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>------ Example 1: Show registry tree for a specific path ------</maml:title>
+        <dev:code>PS C:\&gt; Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Microsoft"</dev:code>
+        <dev:remarks>
+          <maml:para>Displays the registry tree for the Microsoft software keys in HKEY_LOCAL_MACHINE.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------- Example 2: Show only registry keys --------------</maml:title>
+        <dev:code>PS C:\&gt; Show-PowerTreeRegistry -Path "HKCU:\Software" -NoValues</dev:code>
+        <dev:remarks>
+          <maml:para>Shows only registry keys without displaying any registry values.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>------------- Example 3: Display with item counts -------------</maml:title>
+        <dev:code>PS C:\&gt; Show-PowerTreeRegistry -Path "HKLM:\SYSTEM" -DisplayItemCounts -Depth 2</dev:code>
+        <dev:remarks>
+          <maml:para>Shows the registry tree up to 2 levels deep with counts of sub-keys and values.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------- Example 4: Filter and save to file --------------</maml:title>
+        <dev:code>PS C:\&gt; Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE" -Include "*Microsoft*" -OutFile registry_report.txt</dev:code>
+        <dev:remarks>
+          <maml:para>Filters to show only items containing "Microsoft" and saves the output to a file.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>--- Example 5: Sort values by type with registry data types ---</maml:title>
+        <dev:code>PS C:\&gt; Show-PowerTreeRegistry -Path "HKCU:\Environment" -SortValuesByType -UseRegistryDataTypes</dev:code>
+        <dev:remarks>
+          <maml:para>Displays environment variables sorted by registry data type, showing native registry type names.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>--------------- Example 6: Exclude specific keys ---------------</maml:title>
+        <dev:code>PS C:\&gt; Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE" -Exclude "*Classes*","*WOW6432Node*" -Depth 3</dev:code>
+        <dev:remarks>
+          <maml:para>Shows the software registry tree excluding Classes and WOW6432Node branches, limited to 3 levels.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>PowerTree GitHub Repository</maml:linkText>
+        <maml:uri>https://github.com/spaansba/PowerTree</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Show-PowerTree</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Edit-PowerTreeConfig</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>

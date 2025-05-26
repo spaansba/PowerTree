@@ -9,14 +9,6 @@
         [int]$Depth = -1,
 
         [Parameter()]
-        [Alias("h", "?")]
-        [switch]$Help,
-
-        [Parameter()]
-        [Alias("i", "info")]
-        [switch]$ModuleInfo,
-
-        [Parameter()]
         [Alias("ex", "example")]
         [switch]$Examples,
     
@@ -119,16 +111,6 @@
         [Alias("o", "of")]
         [string]$OutFile
     )
-
-    if ($Help) {
-        Write-Help
-        return
-    }
-
-    if($ModuleInfo){
-        Write-Info
-        return
-    }
 
     if ($Examples) {
         Write-Examples
