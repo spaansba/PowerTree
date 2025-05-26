@@ -5,10 +5,6 @@ function Show-PowerTreeRegistry {
         [string]$Path = ".",
 
         [Parameter()]
-        [Alias("ds")]
-        [switch]$DisplaySubKeys,
-
-        [Parameter()]
         [Alias("o", "of")]
         [string]$OutFile,
 
@@ -50,7 +46,6 @@ function Show-PowerTreeRegistry {
         exit 1 
     }
 
-    # Load all your modules...
     . .\Private\Shared\DataModel\Classes.ps1
     . .\Private\PowerTreeRegistry\Configuration\ParamHelpers\Get-Path.ps1
     . .\Private\PowerTreeRegistry\Output\Get-TreeRegistryView.ps1
@@ -70,11 +65,11 @@ function Show-PowerTreeRegistry {
     . .\Private\PowerTreeRegistry\Output\Get-RegistryConfigurationData.ps1
     . .\Private\PowerTreeRegistry\Output\Show-RegistryStats.ps1
     . .\Private\Shared\Output\Format-ExecutionTime.ps1
+    
     $jsonSettings = Get-SettingsFromJson -Mode "Registry"
 
     $treeRegistryConfig = New-Object treeRegistryConfig
     $treeRegistryConfig.Path = Get-Path -Path $Path
-    $treeRegistryConfig.DisplaySubKeys = $DisplaySubKeys
     $treeRegistryConfig.NoValues = $NoValues
     $treeRegistryConfig.Exclude = $Exclude
     $treeRegistryConfig.Include = $Include
@@ -86,39 +81,23 @@ function Show-PowerTreeRegistry {
     $treeRegistryConfig.UseRegistryDataTypes = $UseRegistryDataTypes
     $treeRegistryConfig.OutFile = Add-DefaultExtension -FilePath $OutFile -Quiet $false -IsRegistry $true
 
-    # Initialize variables for results
     $outputBuilder = $null
     $output = $null
     $registryStats = $null
 
     $executionResultTime = Measure-Command {
-        # Check if we have an output file
         $hasOutputFile = -not [string]::IsNullOrEmpty($treeRegistryConfig.OutFile)
 
         if ($hasOutputFile) {
-            # File output mode
             $outputBuilder = Invoke-OutputBuilderRegistry -TreeRegistryConfig $treeRegistryConfig -ShowConfigurations $jsonSettings.ShowConfigurations
-            
-            if ($null -eq $outputBuilder) {
-                Write-Error "OutputBuilder is null! Check Invoke-OutputBuilderRegistry function."
-                return
-            }
-            
             $output = [System.Collections.Generic.List[string]]::new()
-            
-            # Collect the tree output and stats
             $registryStats = Get-TreeRegistryView -TreeRegistryConfig $treeRegistryConfig -OutputCollection $output
             
-            # Add tree output to the builder
             foreach ($line in $output) {
                 [void]$outputBuilder.AppendLine($line)
             }
             
-            # Save to file
-            $outputBuilder.ToString() | Out-File -FilePath $treeRegistryConfig.OutFile -Encoding UTF8
-            
         } else {
-            # Console output mode
             if($jsonSettings.ShowConfigurations){
                 Write-RegistryConfiguration -TreeRegistryConfig $treeRegistryConfig 
             }
@@ -126,20 +105,26 @@ function Show-PowerTreeRegistry {
         }
     }
 
-    # Display results after execution
+    if ($null -ne $registryStats -and $jsonSettings.ShowExecutionStats) {
+        $hasOutputFile = -not [string]::IsNullOrEmpty($treeRegistryConfig.OutFile)
+        
+        if ($hasOutputFile) {
+            [void](Show-RegistryStats -RegistryStats $registryStats -ExecutionTime $executionResultTime -LineStyle $treeRegistryConfig.LineStyle -OutputBuilder $outputBuilder)
+            $outputBuilder.ToString() | Out-File -FilePath $treeRegistryConfig.OutFile -Encoding UTF8
+        } else {
+            Show-RegistryStats -RegistryStats $registryStats -ExecutionTime $executionResultTime -LineStyle $treeRegistryConfig.LineStyle
+        }
+    } elseif (-not [string]::IsNullOrEmpty($treeRegistryConfig.OutFile)) {
+        $outputBuilder.ToString() | Out-File -FilePath $treeRegistryConfig.OutFile -Encoding UTF8
+    }
+
     if (-not [string]::IsNullOrEmpty($treeRegistryConfig.OutFile)) {
-        # Show success message for file output
         $fullOutputPath = Resolve-Path $treeRegistryConfig.OutFile -ErrorAction SilentlyContinue
         if ($null -eq $fullOutputPath) {
             $fullOutputPath = $treeRegistryConfig.OutFile
         }
         Write-Host "Output saved to: $($fullOutputPath)" -ForegroundColor Cyan
     }
-
-    # Show registry statistics
-    if ($null -ne $registryStats -and $jsonSettings.ShowExecutionStats) {
-        Show-RegistryStats -RegistryStats $registryStats -ExecutionTime $executionResultTime -LineStyle $treeRegistryConfig.LineStyle
-    }
 }
 
-Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft"
+Show-PowerTreeRegistry -Path "HKLM:\SOFTWARE\Policies\Microsoft" -o "x"

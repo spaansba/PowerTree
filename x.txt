@@ -1,0 +1,109 @@
+# PowerTreeRegistry Output
+# Generated: 05/26/2025 09:00:42
+# Registry Path: HKLM:\SOFTWARE\Policies\Microsoft
+
+Configuration:
+─────────────
+Sort By                Registry Order Ascending
+Type Format            String, DWord, etc.
+NoValues               False
+DisplayItemCounts      False
+SortValuesByType       False
+Max Depth              Unlimited
+Include (Values)       None
+Exclude (Keys/Values)  None
+
+Execution Stats:
+───────────────
+Keys    Values    Total Items    Max Depth    Execution Time    
+────    ──────    ───────────    ─────────    ──────────────    
+65      19        84             4            130 ms            
+
+Type         Hierarchy
+────         ─────────
+Key          Microsoft
+Key          ├───Cryptography
+Key          │   └───Configuration
+Key          │       └───SSL
+Key          │           └───00010002
+Key          ├───MSDeploy
+Key          │   └───3
+String       │       ├───(Default) = 
+DWord        │       └───EnableTelemetry = 1
+Key          ├───Peernet
+DWord        │   └───Disabled = 0
+Key          ├───SystemCertificates
+Key          │   ├───CA
+Key          │   │   ├───Certificates
+Key          │   │   ├───CRLs
+Key          │   │   └───CTLs
+Key          │   ├───Disallowed
+Key          │   │   ├───Certificates
+Key          │   │   ├───CRLs
+Key          │   │   └───CTLs
+Key          │   ├───Root
+Key          │   │   ├───Certificates
+Key          │   │   ├───CRLs
+Key          │   │   └───CTLs
+Key          │   ├───trust
+Key          │   │   ├───Certificates
+Key          │   │   ├───CRLs
+Key          │   │   └───CTLs
+Key          │   ├───TrustedPeople
+Key          │   │   ├───Certificates
+Key          │   │   ├───CRLs
+Key          │   │   └───CTLs
+Key          │   └───TrustedPublisher
+Key          │       ├───Certificates
+Key          │       ├───CRLs
+Key          │       └───CTLs
+Key          ├───TPM
+DWord        │   └───OSManagedAuthLevel = 5
+Key          ├───Windows
+Key          │   ├───Appx
+String       │   │   └───MdmHosts = ^(?:[^\/]*)\.MANAGE[^\.]*\.(MICROSOFT\.(COM|US)|MICROSOFTONLINE\.CN)$
+Key          │   ├───BITS
+Key          │   ├───CurrentVersion
+Key          │   │   └───Internet Settings
+DWord        │   │       ├───CallLegacyWCMPolicies = 0
+Key          │   │       └───Cache
+Key          │   ├───DataCollection
+Key          │   ├───EnhancedStorageDevices
+DWord        │   │   └───TCGSecurityActivationDisabled = 0
+Key          │   ├───IPSec
+Key          │   │   └───Policy
+Key          │   ├───Network Connections
+DWord        │   │   └───NC_PersonalFirewallConfig = 0
+Key          │   ├───NetworkConnectivityStatusIndicator
+String       │   │   └───(Default) = 
+Key          │   ├───NetworkProvider
+Key          │   │   └───HardenedPaths
+Key          │   ├───safer
+Key          │   │   └───codeidentifiers
+DWord        │   │       └───authenticodeenabled = 0
+Key          │   ├───SettingSync
+DWord        │   │   └───EnableBackupForWin8Apps = 1
+Key          │   ├───System
+Key          │   ├───WcmSvc
+Key          │   │   ├───GroupPolicy
+Key          │   │   └───Local
+DWord        │   │       └───WCMPresent = 1
+Key          │   ├───WorkplaceJoin
+String       │   │   └───(Default) = 
+Key          │   └───WSDAPI
+Key          │       └───Discovery Proxies
+Key          ├───Windows Defender
+Key          │   └───Policy Manager
+Key          └───Windows NT
+Key              ├───Terminal Services
+Key              │   └───Client
+DWord            │       ├───fEnableUsbBlockDeviceBySetupClass = 1
+DWord            │       ├───fEnableUsbNoAckIsochWriteToDevice = 80
+DWord            │       ├───fEnableUsbSelectDeviceByInterface = 1
+Key              │       ├───UsbBlockDeviceBySetupClasses
+String           │       │   └───1000 = {3376f4ce-ff8d-40a2-a80f-bb4359d1415c}
+Key              │       └───UsbSelectDeviceByInterfaces
+String           │           └───1000 = {6bdd1fc6-810f-11d0-bec7-08002be2092f}
+Key              └───Windows File Protection
+String               └───KnownDllList = nlhtml.dll
+

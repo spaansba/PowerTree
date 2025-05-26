@@ -28,7 +28,7 @@ function Invoke-OutputBuilderRegistry {
     if ($ShowExecutionStats) {
         [void]$outputBuilder.AppendLine("Execution Stats:")
         [void]$outputBuilder.AppendLine(($TreeRegistryConfig.LineStyle.SingleLine * 15))
-        [void]$outputBuilder.AppendLine("# Stats will be appended here after execution")
+        [void]$outputBuilder.AppendLine("Append the stats here later!!")
         [void]$outputBuilder.AppendLine("")
     }
 
