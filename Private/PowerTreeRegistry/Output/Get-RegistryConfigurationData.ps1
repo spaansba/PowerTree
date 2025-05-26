@@ -14,11 +14,11 @@ function Get-RegistryConfigurationData {
     
     # Data type display
     $dataTypeText = if ($TreeRegistryConfig.UseRegistryDataTypes) { 
-        "Registry Types (REG_SZ, REG_DWORD, etc.)" 
+        "REG_SZ, REG_DWORD, etc." 
     } else { 
-        "PowerShell Types (String, DWord, etc.)" 
+        "String, DWord, etc." 
     }
-    $configData += @{ Key = "Data Types"; Value = $dataTypeText }
+    $configData += @{ Key = "Type Format"; Value = $dataTypeText }
 
     # Display SubKeys
     $configData += @{ Key = "DisplaySubKeys"; Value = $TreeRegistryConfig.DisplaySubKeys }

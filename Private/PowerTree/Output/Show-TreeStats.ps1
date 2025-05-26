@@ -20,19 +20,7 @@ function Show-TreeStats {
         [bool]$DisplaySize = $false
     )
     
-    $formattedTime = switch ($ExecutionTime) {
-        { $_.TotalMinutes -gt 1 } {
-            '{0} min, {1} sec' -f [math]::Floor($_.Minutes), $_.Seconds
-            break
-        }
-        { $_.TotalSeconds -gt 1 } {
-            '{0:0.00} sec' -f $_.TotalSeconds
-            break
-        }
-        default {
-            '{0:N0} ms' -f $_.TotalMilliseconds
-        }
-    }
+    $formattedTime = Format-ExecutionTime -ExecutionTime $ExecutionTime
     
     # Define headers for statistics table
     $headers = @(

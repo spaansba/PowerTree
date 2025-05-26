@@ -69,7 +69,7 @@ function Show-PowerTreeRegistry {
     . .\Private\PowerTreeRegistry\Output\ToFile\Invoke-OutputBuilderRegistry.ps1
     . .\Private\PowerTreeRegistry\Output\Get-RegistryConfigurationData.ps1
     . .\Private\PowerTreeRegistry\Output\Show-RegistryStats.ps1
-
+    . .\Private\Shared\Output\Format-ExecutionTime.ps1
     $jsonSettings = Get-SettingsFromJson -Mode "Registry"
 
     $treeRegistryConfig = New-Object treeRegistryConfig

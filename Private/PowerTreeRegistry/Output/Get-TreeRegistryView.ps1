@@ -11,12 +11,10 @@ function Get-TreeRegistryView {
         [RegistryStats]$Stats = $null
     )
  
-    # Initialize stats only on root call
     if ($IsRoot -and $null -eq $Stats) {
         $Stats = [RegistryStats]::new()
     }
     
-    # Update depth tracking
     if ($null -ne $Stats) {
         $Stats.UpdateDepth($CurrentDepth)
     }
@@ -28,7 +26,6 @@ function Get-TreeRegistryView {
         $CurrentPath
     }
     
-    # Determine if we're collecting output for file
     $collectingOutput = $null -ne $OutputCollection
     
     if ($IsRoot) {
@@ -45,9 +42,7 @@ function Get-TreeRegistryView {
         }
     }
     
-    # Check if we've reached the maximum depth
     if ($TreeRegistryConfig.MaxDepth -ne -1 -and $CurrentDepth -ge $TreeRegistryConfig.MaxDepth) {
-        # Return stats if this is the root call
         if ($IsRoot) {
             return $Stats
         }
@@ -62,15 +57,12 @@ function Get-TreeRegistryView {
         -Exclude $TreeRegistryConfig.Exclude `
         -Include $TreeRegistryConfig.Include
     
-    # Count items for stats
     if ($null -ne $Stats) {
         $keyCount = ($allItems | Where-Object { $_.TypeName -eq "Key" }).Count
         $valueCount = ($allItems | Where-Object { $_.TypeName -ne "Key" }).Count
         
         $Stats.KeysProcessed += $keyCount
         $Stats.ValuesProcessed += $valueCount
-        $Stats.TotalSubKeys += $keyCount
-        $Stats.TotalValues += $valueCount
     }
         
     foreach ($item in $allItems) {
@@ -83,6 +75,7 @@ function Get-TreeRegistryView {
         }
         
         if ($item.TypeName -eq "Key") {
+            # Count info is for when DisplayItemCounts is true
             $countInfo = ""
             if ($TreeRegistryConfig.DisplayItemCounts) {
                 $countInfo = " ($($item.SubKeyCount) keys, $($item.ValueCount) values)"
@@ -95,10 +88,9 @@ function Get-TreeRegistryView {
                 Write-Host $countInfo -ForegroundColor DarkCyan
             }
             
-            # Recursive call with stats
             Get-TreeRegistryView -TreeRegistryConfig $TreeRegistryConfig -CurrentPath $item.Path -EscapeWildcards $true -TreeIndent $newTreeIndent -IsRoot $false -CurrentDepth ($CurrentDepth + 1) -OutputCollection $OutputCollection -Stats $Stats
         
-        } else {
+        } else { # Writing the subkey
             if ($collectingOutput) {
                 if (-not $TreeRegistryConfig.NoValues) {
                     $OutputCollection.Add("$($item.TypeName.PadRight(12)) $itemPrefix$($item.Name) = $($item.Value)")

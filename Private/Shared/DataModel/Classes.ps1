@@ -38,8 +38,6 @@ class RegistryStats {
     [int]$KeysProcessed = 0
     [int]$ValuesProcessed = 0
     [int]$MaxDepthReached = 0
-    [int]$TotalSubKeys = 0
-    [int]$TotalValues = 0
     
     [void] UpdateDepth([int]$depth) {
         if ($depth -gt $this.MaxDepthReached) {
