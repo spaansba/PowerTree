@@ -148,9 +148,9 @@ ptree -IncludeExtensions md,txt -OutFile project_docs.txt
 
 For detailed parameter references and advanced usage examples:
 
-- **[Show-PowerTree Documentation](docs/Show-PowerTree.md)** - Complete file system tree reference
-- **[Show-PowerTreeRegistry Documentation](docs/Show-PowerTreeRegistry.md)** - Windows Registry exploration guide
-- **[Edit-PowerTreeConfig Documentation](docs/Edit-PowerTreeConfig.md)** - Configuration management reference
+- **[Show-PowerTree](docs/Show-PowerTree.md)** 
+- **[Show-PowerTreeRegistry](docs/Show-PowerTreeRegistry.md)**
+- **[Edit-PowerTreeConfig](docs/Edit-PowerTreeConfig.md)**
 
 ## License
 
