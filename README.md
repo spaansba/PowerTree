@@ -9,8 +9,14 @@ A modern replacement for the `tree` command that lets you explore directory stru
 ![PowerShell Version](https://img.shields.io/badge/PowerShell-7.0%2B-blue)
 
 ## Preview Videos
-
+<details>
+<summary>🎥 File System Explorer Demo</summary>
 https://github.com/user-attachments/assets/3fbe8eb4-0844-4df8-925a-0608e391be17
+</details>
+<details>
+<summary>🗂️ Registry Explorer Demo</summary>
+https://github.com/user-attachments/assets/f95b4eb9-72ce-48db-aeca-0b16e81b14bf
+</details>
 
 ## What is PowerTree?
 
