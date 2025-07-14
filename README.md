@@ -170,3 +170,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - Export function signatures from JavaScript/TypeScript files
 - Access Control List (ACL) display options
 - Enhanced registry data type visualization
+
+## Media
+Florian Burnel created a great article about PowerTree which you can read [here](https://www.it-connect.fr/powershell-visualisez-arborescence-de-vos-donnees-avec-powertree/): (in French)
