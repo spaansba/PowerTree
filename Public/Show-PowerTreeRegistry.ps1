@@ -46,6 +46,9 @@ function Show-PowerTreeRegistry {
         exit 1 
     }
     
+    # Ensure config file exists before loading settings
+    Initialize-ConfigFile
+    
     $jsonSettings = Get-SettingsFromJson -Mode "Registry"
 
     $treeRegistryConfig = New-Object treeRegistryConfig

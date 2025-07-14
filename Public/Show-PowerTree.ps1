@@ -126,6 +126,10 @@
     }
 
     $treeStats = New-Object TreeStats
+    
+    # Ensure config file exists before loading settings
+    Initialize-ConfigFile
+    
     $jsonSettings = Get-SettingsFromJson -Mode "FileSystem"
 
     $treeConfig = New-Object TreeConfig
