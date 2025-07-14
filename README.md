@@ -172,4 +172,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - Enhanced registry data type visualization
 
 ## Media
-Florian Burnel created a great article about PowerTree which you can read [here](https://www.it-connect.fr/powershell-visualisez-arborescence-de-vos-donnees-avec-powertree/): (in French)
+Florian Burnel created a great article about PowerTree which you can read [here](https://www.it-connect.fr/powershell-visualisez-arborescence-de-vos-donnees-avec-powertree/) (in French)
