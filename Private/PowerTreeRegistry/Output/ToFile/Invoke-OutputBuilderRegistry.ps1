@@ -2,7 +2,7 @@ function Invoke-OutputBuilderRegistry {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)]
-        [TreeRegistryConfig]$TreeRegistryConfig,
+        [object]$TreeRegistryConfig,
         [bool]$ShowExecutionStats = $true,
         [bool]$ShowConfigurations = $true
     )

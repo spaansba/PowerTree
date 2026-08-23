@@ -2,7 +2,7 @@ function Show-RegistryStats {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)]
-        [RegistryStats]$RegistryStats,
+        [object]$RegistryStats,
         
         [Parameter(Mandatory=$true)]
         [System.TimeSpan]$ExecutionTime,

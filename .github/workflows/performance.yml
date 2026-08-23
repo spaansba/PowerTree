@@ -1,0 +1,43 @@
+name: Performance
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    name: Benchmark PowerTree
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out PR
+        uses: actions/checkout@v6
+        with:
+          path: pr
+          persist-credentials: false
+
+      - name: Check out base commit
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+          persist-credentials: false
+
+      - name: Benchmark base
+        shell: pwsh
+        run: |
+          & ./pr/Tests/Measure-PowerTreePerformance.ps1 `
+            -ModulePath ./base/PowerTree.psd1 `
+            -JsonPath "$env:RUNNER_TEMP/base-performance.json"
+
+      - name: Benchmark PR and publish summary
+        shell: pwsh
+        run: |
+          & ./pr/Tests/Measure-PowerTreePerformance.ps1 `
+            -ModulePath ./pr/PowerTree.psd1 `
+            -JsonPath "$env:RUNNER_TEMP/pr-performance.json" `
+            -BaselinePath "$env:RUNNER_TEMP/base-performance.json" `
+            -MarkdownPath $env:GITHUB_STEP_SUMMARY

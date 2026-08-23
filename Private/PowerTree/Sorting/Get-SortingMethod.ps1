@@ -48,55 +48,13 @@ function Group-Items {
         return @()
     }
     
-    $sorted = switch ($SortBy) {
-        "Modification Date" {
-            $Items | Sort-Object -Property LastWriteTime
-        }
-        "Creation Date" {
-            $Items | Sort-Object -Property CreationTime
-        }
-        "Last Access Date" {
-            $Items | Sort-Object -Property LastAccessTime
-        }
-        "Name" {
-            $Items | Sort-Object -Property Name
-        }
-        "Size" {
-            $Items | Sort-Object -Property { if ($_ -is [System.IO.DirectoryInfo]) {
-                # For directories, calculate total size of contents
-                (Get-ChildItem -LiteralPath $_.FullName -Recurse -File -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum
-            } else {
-                # For files, use file length
-                $_.Length
-            }}
-        }
-
-        Default {
-            $Items | Sort-Object -Property Name
-        }
+    $property = switch ($SortBy) {
+        "Modification Date" { "LastWriteTime" }
+        "Creation Date" { "CreationTime" }
+        "Last Access Date" { "LastAccessTime" }
+        "Size" { "Length" }
+        default { "Name" }
     }
-    
-    if ($SortDescending) {
-        # When sorting in descending order, we need to be specific about the property
-        switch ($SortBy) {
-            "Modification Date" { return $Items | Sort-Object -Property LastWriteTime -Descending }
-            "Creation Date" { return $Items | Sort-Object -Property CreationTime -Descending }
-            "Last Access Date" { return $Items | Sort-Object -Property LastAccessTime -Descending }
-            "Name" { return $Items | Sort-Object -Property Name -Descending }
-            "Size" { 
-                return $Items | Sort-Object -Property { 
-                    if ($_ -is [System.IO.DirectoryInfo]) {
-                        (Get-ChildItem -LiteralPath $_.FullName -Recurse -File -ErrorAction SilentlyContinue | 
-                            Measure-Object -Property Length -Sum).Sum
-                    } else {
-                        $_.Length
-                    }
-                } -Descending 
-            }
 
-            Default { return $Items | Sort-Object -Property Name -Descending }
-        }
-    } else {
-        return $sorted
-    }
+    return $Items | Sort-Object -Property $property -Descending:$SortDescending
 }

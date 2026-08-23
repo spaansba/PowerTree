@@ -13,10 +13,10 @@ function Write-ConfigurationToHost {
         return
     }
     
-    if ($Config -is [TreeRegistryConfig]) {
+    if ($null -ne $Config.PSObject.Properties["NoValues"]) {
         $configData = Get-RegistryConfigurationData -TreeRegistryConfig $Config
         $lineStyle = $Config.LineStyle.SingleLine
-    } elseif ($Config -is [TreeConfig]) {
+    } elseif ($null -ne $Config.PSObject.Properties["HeaderTable"]) {
         $configData = Get-TreeConfigurationData -TreeConfig $Config
         $lineStyle = "─"
     } else {

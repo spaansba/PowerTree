@@ -5,7 +5,6 @@ class TreeConfig {
     [string]$SortBy
     [bool]$SortDescending
     [bool]$SortFolders
-    [hashtable]$ChildItemDirectoryParams
     [hashtable]$ChildItemFileParams
     [hashtable]$HeaderTable
     [bool]$ShowConnectorLines
@@ -17,6 +16,24 @@ class TreeConfig {
     [bool]$PruneEmptyFolders
     [hashtable]$LineStyle
     [bool]$HumanReadableSizes
+}
+
+class TreeNode {
+    [System.IO.DirectoryInfo]$Item
+    [System.IO.FileInfo[]]$Files = @()
+    [object[]]$Directories = @()
+    [long]$DirectSize = 0
+    [long]$Size = 0
+    [bool]$HasFilteredFiles = $false
+    [bool]$HasVisibleContent = $false
+    [bool]$IsVisible = $false
+    [bool]$CanRenderContents = $false
+    [int]$Depth = 0
+
+    TreeNode([System.IO.DirectoryInfo]$item, [int]$depth) {
+        $this.Item = $item
+        $this.Depth = $depth
+    }
 }
 
 class TreeRegistryConfig {

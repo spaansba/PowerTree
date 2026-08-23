@@ -2,7 +2,7 @@ function Invoke-OutputBuilder {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)]
-        [TreeConfig]$TreeConfig,
+        [object]$TreeConfig,
         [bool]$ShowExecutionStats,
         [bool]$ShowConfigurations = $true
     )
