@@ -30,31 +30,3 @@ function Get-SortingMethod{
     
     return $sortBy
 }
-
-# Function to sort items based on specified criteria
-function Group-Items {
-    param (
-        [Parameter(Mandatory=$false)]
-        [System.Object[]]$Items,
-        
-        [Parameter(Mandatory=$true)]
-        [string]$SortBy,
-        
-        [Parameter()]
-        [bool]$SortDescending = $false
-    )
-    
-    if ($null -eq $Items -or $Items.Count -eq 0) {
-        return @()
-    }
-    
-    $property = switch ($SortBy) {
-        "Modification Date" { "LastWriteTime" }
-        "Creation Date" { "CreationTime" }
-        "Last Access Date" { "LastAccessTime" }
-        "Size" { "Length" }
-        default { "Name" }
-    }
-
-    return $Items | Sort-Object -Property $property -Descending:$SortDescending
-}

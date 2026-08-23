@@ -23,13 +23,45 @@ function Get-TreeSnapshot {
     $hiddenAttributes = [System.IO.FileAttributes]::Hidden -bor [System.IO.FileAttributes]::System
     $needFullSizes = $TreeConfig.HeaderTable.HeaderColumns -contains "Size" -or
         ($TreeConfig.SortFolders -and $TreeConfig.SortBy -eq "Size")
-    $nodes = [System.Collections.Generic.List[object]]::new()
+    $needPostProcessing = $needFullSizes -or $TreeConfig.PruneEmptyFolders
+    $sortDirection = if ($TreeConfig.SortDescending) { -1 } else { 1 }
+    $sortBy = $TreeConfig.SortBy
+    $fileComparison = [System.Comparison[System.IO.FileInfo]] {
+        param($left, $right)
+
+        $comparison = switch ($sortBy) {
+            "Modification Date" { [datetime]::Compare($left.LastWriteTime, $right.LastWriteTime) }
+            "Creation Date" { [datetime]::Compare($left.CreationTime, $right.CreationTime) }
+            "Last Access Date" { [datetime]::Compare($left.LastAccessTime, $right.LastAccessTime) }
+            "Size" { $left.Length.CompareTo($right.Length) }
+            default { [StringComparer]::CurrentCultureIgnoreCase.Compare($left.Name, $right.Name) }
+        }
+        return $comparison * $sortDirection
+    }
+    $directoryComparison = [System.Comparison[object]] {
+        param($left, $right)
+
+        $comparison = switch ($sortBy) {
+            "Modification Date" { [datetime]::Compare($left.Item.LastWriteTime, $right.Item.LastWriteTime) }
+            "Creation Date" { [datetime]::Compare($left.Item.CreationTime, $right.Item.CreationTime) }
+            "Last Access Date" { [datetime]::Compare($left.Item.LastAccessTime, $right.Item.LastAccessTime) }
+            "Size" { $left.Size.CompareTo($right.Size) }
+            default { [StringComparer]::CurrentCultureIgnoreCase.Compare($left.Item.Name, $right.Item.Name) }
+        }
+        return $comparison * $sortDirection
+    }
+    $nodes = $null
+    if ($needPostProcessing) {
+        $nodes = [System.Collections.Generic.List[object]]::new()
+    }
     $pending = [System.Collections.Generic.Stack[object]]::new()
     $pending.Push($root)
 
     while ($pending.Count -gt 0) {
         $node = $pending.Pop()
-        $nodes.Add($node)
+        if ($needPostProcessing) {
+            $nodes.Add($node)
+        }
 
         if (-not $node.CanRenderContents -and -not $needFullSizes) {
             continue
@@ -63,7 +95,9 @@ function Get-TreeSnapshot {
                     continue
                 }
 
-                $node.DirectSize += $item.Length
+                if ($needFullSizes) {
+                    $node.DirectSize += $item.Length
+                }
                 if (-not $node.CanRenderContents) {
                     continue
                 }
@@ -110,8 +144,24 @@ function Get-TreeSnapshot {
             Write-Verbose "Could not enumerate '$($node.Item.FullName)': $($_.Exception.Message)"
         }
 
+        if ($files.Count -gt 1) {
+            $files.Sort($fileComparison)
+        }
+        if ($TreeConfig.FileLimit -eq 0) {
+            $files.Clear()
+        } elseif ($TreeConfig.FileLimit -gt 0 -and $files.Count -gt $TreeConfig.FileLimit) {
+            $files.RemoveRange($TreeConfig.FileLimit, $files.Count - $TreeConfig.FileLimit)
+        }
+        if ($TreeConfig.SortFolders -and $TreeConfig.SortBy -ne "Size" -and $directories.Count -gt 1) {
+            $directories.Sort($directoryComparison)
+        }
+
         $node.Files = $files.ToArray()
         $node.Directories = $directories.ToArray()
+    }
+
+    if (-not $needPostProcessing) {
+        return $root
     }
 
     $nodeArray = $nodes.ToArray()
@@ -129,27 +179,11 @@ function Get-TreeSnapshot {
             $node.HasVisibleContent = $true
         }
 
-        if ($node.Files.Count -gt 0) {
-            $node.Files = @(Group-Items -Items $node.Files `
-                -SortBy $TreeConfig.SortBy `
-                -SortDescending $TreeConfig.SortDescending)
-
-            if ($TreeConfig.FileLimit -eq 0) {
-                $node.Files = @()
-            } elseif ($TreeConfig.FileLimit -gt 0 -and $node.Files.Count -gt $TreeConfig.FileLimit) {
-                $node.Files = @($node.Files[0..($TreeConfig.FileLimit - 1)])
-            }
-        }
-
-        if ($TreeConfig.SortFolders -and $node.Directories.Count -gt 0) {
-            $property = switch ($TreeConfig.SortBy) {
-                "Modification Date" { { $_.Item.LastWriteTime } }
-                "Creation Date" { { $_.Item.CreationTime } }
-                "Last Access Date" { { $_.Item.LastAccessTime } }
-                "Size" { { $_.Size } }
-                default { { $_.Item.Name } }
-            }
-            $node.Directories = @($node.Directories | Sort-Object -Property $property -Descending:$TreeConfig.SortDescending)
+        if ($TreeConfig.SortFolders -and $TreeConfig.SortBy -eq "Size" -and $node.Directories.Count -gt 1) {
+            $directories = [System.Collections.Generic.List[object]]::new()
+            $directories.AddRange($node.Directories)
+            $directories.Sort($directoryComparison)
+            $node.Directories = $directories.ToArray()
         }
     }
 

@@ -38,6 +38,7 @@ try {
     [void][System.IO.Directory]::CreateDirectory((Join-Path $fixturePath "beta/nested"))
     [void][System.IO.Directory]::CreateDirectory((Join-Path $fixturePath "empty"))
     [System.IO.File]::WriteAllBytes((Join-Path $fixturePath "root.md"), [byte[]]::new(2))
+    [System.IO.File]::WriteAllBytes((Join-Path $fixturePath "z.md"), [byte[]]::new(7))
     $hiddenFilePath = Join-Path $fixturePath ".secret.txt"
     [System.IO.File]::WriteAllBytes($hiddenFilePath, [byte[]]::new(4))
     if ($IsWindows) {
@@ -93,6 +94,26 @@ try {
     $depthOutput = Invoke-TestTree "depth" @{ Depth = 1 }
     Assert-Match $depthOutput "alpha" "depth directories"
     Assert-NotMatch $depthOutput "a\.txt" "depth files"
+
+    $nameSortOutput = Invoke-TestTree "name-sort" @{
+        Depth = 1
+        SortByName = $true
+        Descending = $true
+    }
+    if ($nameSortOutput.IndexOf("z.md") -gt $nameSortOutput.IndexOf("root.md")) {
+        throw "descending name sorting failed"
+    }
+    $passed++
+
+    $fileSizeSortOutput = Invoke-TestTree "file-size-sort" @{
+        Depth = 1
+        SortBySize = $true
+        Descending = $true
+    }
+    if ($fileSizeSortOutput.IndexOf("z.md") -gt $fileSizeSortOutput.IndexOf("root.md")) {
+        throw "descending file size sorting failed"
+    }
+    $passed++
 
     $filteredOutput = Invoke-TestTree "filtered" @{
         IncludeExtensions = @("txt")

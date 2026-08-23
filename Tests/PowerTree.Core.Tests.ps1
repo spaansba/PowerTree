@@ -145,15 +145,5 @@ Describe "sorting helpers" {
             Get-SortingMethod -SortByCreationDate $true -DefaultSort Name | Should -Be "Creation Date"
             Get-SortingMethod -DefaultSort "Modification Date" | Should -Be "Modification Date"
         }
-
-        It "groups items by name, size, and direction" {
-            $items = @(
-                [pscustomobject]@{ Name = "b"; Length = 1 },
-                [pscustomobject]@{ Name = "a"; Length = 3 }
-            )
-            @(Group-Items $items Name).Name | Should -Be @("a", "b")
-            @(Group-Items $items Size $true).Name | Should -Be @("a", "b")
-            @(Group-Items @() Name).Count | Should -Be 0
-        }
     }
 }
