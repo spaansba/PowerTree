@@ -3,8 +3,13 @@ name: Performance
 on:
   pull_request:
 
+concurrency:
+  group: performance-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
+  pull-requests: write
 
 jobs:
   benchmark:
@@ -40,4 +45,58 @@ jobs:
             -ModulePath ./pr/PowerTree.psd1 `
             -JsonPath "$env:RUNNER_TEMP/pr-performance.json" `
             -BaselinePath "$env:RUNNER_TEMP/base-performance.json" `
-            -MarkdownPath $env:GITHUB_STEP_SUMMARY
+            -MarkdownPath "$env:RUNNER_TEMP/performance-summary.md"
+          Get-Content "$env:RUNNER_TEMP/performance-summary.md" -Raw |
+            Add-Content -Path $env:GITHUB_STEP_SUMMARY
+
+      - name: Update PR performance comment
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          $ErrorActionPreference = "Stop"
+          $marker = "<!-- powertree-performance -->"
+          $report = Get-Content "$env:RUNNER_TEMP/performance-summary.md" -Raw
+          $runUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
+          $body = "$marker`n$report`n[View workflow run]($runUrl)"
+          $headers = @{
+            Accept = "application/vnd.github+json"
+            Authorization = "Bearer $env:GITHUB_TOKEN"
+            "X-GitHub-Api-Version" = "2022-11-28"
+          }
+          $commentsUrl = "$env:GITHUB_API_URL/repos/$env:GITHUB_REPOSITORY/issues/$env:PR_NUMBER/comments"
+          $existing = $null
+          $page = 1
+
+          do {
+            $comments = @(Invoke-RestMethod `
+              -Uri "${commentsUrl}?per_page=100&page=$page" `
+              -Headers $headers)
+            $existing = $comments |
+              Where-Object {
+                $_.user.login -eq "github-actions[bot]" -and $_.body.Contains($marker)
+              } |
+              Select-Object -First 1
+            $page++
+          } while ($null -eq $existing -and $comments.Count -eq 100)
+
+          $payload = @{ body = $body } | ConvertTo-Json
+          if ($null -ne $existing) {
+            Invoke-RestMethod `
+              -Method Patch `
+              -Uri "$env:GITHUB_API_URL/repos/$env:GITHUB_REPOSITORY/issues/comments/$($existing.id)" `
+              -Headers $headers `
+              -ContentType "application/json" `
+              -Body $payload | Out-Null
+            "Updated PR performance comment"
+          } else {
+            Invoke-RestMethod `
+              -Method Post `
+              -Uri $commentsUrl `
+              -Headers $headers `
+              -ContentType "application/json" `
+              -Body $payload | Out-Null
+            "Created PR performance comment"
+          }
