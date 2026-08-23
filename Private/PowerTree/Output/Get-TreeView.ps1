@@ -49,29 +49,31 @@ function Get-TreeView {
         @()
     }
 
-    $files = if (-not $TreeConfig.DirectoryOnly) { 
-        $fileList = Get-ChildItem -LiteralPath $CurrentPath @ChildItemFileParams 
-        
-        if ($null -ne $fileList -and $fileList.Count -gt 0) {
-            $filteredBySize = Get-FilesByFilteredSize $fileList -FileSizeBounds $TreeConfig.FileSizeBounds
-            $sortedFiles = @(Group-Items -Items $filteredBySize -SortBy $TreeConfig.SortBy -SortDescending $TreeConfig.SortDescending)
+    $filteredFiles = @()
+    if (-not $TreeConfig.DirectoryOnly -or $IsEmptyCheck) {
+        $fileList = Get-ChildItem -LiteralPath $CurrentPath @ChildItemFileParams
 
-            if ($TreeConfig.FileLimit -eq 0) {
-                @()
-            } elseif ($TreeConfig.FileLimit -gt 0) {
-                @($sortedFiles | Select-Object -First $TreeConfig.FileLimit)
-            } else {
-                $sortedFiles
-            }
-        } else {
-            @()
+        if ($null -ne $fileList -and $fileList.Count -gt 0) {
+            $filteredFiles = @(Get-FilesByFilteredSize $fileList -FileSizeBounds $TreeConfig.FileSizeBounds)
         }
-    } else { 
-        @() 
+    }
+
+    $files = if (-not $TreeConfig.DirectoryOnly -and $filteredFiles.Count -gt 0) {
+        $sortedFiles = @(Group-Items -Items $filteredFiles -SortBy $TreeConfig.SortBy -SortDescending $TreeConfig.SortDescending)
+
+        if ($TreeConfig.FileLimit -eq 0) {
+            @()
+        } elseif ($TreeConfig.FileLimit -gt 0) {
+            @($sortedFiles | Select-Object -First $TreeConfig.FileLimit)
+        } else {
+            $sortedFiles
+        }
+    } else {
+        @()
     }
 
     # Return true immediately if this is just an empty check and we have files
-    if ($IsEmptyCheck -and -not $TreeConfig.DirectoryOnly -and $files.Count -gt 0) {
+    if ($IsEmptyCheck -and $filteredFiles.Count -gt 0) {
         return $true
     }
 
