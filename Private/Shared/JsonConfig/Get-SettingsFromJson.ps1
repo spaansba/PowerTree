@@ -42,6 +42,7 @@ function Get-SettingsFromJson {
                                 IncludeExtensions = if ($settings.FileSystem.Files.IncludeExtensions -is [array]) { $settings.FileSystem.Files.IncludeExtensions } else { $defaultSettings.FileSystem.Files.IncludeExtensions }
                                 FileSizeMinimum = if ($settings.FileSystem.Files.FileSizeMinimum) { $settings.FileSystem.Files.FileSizeMinimum } else { $defaultSettings.FileSystem.Files.FileSizeMinimum }
                                 FileSizeMaximum = if ($settings.FileSystem.Files.FileSizeMaximum) { $settings.FileSystem.Files.FileSizeMaximum } else { $defaultSettings.FileSystem.Files.FileSizeMaximum }
+                                FileLimit = if ($null -ne $settings.FileSystem.Files.FileLimit) { $settings.FileSystem.Files.FileLimit } else { $defaultSettings.FileSystem.Files.FileLimit }
                             }
                             Sorting = @{
                                 By = if ($settings.FileSystem.Sorting.By) { $settings.FileSystem.Sorting.By } else { $defaultSettings.FileSystem.Sorting.By }

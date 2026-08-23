@@ -142,6 +142,9 @@ ptree -DisplaySize -ExcludeDirectories .git,.vs -Depth 3
 
 # Export project documentation
 ptree -IncludeExtensions md,txt -OutFile project_docs.txt
+
+# Limit the amount of files per directory
+ptree -FileLimit 10
 ```
 
 ## Documentation

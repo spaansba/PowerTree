@@ -18,6 +18,7 @@ function Get-DefaultConfig {
                 IncludeExtensions = @()
                 FileSizeMinimum = "-1kb"
                 FileSizeMaximum = "-1kb"
+                FileLimit = -1
             }
             Sorting = @{
                 By = "Name"

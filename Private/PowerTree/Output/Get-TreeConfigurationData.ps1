@@ -38,6 +38,9 @@ function Get-TreeConfigurationData {
     # Max depth
     $maxDepthText = if ($TreeConfig.MaxDepth -eq -1) { "Unlimited" } else { $TreeConfig.MaxDepth.ToString() }
     $configLines += "Max Depth".PadRight(22) + " $maxDepthText"
+
+    $fileLimitText = if ($TreeConfig.FileLimit -eq -1) { "Unlimited" } else { $TreeConfig.FileLimit.ToString() }
+    $configLines += "Files Per Directory".PadRight(22) + " $fileLimitText"
     
     # Excluded directories
     $excludedDirsText = if ($TreeConfig.ExcludeDirectories -and $TreeConfig.ExcludeDirectories.Count -gt 0) {

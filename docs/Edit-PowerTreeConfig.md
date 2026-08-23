@@ -54,7 +54,8 @@ Opens the PowerTree configuration file in the default editor. If no configuratio
       "IncludeExtensions": [],
       "ExcludeExtensions": [],
       "FileSizeMaximum": "-1kb",
-      "FileSizeMinimum": "-1kb"
+      "FileSizeMinimum": "-1kb",
+      "FileLimit": -1
     },
     "Sorting": {
       "By": "Name",
@@ -89,6 +90,7 @@ Opens the PowerTree configuration file in the default editor. If no configuratio
 | `FileSystem.Files.ExcludeExtensions` | Hide files with these extensions | `[]` | `-ExcludeExtensions` parameter |
 | `FileSystem.Files.FileSizeMinimum` | Hide files smaller than this size (-1kb = no limit) | `"-1kb"` | `-FileSizeMinimum` parameter |
 | `FileSystem.Files.FileSizeMaximum` | Hide files larger than this size (-1kb = no limit) | `"-1kb"` | `-FileSizeMaximum` parameter |
+| `FileSystem.Files.FileLimit` | Maximum files shown in each directory (-1 = unlimited) | `-1` | `-FileLimit` parameter |
 | `FileSystem.Sorting.By` | Default sort method ("Name", "Size", "Date", etc.) | `"Name"` | `-Sort` and `-SortBy*` parameters |
 | `FileSystem.Sorting.SortFolders` | Apply sorting to directories (false = folders first) | `false` | Config file only |
 | `Registry.MaxDepth` | Maximum registry depth to traverse (-1 = unlimited) | `-1` | `-Depth` parameter |

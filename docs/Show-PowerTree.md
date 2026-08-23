@@ -19,7 +19,8 @@ Show-PowerTree [[-LiteralPath] <String>] [-Depth <Int32>] [-Examples] [-PruneEmp
  [-DirectoryOnly] [-ExcludeDirectories <String[]>] [-Sort <String>] [-SortByModificationDate]
  [-SortByCreationDate] [-SortByLastAccessDate] [-SortBySize] [-SortByName] [-Descending]
  [-FileSizeMinimum <String>] [-FileSizeMaximum <String>] [-FileSizeFilter <String>]
- [-ExcludeExtensions <String[]>] [-IncludeExtensions <String[]>] [-ShowHiddenFiles] [-OutFile <String>]
+ [-ExcludeExtensions <String[]>] [-IncludeExtensions <String[]>] [-FileLimit <Int32>] [-ShowHiddenFiles]
+ [-OutFile <String>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -76,6 +77,16 @@ ps C:\> ptree -s -o "powertree"
 ```
 
 Generates a tree view with file sizes and saves the complete output to a text file instead of displaying it in the console. This is faster than console output as it doesn't have to write to the host.
+
+### Example 5: Limit files per directory
+
+```powershell
+PS C:\> Show-PowerTree -FileLimit 10
+# Shorthand
+PS C:\> ptree -fl 10
+```
+
+Shows at most 10 files in each directory. Files are filtered and sorted before the limit is applied.
 
 ## PARAMETERS
 
@@ -298,6 +309,22 @@ Aliases: fsma
 Required: False
 Position: Named
 Default value: -1kb
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileLimit
+
+Limits the number of files shown in each directory. Files are filtered and sorted before the limit is applied. Use -1 for no limit.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: fl
+
+Required: False
+Position: Named
+Default value: -1 (unlimited)
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
