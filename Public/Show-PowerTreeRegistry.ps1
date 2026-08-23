@@ -51,7 +51,7 @@ function Show-PowerTreeRegistry {
     
     $jsonSettings = Get-SettingsFromJson -Mode "Registry"
 
-    $treeRegistryConfig = New-Object treeRegistryConfig
+    $treeRegistryConfig = [TreeRegistryConfig]::new()
     $treeRegistryConfig.Path = Get-Path -Path $Path
     $treeRegistryConfig.NoValues = $NoValues
     $treeRegistryConfig.Exclude = $Exclude

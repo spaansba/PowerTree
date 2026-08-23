@@ -2,7 +2,7 @@ function Get-RegistryConfigurationData {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)]
-        [TreeRegistryConfig]$TreeRegistryConfig
+        [object]$TreeRegistryConfig
     )
 
     $configData = @()

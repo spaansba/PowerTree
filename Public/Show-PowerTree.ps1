@@ -130,14 +130,14 @@
         $DisplayMode= $true
     }
 
-    $treeStats = New-Object TreeStats
+    $treeStats = [TreeStats]::new()
     
     # Ensure config file exists before loading settings
     Initialize-ConfigFile
     
     $jsonSettings = Get-SettingsFromJson -Mode "FileSystem"
 
-    $treeConfig = New-Object TreeConfig
+    $treeConfig = [TreeConfig]::new()
     $treeConfig.Path = $LiteralPath
     $treeConfig.LineStyle = Build-TreeLineStyle -Style $jsonSettings.LineStyle
     $treeConfig.DirectoryOnly = $DirectoryOnly
@@ -184,7 +184,6 @@
                 throw "Cannot find path '$LiteralPath'"
             }
             
-            $ChildItemDirectoryParams = Build-ChildItemDirectoryParams $ShowHiddenFiles
             $ChildItemFileParams = Build-ChildItemFileParams -ShowHiddenFiles $ShowHiddenFiles `
                                                             -CommandLineIncludeExt $IncludeExtensions `
                                                             -CommandLineExcludeExt $ExcludeExtensions `
@@ -201,7 +200,6 @@
 
             Get-TreeView -TreeConfig $treeConfig `
                          -TreeStats $treeStats `
-                         -ChildItemDirectoryParams $ChildItemDirectoryParams `
                          -ChildItemFileParams $ChildItemFileParams `
                          -OutputBuilder $outputBuilder
         

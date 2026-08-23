@@ -12,7 +12,9 @@ function Build-OutputLine {
         [string]$TreePrefix,
 
         [Parameter(Mandatory=$true)]
-        [bool]$HumanReadableSizes
+        [bool]$HumanReadableSizes,
+
+        [long]$DirectorySize = 0
     )
     
     $dirSize = 0
@@ -63,10 +65,8 @@ function Build-OutputLine {
                         # Set to zero for files
                         $dirSize = 0
                     } else {
-                        # Calculate directory size
-                        $dirSize = (Get-ChildItem -LiteralPath $Item.FullName -Recurse -File -ErrorAction SilentlyContinue | 
-                                    Measure-Object -Property Length -Sum).Sum
-                         if($HumanReadableSizes){
+                        $dirSize = $DirectorySize
+                        if($HumanReadableSizes){
                             $content = Get-HumanReadableSize -Bytes $dirSize -Format "Padded"
                         } else {
                             $content = $dirSize

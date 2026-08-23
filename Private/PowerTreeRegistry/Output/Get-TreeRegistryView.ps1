@@ -1,14 +1,14 @@
 function Get-TreeRegistryView {
     param (
         [Parameter(Mandatory=$true)]
-        [TreeRegistryConfig]$TreeRegistryConfig,
+        [object]$TreeRegistryConfig,
         [string]$CurrentPath = $TreeRegistryConfig.Path,
         [bool]$EscapeWildcards = $false,
         [string]$TreeIndent = "",
         [bool]$IsRoot = $true,
         [int]$CurrentDepth = 0,
         [System.Collections.Generic.List[string]]$OutputCollection = $null,
-        [RegistryStats]$Stats = $null
+        [object]$Stats = $null
     )
  
     if ($IsRoot -and $null -eq $Stats) {
