@@ -12,6 +12,7 @@ class TreeConfig {
     [bool]$ShowHiddenFiles
     [int]$MaxDepth
     [hashtable]$FileSizeBounds
+    [int]$FileLimit
     [string]$OutFile
     [bool]$PruneEmptyFolders
     [hashtable]$LineStyle

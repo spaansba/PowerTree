@@ -104,6 +104,11 @@
         [string[]]$IncludeExtensions = @(),
 
         [Parameter()]
+        [ValidateRange(-1, 2147483647)]
+        [Alias("fl")]
+        [int]$FileLimit = -1,
+
+        [Parameter()]
         [Alias("force")]
         [switch]$ShowHiddenFiles,
 
@@ -161,6 +166,7 @@
                                                       -CommandlineMinSize $FileSizeMinimum `
                                                       -SettingsLineMaxSize $jsonSettings.Files.FileSizeMaximum `
                                                       -SettingsLineMinSize $jsonSettings.Files.FileSizeMinimum
+    $treeConfig.FileLimit = if ($PSBoundParameters.ContainsKey("FileLimit")) { $FileLimit } else { $jsonSettings.Files.FileLimit }
     $treeConfig.OutFile = Add-DefaultExtension -FilePath $OutFile `
                                                 -IsRegistry $false
                                                 
@@ -181,6 +187,7 @@
                                                             -CommandLineIncludeExt $IncludeExtensions `
                                                             -CommandLineExcludeExt $ExcludeExtensions `
                                                             -FileSettings $jsonSettings.Files
+            $treeConfig.ChildItemFileParams = $ChildItemFileParams
 
             Write-ConfigurationToHost -Config $treeConfig 
 

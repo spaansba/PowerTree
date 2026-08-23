@@ -54,7 +54,15 @@ function Get-TreeView {
         
         if ($null -ne $fileList -and $fileList.Count -gt 0) {
             $filteredBySize = Get-FilesByFilteredSize $fileList -FileSizeBounds $TreeConfig.FileSizeBounds
-            Group-Items -Items $filteredBySize -SortBy $TreeConfig.SortBy -SortDescending $TreeConfig.SortDescending
+            $sortedFiles = @(Group-Items -Items $filteredBySize -SortBy $TreeConfig.SortBy -SortDescending $TreeConfig.SortDescending)
+
+            if ($TreeConfig.FileLimit -eq 0) {
+                @()
+            } elseif ($TreeConfig.FileLimit -gt 0) {
+                @($sortedFiles | Select-Object -First $TreeConfig.FileLimit)
+            } else {
+                $sortedFiles
+            }
         } else {
             @()
         }
