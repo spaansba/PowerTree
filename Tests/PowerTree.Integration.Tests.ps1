@@ -38,7 +38,11 @@ try {
     [void][System.IO.Directory]::CreateDirectory((Join-Path $fixturePath "beta/nested"))
     [void][System.IO.Directory]::CreateDirectory((Join-Path $fixturePath "empty"))
     [System.IO.File]::WriteAllBytes((Join-Path $fixturePath "root.md"), [byte[]]::new(2))
-    [System.IO.File]::WriteAllBytes((Join-Path $fixturePath ".secret.txt"), [byte[]]::new(4))
+    $hiddenFilePath = Join-Path $fixturePath ".secret.txt"
+    [System.IO.File]::WriteAllBytes($hiddenFilePath, [byte[]]::new(4))
+    if ($IsWindows) {
+        [System.IO.File]::SetAttributes($hiddenFilePath, [System.IO.FileAttributes]::Hidden)
+    }
     [System.IO.File]::WriteAllBytes((Join-Path $fixturePath "alpha/a.txt"), [byte[]]::new(1))
     [System.IO.File]::WriteAllBytes((Join-Path $fixturePath "beta/b.log"), [byte[]]::new(3))
     [System.IO.File]::WriteAllBytes((Join-Path $fixturePath "beta/nested/c.txt"), [byte[]]::new(5))
