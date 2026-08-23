@@ -3,7 +3,8 @@ function Invoke-OutputBuilder {
     param (
         [Parameter(Mandatory=$true)]
         [TreeConfig]$TreeConfig,
-        [bool]$ShowExecutionStats
+        [bool]$ShowExecutionStats,
+        [bool]$ShowConfigurations = $true
     )
 
     # Only create OutputBuilder if we need to save to a file
@@ -21,11 +22,12 @@ function Invoke-OutputBuilder {
         [void]$outputBuilder.AppendLine("# Output File: $($TreeConfig.OutFile)")
     }
     
-    # Get configuration lines for file output
-    $configLines = Get-TreeConfigurationData -TreeConfig $TreeConfig
-    
-    foreach ($line in $configLines) {
-        [void]$outputBuilder.AppendLine($line)
+    if ($ShowConfigurations) {
+        $configLines = Get-TreeConfigurationData -TreeConfig $TreeConfig
+
+        foreach ($line in $configLines) {
+            [void]$outputBuilder.AppendLine($line)
+        }
     }
     
     if ($ShowExecutionStats) {

@@ -82,6 +82,7 @@ function Get-FlattenedDefaultSettings {
     $flattened = @{
         ShowConnectorLines = $DefaultSettings.Shared.ShowConnectorLines
         ShowExecutionStats = $DefaultSettings.Shared.ShowExecutionStats
+        ShowConfigurations = $DefaultSettings.Shared.ShowConfigurations
         LineStyle = $DefaultSettings.Shared.LineStyle
         Sorting = $DefaultSettings.FileSystem.Sorting
     }

@@ -173,7 +173,9 @@
     $treeConfig.PruneEmptyFolders = $PruneEmptyFolders
     $treeConfig.HumanReadableSizes = $jsonSettings.HumanReadableSizes
     
-    $outputBuilder = Invoke-OutputBuilder -TreeConfig $treeConfig -ShowExecutionStats $jsonSettings.ShowExecutionStats
+    $outputBuilder = Invoke-OutputBuilder -TreeConfig $treeConfig `
+                                          -ShowExecutionStats $jsonSettings.ShowExecutionStats `
+                                          -ShowConfigurations $jsonSettings.ShowConfigurations
 
     # Main entry point
     $executionResultTime = Measure-Command {
@@ -189,7 +191,9 @@
                                                             -FileSettings $jsonSettings.Files
             $treeConfig.ChildItemFileParams = $ChildItemFileParams
 
-            Write-ConfigurationToHost -Config $treeConfig 
+            if ($jsonSettings.ShowConfigurations) {
+                Write-ConfigurationToHost -Config $treeConfig
+            }
 
             Write-HeaderToOutput -HeaderTable $treeConfig.HeaderTable `
                               -OutputBuilder $outputBuilder `
