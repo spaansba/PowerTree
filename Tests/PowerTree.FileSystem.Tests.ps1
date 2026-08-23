@@ -14,7 +14,7 @@ Describe "file-system traversal" {
             [System.IO.File]::WriteAllBytes((Join-Path $fixture "alpha/small.txt"), [byte[]]::new(1))
             [System.IO.File]::WriteAllBytes((Join-Path $fixture "alpha/large.txt"), [byte[]]::new(6))
             [System.IO.File]::WriteAllBytes((Join-Path $fixture "alpha/nested/deep.txt"), [byte[]]::new(3))
-            [System.IO.File]::WriteAllBytes((Join-Path $fixture "beta/ignored.txt"), [byte[]]::new(10))
+            [System.IO.File]::WriteAllBytes((Join-Path $fixture "beta/ignored.txt"), [byte[]]::new(11))
         }
 
         BeforeEach {
@@ -56,7 +56,7 @@ Describe "file-system traversal" {
             $alpha.Files.Name | Should -Be @("large.txt")
             $alpha.Size | Should -Be 10
             $beta.IsVisible | Should -BeFalse
-            $snapshot.Size | Should -Be 32
+            $snapshot.Size | Should -Be 33
         }
 
         It "prunes empty directories when snapshot and writer are composed" {
@@ -73,7 +73,7 @@ Describe "file-system traversal" {
             $builder.ToString() | Should -Not -Match "(?m)empty$"
             $stats.FilesPrinted | Should -Be 5
             $stats.FoldersPrinted | Should -Be 3
-            $stats.TotalSize | Should -Be 24
+            $stats.TotalSize | Should -Be 25
             $stats.MaxDepth | Should -Be 2
         }
 
@@ -160,7 +160,7 @@ Describe "Show-PowerTree combinations" {
         $content | Should -Match "b\.txt"
         $content | Should -Not -Match "app\.log"
         $content | Should -Not -Match "(?m)empty$"
-        $content | Should -Match "(?m)^6\s+.*src$"
+        $content | Should -Match "(?m)^6\s+.*src\r?$"
     }
 
     It "combines directory exclusion, depth, and a zero file limit" {

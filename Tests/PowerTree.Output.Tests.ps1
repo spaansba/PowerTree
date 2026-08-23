@@ -57,7 +57,7 @@ Describe "configuration helpers" {
                 $path | Should -Exist
                 Set-Content $path "sentinel"
                 Initialize-ConfigFile
-                Get-Content $path -Raw | Should -Be "sentinel`n"
+                (Get-Content $path -Raw).TrimEnd() | Should -Be "sentinel"
             } finally {
                 $env:HOME = $originalHome
                 $env:USERPROFILE = $originalUserProfile
